@@ -2,17 +2,30 @@ package com.coffee_secrets.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.obj.User;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Login_2_Activity extends AppCompatActivity {
 
+    private static final int PICK_IMAGE = 100;
     private Button mSave;
 
     private FirebaseAuth mAuth;
@@ -21,6 +34,8 @@ public class Login_2_Activity extends AppCompatActivity {
     private EditText mStretch;
     private EditText mCity;
     private EditText mConnu;
+    private ImageView imageView;
+    private Bitmap bitmap;
 
 
 
@@ -33,6 +48,17 @@ public class Login_2_Activity extends AppCompatActivity {
         setContentView(R.layout.login2);
 
         mAuth = FirebaseAuth.getInstance();
+        
+        imageView = findViewById(R.id.image);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+            }
+        });
 
 
         mSave = findViewById(R.id.save);
@@ -49,15 +75,53 @@ public class Login_2_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String name = mName.getText().toString();
-                String email = mMail.getText().toString();
-                String street = mStretch.getText().toString();
-                String city = mCity.getText().toString();
-                String num = mConnu.getText().toString();
-               // String name = mName.getText().toString();
+                String name =  mName.getText().toString().trim();
+                String mail =  mMail.getText().toString().trim();
+                String stretch =  mStretch.getText().toString().trim();
+                String city =  mCity.getText().toString().trim();
+                String con =  mConnu.getText().toString().trim();
 
+                if (name.isEmpty()){
 
+                    mName.setError("Name is required.");
+                    mName.requestFocus();
+                    return;
+                }
 
+                if (mail.isEmpty()){
+
+                    mMail.setError("Email is required.");
+                    mMail.requestFocus();
+                    return;
+                }
+
+                if (stretch.isEmpty()){
+
+                    mStretch.setError("Street is required.");
+                    mStretch.requestFocus();
+                    return;
+                }
+
+                if (city.isEmpty()){
+
+                    mCity.setError("City is required.");
+                    mCity.requestFocus();
+                    return;
+                }
+
+                if (con.isEmpty()){
+
+                    mConnu.setError("Phone number is required.");
+                    mConnu.requestFocus();
+                    return;
+                }
+
+                if (bitmap==null){
+                    Toast.makeText(Login_2_Activity.this,"Image can't br empty.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                User.create(name,mail,stretch,city,con,bitmap);
                 Intent i = new Intent(Login_2_Activity.this,Home_Activity.class);
                 startActivity(i);
 
@@ -66,52 +130,30 @@ public class Login_2_Activity extends AppCompatActivity {
         });
 
 
-        String name =  mName.getText().toString().trim();
-        String mail =  mMail.getText().toString().trim();
-        String stretch =  mStretch.getText().toString().trim();
-        String city =  mCity.getText().toString().trim();
-        String con =  mConnu.getText().toString().trim();
+    }
 
-         if (name.isEmpty()){
 
-             mName.setError("Name is reqired");
-             mName.requestFocus();
-             return;
-         }
 
-        if (mail.isEmpty()){
 
-            mMail.setError("mail");
-            mMail.requestFocus();
-            return;
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE) {
+            if (data!=null && resultCode== Activity.RESULT_OK) {
+
+                InputStream inputStream = null;
+                try {
+                    inputStream = this.getContentResolver().openInputStream(data.getData());
+                    bitmap = BitmapFactory.decodeStream(inputStream);
+                    imageView.setImageBitmap(bitmap);
+
+            }catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
         }
-
-        if (stretch.isEmpty()){
-
-            mStretch.setError("Stretch");
-            mStretch.requestFocus();
-            return;
-        }
-
-        if (city.isEmpty()){
-
-            mCity.setError("City");
-            mCity.requestFocus();
-            return;
-        }
-
-        if (con.isEmpty()){
-
-            mConnu.setError("Connu");
-            mConnu.requestFocus();
-            return;
-        }
-
-
-
-
-
-
-
     }
 }

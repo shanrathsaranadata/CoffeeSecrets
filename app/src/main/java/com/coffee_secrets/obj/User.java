@@ -1,5 +1,6 @@
 package com.coffee_secrets.obj;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 import java.util.ArrayList;
@@ -12,21 +13,24 @@ public class User {
     public  static String Street;
     public  static String City;
     public  static String ContactNum;
-    public  static Image image;
+    public  static Bitmap bitmap;
+    public static String password;
 
     public static ArrayList<Integer> favourites = new ArrayList<>();
 
 
-    public User(int ID, String name, String email,
+    public static void create(String name, String email,
                 String street, String city,
-                String contactNum, Image image) {
+                String contactNum, Bitmap bitmap) {
 
-        User.ID = ID;
+        User.ID = 0;
         Name = name;
         Email = email;
         Street = street;
         City = city;
         ContactNum = contactNum;
-        User.image = image;
+        User.bitmap = bitmap;
     }
+
+
 }
