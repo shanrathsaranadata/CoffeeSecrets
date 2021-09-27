@@ -1,8 +1,6 @@
 package com.coffee_secrets.obj;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.Image;
+import android.content.Context;
 import android.net.Uri;
 import android.widget.Toast;
 
@@ -22,7 +20,6 @@ import com.google.firebase.storage.StorageTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class DB {
     
@@ -39,58 +36,8 @@ public class DB {
 
     }
 
-    public static Coffee setUsers(String Name, String Email,
-                                  String Street, String City, String ContactNum,
-                                  Bitmap image, String Password){
 
-            final DatabaseReference rootref;
-            rootref = FirebaseDatabase.getInstance().getReference();
-
-            FirebaseAuth imauth = FirebaseAuth.getInstance();
-
-            imauth.createUserWithEmailAndPassword(Email,Password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-                            if(task.isSuccessful()){
-
-
-                                String sid = imauth.getCurrentUser().getUid();
-
-                                HashMap<String,Object> sellermap = new HashMap<>();
-
-//                                sellermap.put("sid",sid);
-//                                sellermap.put("name",regname);
-//                                sellermap.put("email",regemail);
-//                                sellermap.put("phone",regnumber);
-//                                sellermap.put("address",regaddress);
-//                                sellermap.put("password",regpassword);
-
-                                rootref.child("Users").child(sid).updateChildren(sellermap)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-
-
-
-                                            }
-                                        });
-
-                            }
-                            else{
-                                ///return"Please Write Valid Email and Password
-                            }
-
-                        }
-                    });
-
-
-        return new Coffee();
-
-    }
-
-    public boolean createOrUpdateUser(){
+    public static boolean createOrUpdateUser(Context context){
 
         final DatabaseReference rootref;
         final StorageTask[] uploadTask = new StorageTask[1];
@@ -148,12 +95,16 @@ public class DB {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
 
+                                                        Toast.makeText(context, "Your are register Successful", Toast.LENGTH_SHORT).show();
+
 
                                                     }
                                                 });
 
                                     }
                                     else {
+
+                                        Toast.makeText(context, "Image Upload is not Complete", Toast.LENGTH_SHORT).show();
 
 
                                     }
@@ -162,8 +113,7 @@ public class DB {
                             });
                         }
                         else{
-
-                            ///return"Please Write Valid Email and Password
+                            Toast.makeText(context, "Please Write Valid Email and Password", Toast.LENGTH_SHORT).show();
                         }
 
                     }
