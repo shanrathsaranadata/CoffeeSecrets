@@ -1,8 +1,11 @@
 package com.coffee_secrets.obj;
 
 import android.net.Uri;
+import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User {
 
@@ -35,6 +38,19 @@ public class User {
 
 
 
+    }
+
+
+    public static boolean isEditTextContainEmail(EditText argEditText) {
+
+        try {
+            Pattern pattern = Pattern.compile("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+            Matcher matcher = pattern.matcher(argEditText.getText());
+            return matcher.matches();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
