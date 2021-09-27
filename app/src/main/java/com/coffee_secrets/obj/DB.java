@@ -85,10 +85,6 @@ public class DB {
 
     }
 
-
-
-
-
     public boolean createOrUpdateUser(){
 
 

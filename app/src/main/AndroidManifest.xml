@@ -50,11 +50,6 @@
             android:name=".ui.Delivery_Activity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="true"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.CoffeeSecrets.NoActionBar" />
-        <activity
             android:name=".ui.PayActivity"
             android:exported="true" />
         <activity
@@ -73,6 +68,9 @@
         <activity
             android:name=".ui.NameActivity"
             android:exported="true" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
