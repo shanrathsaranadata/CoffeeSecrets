@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -48,7 +49,7 @@ public class CoffeeCats extends BaseAdapter {
         view = inflter.inflate(R.layout.coffee_cats, null);
         Coffee.Category category = categories.get(i);
 
-        CardView card = view.findViewById(R.id.cc_card);
+        RelativeLayout card = view.findViewById(R.id.cc_card);
         TextView text = view.findViewById(R.id.cc_text);
 
         card.setBackground(new BitmapDrawable(context.getResources(),

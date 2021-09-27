@@ -25,14 +25,14 @@
             android:layout_gravity="center"/>
 
         <EditText
+            android:id="@+id/search_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:hint="Search"
             android:textColorHint="#FBFBFB"
-            android:textSize="13dp"
-            />
+            android:textSize="13dp" />
 
     </LinearLayout>
 

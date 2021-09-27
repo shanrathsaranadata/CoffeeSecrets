@@ -4,9 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -51,11 +54,11 @@ public class Home_Activity extends AppCompatActivity implements
 
         ArrayList<Coffee.Category> t = new ArrayList<>();
 
-        for (int i=0; i<3; i++){
+        for (int i=0; i<5; i++){
             Coffee.Category c = new Coffee.Category("Test "+i,
                     BitmapFactory.decodeResource(getResources(), R.drawable.espresso));
 
-
+            t.add(c);
         }
 
 
@@ -65,7 +68,28 @@ public class Home_Activity extends AppCompatActivity implements
         ListView cardList = findViewById(R.id.mh_cat_list);
         cardList.setAdapter(coffeeCats);
 
+        EditText search = findViewById(R.id.search_et);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length()>1){
+
+
+
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
 
