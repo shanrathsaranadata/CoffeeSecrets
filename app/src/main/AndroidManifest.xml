@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.coffee_secrets">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CoffeeSecrets">
+        <activity
+            android:name=".Spash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PromosActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReviewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CofffebarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OderHistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".favouriteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Delivery_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.CoffeeSecrets.NoActionBar" />
+        <activity
+            android:name=".PayActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Myoders_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".details_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Home_Activity"
+            android:exported="true"
+            android:theme="@style/Theme.CoffeeSecrets.NoActionBar" />
+        <activity
+            android:name=".Login_2_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".NameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

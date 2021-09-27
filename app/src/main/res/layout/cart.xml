@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CartActivity"
+    android:orientation="vertical"
+    android:background="@drawable/gradiuns">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                android:background="@drawable/edittext"
+                android:padding="05dp">
+
+
+                <ImageView
+                    android:id="@+id/re"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/ic_search_"
+                    tools:srcCompat="@drawable/ic_search_" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:textColor="#3A3A3A"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12dp">
+
+                </EditText>
+
+            </LinearLayout>
+
+            <include
+                layout="@layout/c0">
+            </include>
+
+            <include
+                layout="@layout/c1">
+            </include>
+
+            <include
+                layout="@layout/c2">
+            </include>
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/pagen" />
+
+            <Button
+                android:id="@+id/c_oder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Place To My Order"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"/>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "90646231400",
+    "project_id": "coffee-secrets-632c0",
+    "storage_bucket": "coffee-secrets-632c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90646231400:android:1ae61f0fac58a4c0bebedd",
+        "android_client_info": {
+          "package_name": "com.coffee_secrets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90646231400-e20i07a4bok67vqmta4bbt580svg8les.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGh1RHyv2BjzTt9ZwMdp8K3PEalkTR-2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90646231400-e20i07a4bok67vqmta4bbt580svg8les.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Coffee Secrets</string>
+
+    <string name="Email">Email Address</string>
+    <string name="pass">Password</string>
+    <string name="forgrt">Forget Password</string>
+    <string name="Help">Need Help ?</string>
+    <string name="Inquiry">Inquiry</string>
+    <string name="FAQ">FAQ</string>
+    <string name="d_Favourites">Favourites</string>
+    <string name="d_Order_History">Order History</string>
+    <string name="d_Payment">Payment</string>
+    <string name="d_Cart">Cart</string>
+    <string name="d_Coffee_Bar">Coffee Bar</string>
+    <string name="d_Review">Review</string>
+    <string name="d_Video">Video</string>
+    <string name="d_Promos">Promos</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="go">Good to Go</string>
+
+
+    <string name="open_navigation">Open navigation</string>
+    <string name="close_navigation">close navigation</string>
+
+
+</resources>

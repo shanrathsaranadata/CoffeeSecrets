@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_favourits"
+            android:icon="@drawable/ic_favorite"
+            android:title="Favourites" />
+
+        <item
+            android:id="@+id/oder_hi"
+            android:icon="@drawable/ic_time"
+            android:title="Oder Histoty" />
+
+
+
+        <item
+            android:id="@+id/cart"
+            android:icon="@drawable/ic_cart"
+            android:title="Cart" />
+
+        <item
+            android:id="@+id/Coffebar"
+            android:icon="@drawable/ic_coffee"
+            android:title="Coffee Bar" />
+
+        <item
+            android:id="@+id/review"
+            android:icon="@drawable/ic_reviews"
+            android:title="Review" />
+
+        <item
+            android:id="@+id/app_review"
+            android:icon="@drawable/ic_reviews"
+            android:title="App_Review" />
+
+
+
+        <item
+            android:id="@+id/praot"
+            android:icon="@drawable/ic_help"
+            android:title="Promos" />
+
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_help"
+            android:title="Neeed Help ?" />
+
+    </group>
+
+</menu>
