@@ -1,6 +1,5 @@
 package com.coffee_secrets.obj;
 
-import java.util.HashMap;
 
 public class Coffee {
 
