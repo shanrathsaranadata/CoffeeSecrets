@@ -2,6 +2,7 @@ package com.coffee_secrets.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -19,6 +20,8 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.coffee_secrets.obj.Coffee;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class Home_Activity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -46,9 +49,18 @@ public class Home_Activity extends AppCompatActivity implements
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        ArrayList<Coffee.Category> t = new ArrayList<>();
+
+        for (int i=0; i<3; i++){
+            Coffee.Category c = new Coffee.Category("Test "+i,
+                    BitmapFactory.decodeResource(getResources(), R.drawable.espresso));
+
+
+        }
+
 
         CoffeeCats coffeeCats =
-                new CoffeeCats(Coffee.getAllCategories(),this);
+                new CoffeeCats(t,this);
 
         ListView cardList = findViewById(R.id.mh_cat_list);
         cardList.setAdapter(coffeeCats);
