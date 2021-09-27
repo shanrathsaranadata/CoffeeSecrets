@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.adapters.CoffeeCats;
+import com.coffee_secrets.obj.Coffee;
 import com.google.android.material.navigation.NavigationView;
 
 public class Home_Activity extends AppCompatActivity implements
@@ -44,33 +47,39 @@ public class Home_Activity extends AppCompatActivity implements
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        mCata = findViewById(R.id.cata);
+        CoffeeCats coffeeCats =
+                new CoffeeCats(Coffee.getAllCategories(),this);
+
+        ListView cardList = findViewById(R.id.mh_cat_list);
+        cardList.setAdapter(coffeeCats);
 
 
 
 
-        mCata.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onClick(View v) {
 
-                Intent i = new Intent(Home_Activity.this,NameActivity.class);
-                startActivity(i);
-
-            }
-        });
-
-
-        mRe.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onClick(View v) {
-
-                drawerLayout.openDrawer(Gravity.START);
-
-            }
-        });
-
+//
+//        mCata.setOnClickListener(new View.OnClickListener() {
+//            @SuppressLint("WrongConstant")
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent i = new Intent(Home_Activity.this,NameActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
+//
+//
+//        mRe.setOnClickListener(new View.OnClickListener() {
+//            @SuppressLint("WrongConstant")
+//            @Override
+//            public void onClick(View v) {
+//
+//                drawerLayout.openDrawer(Gravity.START);
+//
+//            }
+//        });
+//
 
 
 

@@ -1,6 +1,14 @@
 package com.coffee_secrets.obj;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.coffee_secrets.adapters.CoffeeCats;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Coffee {
 
     int ID;
@@ -10,6 +18,38 @@ public class Coffee {
     String ingredients;
     float price;
     float discount = 0f;
+
+    public static ArrayList<Coffee.Category> getAllCategories(){
+        //Get all cats from DB
+
+
+        return DB.getAllCategories();
+    }
+
+    public static class Category{
+
+        String name;
+        Bitmap bitmap;
+
+
+
+        public Category(String name, Bitmap bitmap) {
+            this.name = name;
+            this.bitmap = bitmap;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Bitmap getBitmap() {
+            return bitmap;
+        }
+
+        public List<Coffee> getAllCoffees(){
+            return DB.getAllCoffees(name);
+        }
+    }
 
 
     public static float getCoffeePrice(int[] coffeeID){

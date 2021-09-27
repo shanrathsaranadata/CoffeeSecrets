@@ -14,7 +14,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class DB {
@@ -91,7 +93,18 @@ public class DB {
         return true;
     }
 
+    public static List<Coffee> getAllCoffees(String categoryName){
+        //Get all coffees from the database
+        //Its better to include locally
 
+        return new ArrayList<Coffee>();
+
+
+    }
+    public static ArrayList<Coffee.Category> getAllCategories(){
+        //Get all cats from DB
+        return new ArrayList<>();
+    }
     public static boolean doesExists(String email){
         //Check already reg
 
