@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoffeeSecrets">
         <activity
-            android:name=".Spash"
+            android:name=".ui.Spash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,34 +20,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HelpActivity"
+            android:name=".ui.HelpActivity"
             android:exported="true" />
         <activity
-            android:name=".PromosActivity"
+            android:name=".ui.PromosActivity"
             android:exported="true" />
         <activity
-            android:name=".ProductActivity"
+            android:name=".ui.ProductActivity"
             android:exported="true" />
         <activity
-            android:name=".ReviewActivity"
+            android:name=".ui.ReviewActivity"
             android:exported="true" />
         <activity
-            android:name=".CreateActivity"
+            android:name=".ui.CreateActivity"
             android:exported="true" />
         <activity
-            android:name=".CofffebarActivity"
+            android:name=".ui.CofffebarActivity"
             android:exported="true" />
         <activity
-            android:name=".CartActivity"
+            android:name=".ui.CartActivity"
             android:exported="true" />
         <activity
-            android:name=".OderHistoryActivity"
+            android:name=".ui.OderHistoryActivity"
             android:exported="true" />
         <activity
-            android:name=".favouriteActivity"
+            android:name=".ui.favouriteActivity"
             android:exported="true" />
         <activity
-            android:name=".Delivery_Activity"
+            android:name=".ui.Delivery_Activity"
             android:exported="true" />
         <activity
             android:name=".MainActivity2"
@@ -55,26 +55,26 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.CoffeeSecrets.NoActionBar" />
         <activity
-            android:name=".PayActivity"
+            android:name=".ui.PayActivity"
             android:exported="true" />
         <activity
-            android:name=".Myoders_Activity"
+            android:name=".ui.Myoders_Activity"
             android:exported="true" />
         <activity
-            android:name=".details_Activity"
+            android:name=".ui.details_Activity"
             android:exported="true" />
         <activity
-            android:name=".Home_Activity"
+            android:name=".ui.Home_Activity"
             android:exported="true"
             android:theme="@style/Theme.CoffeeSecrets.NoActionBar" />
         <activity
-            android:name=".Login_2_Activity"
+            android:name=".ui.Login_2_Activity"
             android:exported="true" />
         <activity
-            android:name=".NameActivity"
+            android:name=".ui.NameActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
