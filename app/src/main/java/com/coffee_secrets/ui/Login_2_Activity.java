@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.User;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -36,11 +37,6 @@ public class Login_2_Activity extends AppCompatActivity {
     private EditText mConnu;
     private ImageView imageView;
     private Bitmap bitmap;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +63,7 @@ public class Login_2_Activity extends AppCompatActivity {
         mStretch = findViewById(R.id.stretch);
         mCity = findViewById(R.id.city);
         mConnu = findViewById(R.id.connu);
+        EditText password = findViewById(R.id.password);
 
 
 
@@ -80,6 +77,7 @@ public class Login_2_Activity extends AppCompatActivity {
                 String stretch =  mStretch.getText().toString().trim();
                 String city =  mCity.getText().toString().trim();
                 String con =  mConnu.getText().toString().trim();
+                //String password =
 
                 if (name.isEmpty()){
 
@@ -121,10 +119,14 @@ public class Login_2_Activity extends AppCompatActivity {
                     return;
                 }
 
+                if (DB.doesExists(mail)){
+                    Toast.makeText(Login_2_Activity.this,"Email already in use.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 User.create(name,mail,stretch,city,con,bitmap);
                 Intent i = new Intent(Login_2_Activity.this,Home_Activity.class);
                 startActivity(i);
-
 
             }
         });

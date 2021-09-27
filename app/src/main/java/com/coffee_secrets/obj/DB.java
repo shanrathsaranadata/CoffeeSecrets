@@ -52,12 +52,12 @@ public class DB {
 
                                 HashMap<String,Object> sellermap = new HashMap<>();
 
-                                sellermap.put("sid",sid);
-                                sellermap.put("name",regname);
-                                sellermap.put("email",regemail);
-                                sellermap.put("phone",regnumber);
-                                sellermap.put("address",regaddress);
-                                sellermap.put("password",regpassword);
+//                                sellermap.put("sid",sid);
+//                                sellermap.put("name",regname);
+//                                sellermap.put("email",regemail);
+//                                sellermap.put("phone",regnumber);
+//                                sellermap.put("address",regaddress);
+//                                sellermap.put("password",regpassword);
 
                                 rootref.child("Users").child(sid).updateChildren(sellermap)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -79,6 +79,14 @@ public class DB {
 
 
         return coffees.get(ID);
+
+    }
+
+
+    public static boolean doesExists(String email){
+        //Check already reg
+
+        return false;
 
     }
 
