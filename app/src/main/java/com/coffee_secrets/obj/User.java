@@ -30,6 +30,8 @@ public class User {
         City = city;
         ContactNum = contactNum;
         User.bitmap = bitmap;
+
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.coffee_secrets.obj;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.widget.Toast;
 
@@ -33,7 +34,9 @@ public class DB {
 
     }
 
-    public static Coffee setUsers(int ID, String Name, String Email, String Street, String City, String ContactNum, Image image,String Password){
+    public static Coffee setUsers(String Name, String Email,
+                                  String Street, String City, String ContactNum,
+                                  Bitmap image, String Password){
 
             final DatabaseReference rootref;
             rootref = FirebaseDatabase.getInstance().getReference();
@@ -78,8 +81,14 @@ public class DB {
                     });
 
 
-        return coffees.get(ID);
+        return new Coffee();
 
+    }
+
+    public boolean createOrUpdateUser(){
+
+
+        return true;
     }
 
 

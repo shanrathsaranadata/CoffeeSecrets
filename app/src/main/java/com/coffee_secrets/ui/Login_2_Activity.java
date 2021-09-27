@@ -77,7 +77,7 @@ public class Login_2_Activity extends AppCompatActivity {
                 String stretch =  mStretch.getText().toString().trim();
                 String city =  mCity.getText().toString().trim();
                 String con =  mConnu.getText().toString().trim();
-                //String password =
+                String pass = password.getText().toString();
 
                 if (name.isEmpty()){
 
@@ -121,6 +121,16 @@ public class Login_2_Activity extends AppCompatActivity {
 
                 if (DB.doesExists(mail)){
                     Toast.makeText(Login_2_Activity.this,"Email already in use.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (pass.isEmpty()){
+                    password.setError("Password is required.");
+                    return;
+                }
+
+                if (pass.length()<8){
+                    password.setError("Password should be at least 8 characters.");
                     return;
                 }
 
