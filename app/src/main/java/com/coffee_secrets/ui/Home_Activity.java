@@ -126,16 +126,16 @@ public class Home_Activity extends AppCompatActivity implements
 //        });
 //
 //
-//        mRe.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("WrongConstant")
-//            @Override
-//            public void onClick(View v) {
-//
-//                drawerLayout.openDrawer(Gravity.START);
-//
-//            }
-//        });
-//
+        mRe.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onClick(View v) {
+
+                drawerLayout.openDrawer(Gravity.START);
+
+            }
+        });
+
 
 
 
