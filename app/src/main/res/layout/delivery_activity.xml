@@ -124,7 +124,7 @@
                         </Space>
 
                         <Button
-                            android:id="@+id/button2"
+                            android:id="@+id/lforgetpw"
                             android:layout_width="75dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"

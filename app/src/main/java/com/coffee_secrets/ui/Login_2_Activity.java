@@ -128,7 +128,7 @@ public class Login_2_Activity extends AppCompatActivity {
                     return;
                 }
 
-                User.create(name,mail,stretch,city,con,imageuri);
+                User.create(name,mail,stretch,city,con,imageuri,pass);
                 DB.createOrUpdateUser(Login_2_Activity.this);
                 Intent i = new Intent(Login_2_Activity.this,Home_Activity.class);
                 startActivity(i);

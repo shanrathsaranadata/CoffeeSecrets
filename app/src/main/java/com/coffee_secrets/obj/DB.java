@@ -48,7 +48,7 @@ public class DB {
 
         FirebaseAuth imauth = FirebaseAuth.getInstance();
 
-        imauth.createUserWithEmailAndPassword(User.Email,User.password)
+        imauth.createUserWithEmailAndPassword(User.Email,User.Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -59,7 +59,7 @@ public class DB {
                             final StorageReference fileref = storageReference
                                     .child(sid+".jpg");
 
-                            uploadTask[0] =fileref.putFile(User.imageuri);
+                            uploadTask[0] =fileref.putFile(User.Imageuri);
 
                             uploadTask[0].continueWithTask(new Continuation() {
                                 @Override
@@ -88,7 +88,7 @@ public class DB {
                                         sellermap.put("Street",User.Street);
                                         sellermap.put("City",User.City);
                                         sellermap.put("Image", myuri[0]);
-                                        sellermap.put("password",User.password);
+                                        sellermap.put("password",User.Password);
 
                                         rootref.child("User").child(sid).updateChildren(sellermap)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {

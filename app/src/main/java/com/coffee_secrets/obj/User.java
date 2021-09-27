@@ -12,15 +12,15 @@ public class User {
     public  static String Street;
     public  static String City;
     public  static String ContactNum;
-    public  static Uri imageuri;
-    public static String password;
+    public  static Uri Imageuri;
+    public static String Password;
 
     public static ArrayList<Integer> favourites = new ArrayList<>();
 
 
     public static void create(String name, String email,
                 String street, String city,
-                String contactNum, Uri imageuri) {
+                String contactNum, Uri imageuri,String password) {
 
         User.ID = 0;
         Name = name;
@@ -28,7 +28,8 @@ public class User {
         Street = street;
         City = city;
         ContactNum = contactNum;
-        User.imageuri = imageuri;
+        Password = password;
+        User.Imageuri = imageuri;
 
 
 
