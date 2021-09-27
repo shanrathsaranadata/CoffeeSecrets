@@ -1,14 +1,8 @@
 package com.coffee_secrets.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,13 +10,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.theartofdev.edmodo.cropper.CropImage;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 public class Login_2_Activity extends AppCompatActivity {
 
@@ -36,7 +32,7 @@ public class Login_2_Activity extends AppCompatActivity {
     private EditText mCity;
     private EditText mConnu;
     private ImageView imageView;
-    private Bitmap bitmap;
+    private Uri imageuri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +45,9 @@ public class Login_2_Activity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+                CropImage.activity(imageuri)
+                        .setAspectRatio(1,1)
+                        .start(Login_2_Activity.this);
             }
         });
 
@@ -114,7 +109,7 @@ public class Login_2_Activity extends AppCompatActivity {
                     return;
                 }
 
-                if (bitmap==null){
+                if (imageuri==null){
                     Toast.makeText(Login_2_Activity.this,"Image can't br empty.",Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -134,7 +129,7 @@ public class Login_2_Activity extends AppCompatActivity {
                     return;
                 }
 
-                User.create(name,mail,stretch,city,con,bitmap);
+                User.create(name,mail,stretch,city,con,imageuri);
                 Intent i = new Intent(Login_2_Activity.this,Home_Activity.class);
                 startActivity(i);
 
@@ -144,28 +139,23 @@ public class Login_2_Activity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE) {
-            if (data!=null && resultCode== Activity.RESULT_OK) {
 
-                InputStream inputStream = null;
-                try {
-                    inputStream = this.getContentResolver().openInputStream(data.getData());
-                    bitmap = BitmapFactory.decodeStream(inputStream);
-                    imageView.setImageBitmap(bitmap);
+        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==RESULT_OK && data != null){
 
-            }catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+            CropImage.ActivityResult result =CropImage.getActivityResult(data);
+            imageuri = result.getUri();
+            imageView.setImageURI(imageuri);
 
-            }
+        }
+        else{
+
+            Toast.makeText(this, "Error Try Again", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Login_2_Activity.this,Login_2_Activity.class));
+            finish();
+
         }
     }
 }
