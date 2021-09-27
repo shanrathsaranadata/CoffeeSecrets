@@ -19,6 +19,16 @@ public class Coffee {
     float price;
     float discount = 0f;
 
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    Bitmap bitmap;
+
     public static ArrayList<Coffee.Category> getAllCategories(){
         //Get all cats from DB
 
@@ -36,6 +46,7 @@ public class Coffee {
         public Category(String name, Bitmap bitmap) {
             this.name = name;
             this.bitmap = bitmap;
+
         }
 
         public String getName() {
@@ -70,6 +81,11 @@ public class Coffee {
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     public String getCategory() {
         return category;
     }

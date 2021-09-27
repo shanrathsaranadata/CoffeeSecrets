@@ -9,10 +9,12 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,16 +79,34 @@ public class Home_Activity extends AppCompatActivity implements
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length()>1){
-
-
-
+                ArrayList<Coffee.Category> newList = new ArrayList<>();
+                for (int j=0; j<t.size(); j++){
+                    if (charSequence.length()==0 || t.get(j).getName().startsWith(String.valueOf(charSequence))){
+                        newList.add(t.get(j));
+                    }
+                    CoffeeCats coffeeCats = new CoffeeCats(newList,Home_Activity.this);
+                    cardList.setAdapter(coffeeCats);
 
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tv = view.findViewById(R.id.cc_text);
+                String catName = tv.getText().toString();
+
+                Intent intent = new Intent(Home_Activity.this, NameActivity.class);
+                intent.putExtra("CatName", catName);
+                startActivity(intent);
+
 
             }
         });

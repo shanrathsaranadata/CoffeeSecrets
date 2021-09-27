@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ci_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:srcCompat="@drawable/avater" />
