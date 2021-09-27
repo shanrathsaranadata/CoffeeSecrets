@@ -54,6 +54,7 @@ public class Login_2_Activity extends AppCompatActivity {
                 String street = mStretch.getText().toString();
                 String city = mCity.getText().toString();
                 String num = mConnu.getText().toString();
+                int a = 0;
                // String name = mName.getText().toString();
 
 
