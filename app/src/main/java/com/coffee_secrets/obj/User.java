@@ -1,7 +1,5 @@
 package com.coffee_secrets.obj;
 
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 
 import java.util.ArrayList;
@@ -31,6 +29,8 @@ public class User {
         City = city;
         ContactNum = contactNum;
         User.imageuri = imageuri;
+
+
 
 
     }
