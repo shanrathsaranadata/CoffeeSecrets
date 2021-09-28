@@ -79,7 +79,9 @@ public class Coffee {
         String name;
         Bitmap bitmap;
 
-
+        public Category(){
+            int a = 0;
+        }
 
 
         public Category(String name, Bitmap bitmap) {
@@ -95,11 +97,12 @@ public class Coffee {
         }
 
         public void setName(String name) {
+            int a = 0;
             this.name = name;
         }
 
         public void setBitmap(String bitmap) {
-
+            int a = 0;
             this.bitmap = URItoBitMap(bitmap);
         }
 

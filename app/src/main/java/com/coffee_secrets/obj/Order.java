@@ -1,5 +1,7 @@
 package com.coffee_secrets.obj;
 
+import android.graphics.Bitmap;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,7 +41,11 @@ public class Order {
 
     }
 
+    public static ArrayList<Order> getAll(){
+        return DB.getOrders();
+    }
 
+    public Coffee getBasicCoffee()
 
     public Order(Coffee coffee){
         id = getOrderID();
