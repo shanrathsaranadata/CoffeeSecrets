@@ -36,7 +36,7 @@ public class details_Activity extends AppCompatActivity {
     }
 
     void setLayout(int ID){
-        Coffee coffee = DB.getCoffeeByID(ID);
+        Coffee coffee = DB.getCoffeeByID(ID, this);
 
 
         ImageView image = findViewById(R.id.dt_image);
@@ -60,7 +60,13 @@ public class details_Activity extends AppCompatActivity {
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                coffee.setFavourite(!coffee.isFavourite());
+                if (coffee.isFavourite()) {
+                    fav.setImageResource((R.drawable.fav_false));
+                    coffee.setFavourite(false);
+                }else {
+                    fav.setImageResource((R.drawable.fav_true));
+                    coffee.setFavourite(true);
+                }
             }
         });
 
@@ -71,7 +77,7 @@ public class details_Activity extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                        Intent i = new Intent(details_Activity.this,Myoders_Activity.class);
+                        Intent i = new Intent(details_Activity.this, MyOrderActivity.class);
                         i.putExtra("CoffeeID", coffee.getID());
                         startActivity(i);
             }

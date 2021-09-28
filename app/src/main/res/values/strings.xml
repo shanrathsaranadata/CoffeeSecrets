@@ -32,6 +32,8 @@
 
     <string name="open_navigation">Open navigation</string>
     <string name="close_navigation">close navigation</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
 
 
 </resources>

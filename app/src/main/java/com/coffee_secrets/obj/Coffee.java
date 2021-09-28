@@ -108,7 +108,9 @@ public class Coffee {
         return ingredients;
     }
     public float getPrice() {
-        return price;
+        int p = (int) (price*100);
+
+        return price/100;
     }
     public float getDiscountedPrice() {
         return price*(discount/100);

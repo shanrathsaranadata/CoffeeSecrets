@@ -44,7 +44,7 @@
             android:name=".ui.PayActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.Myoders_Activity"
+            android:name=".ui.MyOrderActivity"
             android:exported="true" />
         <activity
             android:name=".ui.details_Activity"

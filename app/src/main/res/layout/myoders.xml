@@ -29,12 +29,10 @@
             android:orientation="vertical"
             android:layout_marginTop="10dp">
 
-            <include
-                layout = "@layout/oder">
+
+            <include layout="@layout/oder">
 
             </include>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,20 +63,20 @@
 
                     <TextView
 
+                        android:id="@+id/mo_total"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Rs. 1200 /="
-                        android:textColor="#000"
-                        android:background="@drawable/bg2"
-                        android:padding="10dp"
-                        android:gravity="center"
                         android:layout_margin="30dp"
-                        />
+                        android:background="@drawable/bg2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Rs. 1200 /="
+                        android:textColor="#000" />
 
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/oderr"
+                    android:id="@+id/order_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

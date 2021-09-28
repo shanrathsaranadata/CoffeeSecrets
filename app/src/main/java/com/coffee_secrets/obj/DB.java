@@ -1,11 +1,13 @@
 package com.coffee_secrets.obj;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.coffee_secrets.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +30,14 @@ public class DB {
     public static Coffee getCoffeeByID(int ID){
 
         return coffees.get(ID);
+    }
+
+    public static Coffee getCoffeeByID(int ID, Context context){
+        Coffee coffee = new Coffee();
+        coffee.setName("Check");
+        coffee.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso));
+
+        return coffee;
     }
 
     public static Coffee setCoffeeByID(int ID){

@@ -31,7 +31,7 @@ public class PromosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(PromosActivity.this,Myoders_Activity.class);
+                Intent i = new Intent(PromosActivity.this, MyOrderActivity.class);
                 startActivity(i);
 
             }
@@ -42,7 +42,7 @@ public class PromosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(PromosActivity.this,Myoders_Activity.class);
+                Intent i = new Intent(PromosActivity.this, MyOrderActivity.class);
                 startActivity(i);
 
             }
