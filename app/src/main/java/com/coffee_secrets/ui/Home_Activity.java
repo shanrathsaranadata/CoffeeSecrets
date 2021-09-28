@@ -56,14 +56,14 @@ public class Home_Activity extends AppCompatActivity implements
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        ArrayList<Coffee.Category> t = new ArrayList<>();
+        ArrayList<Coffee.Category> t = DB.getAllCategories();
 
-        for (int i=0; i<5; i++){
-            Coffee.Category c = new Coffee.Category("Test "+i,
-                    BitmapFactory.decodeResource(getResources(), R.drawable.espresso));
-
-            t.add(c);
-        }
+//        for (int i=0; i<5; i++){
+//            Coffee.Category c = new Coffee.Category("Test "+i,
+//                    BitmapFactory.decodeResource(getResources(), R.drawable.espresso));
+//
+//            t.add(c);
+//        }
 
 
         CoffeeCats coffeeCats =

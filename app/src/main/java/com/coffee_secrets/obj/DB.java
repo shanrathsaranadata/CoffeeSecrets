@@ -95,7 +95,7 @@ public class DB {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.exists()){
-                    Bitmap imagebitmap = null;
+
                     int ID=Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("ID").getValue()).toString());
                     int rating = Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("rating").getValue()).toString());
                     String name= Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
@@ -104,13 +104,11 @@ public class DB {
                     float price= Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("price").getValue()).toString());
                     float discount = Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("discount").getValue()).toString());
                     String image= Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
-
-                    try {
-                        URL url = new URL(image);
-                        imagebitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                    } catch(IOException e) {
-                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                    Bitmap imagebitmap = URItoBitMap(image);
+                    if (imagebitmap==null){
+                        imagebitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso);
                     }
+
 
                     Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,imagebitmap);
 
@@ -343,6 +341,15 @@ public class DB {
 
         return false;
 
+    }
+
+    static Bitmap URItoBitMap(String uri){
+        try {
+            URL url = new URL(uri);
+            return BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch(IOException e) {
+            return null;
+        }
     }
 
 
