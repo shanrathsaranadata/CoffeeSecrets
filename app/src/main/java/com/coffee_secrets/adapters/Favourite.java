@@ -16,8 +16,8 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.User;
-import com.coffee_secrets.ui.MyOrderActivity;
-import com.coffee_secrets.ui.details_Activity;
+import com.coffee_secrets.ui.basic.MyOrderActivity;
+import com.coffee_secrets.ui.basic.details_Activity;
 
 import java.util.ArrayList;
 
@@ -108,7 +108,7 @@ public abstract class Favourite extends BaseAdapter {
                     }
                 }
 
-                setTotal();
+                refreshTotal();
             }
         });
 
@@ -119,7 +119,7 @@ public abstract class Favourite extends BaseAdapter {
         return checkedCoffee;
     }
 
-    public void setTotal(){
+    public float refreshTotal(){
 
         float total = 0f;
         for (int i=0; i<checkedCoffee.size(); i++){
@@ -128,7 +128,7 @@ public abstract class Favourite extends BaseAdapter {
         }
 
         updateTotal((float) ((int)total*100)/100);
-
+        return total;
     }
 
     public abstract void updateTotal(float total);

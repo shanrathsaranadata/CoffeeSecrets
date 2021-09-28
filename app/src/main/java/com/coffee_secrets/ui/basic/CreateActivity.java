@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,29 +9,34 @@ import android.widget.Button;
 
 import com.coffee_secrets.R;
 
-public class Spash extends AppCompatActivity {
+public class CreateActivity extends AppCompatActivity {
 
-    private Button mButton;
+    private Button mPay;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.spash);
+        setContentView(R.layout.create);
+
+        mPay = findViewById(R.id.pay);
 
 
-        mButton = findViewById(R.id.da_update);
 
-
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mPay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
-                Intent i = new Intent(Spash.this,
-                        Home_Activity.class);
+                Intent i = new Intent(CreateActivity.this,PayActivity.class);
                 startActivity(i);
 
             }
         });
+
+
 
 
 

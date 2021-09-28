@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,6 +34,14 @@ public class favouriteActivity extends AppCompatActivity {
 
 
         Button order = findViewById(R.id.fav_cc_order2);
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(favouriteActivity.this, PayActivity.class);
+                intent.putExtra("Total", favourite.refreshTotal());
+                startActivity(intent);
+            }
+        });
 
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.ui.basic.CreateActivity;
 
 public class CofffebarActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class CofffebarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(CofffebarActivity.this,CreateActivity.class);
+                Intent i = new Intent(CofffebarActivity.this, CreateActivity.class);
                 startActivity(i);
 
             }

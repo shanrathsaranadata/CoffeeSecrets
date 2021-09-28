@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.obj.Order;
 
 public class PayActivity extends AppCompatActivity {
 
@@ -24,12 +25,20 @@ public class PayActivity extends AppCompatActivity {
         EditText expire = findViewById(R.id.py_ex_date);
         TextView total = findViewById(R.id.py_amount);
 
-        total.setText("Rs. "+30.00f+" /=");
+        int orderID =getIntent().getIntExtra("OrderID", -1);
+        float sum = getIntent().getFloatExtra("Total", -1f);
 
+        if (orderID!=-1) {
+            Order order = Order.get(orderID);
+            total.setText("Rs. " + order.getTotal() + " /=");
+
+        }else if (sum != -1f){
+            total.setText("Rs. " + sum + " /=");
+        }else {
+            finish();
+        }
 
         Button confirm = findViewById(R.id.py_confirm);
-
-
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,12 +74,6 @@ public class PayActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
 
     }
 }

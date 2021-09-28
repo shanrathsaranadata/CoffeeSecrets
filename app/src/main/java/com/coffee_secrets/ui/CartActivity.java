@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.ui.basic.PayActivity;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(CartActivity.this,PayActivity.class);
+                Intent i = new Intent(CartActivity.this, PayActivity.class);
                 startActivity(i);
 
             }

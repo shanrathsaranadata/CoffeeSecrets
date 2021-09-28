@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.beforehome;
 
 import static com.coffee_secrets.obj.User.isEditTextContainEmail;
 
@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.User;
+import com.coffee_secrets.ui.basic.Home_Activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -131,7 +132,7 @@ public class Login_2_Activity extends AppCompatActivity {
 
                 User.create(name,mail,stretch,city,con,imageuri,pass);
                 DB.createOrUpdateUser(Login_2_Activity.this);
-                Intent i = new Intent(Login_2_Activity.this,Home_Activity.class);
+                Intent i = new Intent(Login_2_Activity.this, Home_Activity.class);
                 startActivity(i);
 
             }

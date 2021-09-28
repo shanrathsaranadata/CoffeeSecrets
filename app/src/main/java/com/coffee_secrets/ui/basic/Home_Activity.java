@@ -1,8 +1,7 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +24,13 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
+import com.coffee_secrets.ui.CartActivity;
+import com.coffee_secrets.ui.CofffebarActivity;
+import com.coffee_secrets.ui.HelpActivity;
+import com.coffee_secrets.ui.OderHistoryActivity;
+import com.coffee_secrets.ui.ProductActivity;
+import com.coffee_secrets.ui.PromosActivity;
+import com.coffee_secrets.ui.ReviewActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -163,37 +169,37 @@ public class Home_Activity extends AppCompatActivity implements
                 startActivity(i);
                 break;
             case R.id.oder_hi:
-                Intent ii = new Intent(Home_Activity.this,OderHistoryActivity.class);
+                Intent ii = new Intent(Home_Activity.this, OderHistoryActivity.class);
                 startActivity(ii);
                 break;
 
             case R.id.cart:
-                Intent c = new Intent(Home_Activity.this,CartActivity.class);
+                Intent c = new Intent(Home_Activity.this, CartActivity.class);
                 startActivity(c);
                 break;
 
             case R.id.Coffebar:
-                Intent co = new Intent(Home_Activity.this,CofffebarActivity.class);
+                Intent co = new Intent(Home_Activity.this, CofffebarActivity.class);
                 startActivity(co);
                 break;
 
             case R.id.review:
-                Intent re = new Intent(Home_Activity.this,ReviewActivity.class);
+                Intent re = new Intent(Home_Activity.this, ReviewActivity.class);
                 startActivity(re);
                 break;
             case R.id.app_review:
-                Intent app = new Intent(Home_Activity.this,ProductActivity.class);
+                Intent app = new Intent(Home_Activity.this, ProductActivity.class);
                 startActivity(app);
                 break;
 
             case R.id.praot:
-                Intent pr = new Intent(Home_Activity.this,PromosActivity.class);
+                Intent pr = new Intent(Home_Activity.this, PromosActivity.class);
                 startActivity(pr);
                 break;
 
 
             case R.id.help:
-                Intent he = new Intent(Home_Activity.this,HelpActivity.class);
+                Intent he = new Intent(Home_Activity.this, HelpActivity.class);
                 startActivity(he);
                 break;
 
