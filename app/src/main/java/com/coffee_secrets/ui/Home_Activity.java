@@ -141,15 +141,6 @@ public class Home_Activity extends AppCompatActivity implements
 
 
 
-        //navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) Home_Activity.this);
-
-
-     /*  ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_navigation,
-                R.string.close_navigation);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-*/
-
     }
 
     @Override

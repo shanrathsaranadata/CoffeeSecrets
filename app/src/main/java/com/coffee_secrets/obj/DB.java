@@ -37,6 +37,7 @@ public class DB {
     static HashMap<Integer, Coffee> coffees = new HashMap<>();
 
 
+
     //Order
     static void saveOrder(Order order){
 
@@ -234,20 +235,21 @@ public class DB {
 
 
     }
-
     public static List<Coffee> getAllCoffees(){
         //Get all coffees from the database
         //Its better to include locally
 
+
+
         return new ArrayList<Coffee>();
 
     }
-
-
     public static ArrayList<Coffee.Category> getAllCategories(){
         //Get all cats from DB
         return new ArrayList<>();
     }
+
+
     public static boolean doesExists(String email){
         //Check already reg
 
