@@ -21,6 +21,10 @@ public class User {
 
     public static ArrayList<Integer> favourites = new ArrayList<>();
 
+    public static String getAddress(){
+        return Name+", "+Street+", "+City;
+    }
+
 
     public static void create(String name, String email,
                 String street, String city,

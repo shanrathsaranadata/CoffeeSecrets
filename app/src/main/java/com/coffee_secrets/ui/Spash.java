@@ -19,7 +19,7 @@ public class Spash extends AppCompatActivity {
         setContentView(R.layout.spash);
 
 
-        mButton = findViewById(R.id.button);
+        mButton = findViewById(R.id.da_update);
 
 
         mButton.setOnClickListener(new View.OnClickListener() {

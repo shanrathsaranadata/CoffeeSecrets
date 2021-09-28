@@ -50,54 +50,54 @@
                 android:alpha="0.9">
 
 
-
-
                 <TextView
+                    android:id="@+id/da_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bgd"
                     android:hint="Address"
-                    android:textColorHint="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:background="@drawable/bgd"
                     android:padding="8dp"
-                    />
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/da_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bgd"
                     android:hint="Phone Number"
-                    android:textStyle="bold"
+                    android:padding="8dp"
                     android:textColorHint="@color/white"
                     android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bgd"
-                    android:padding="8dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/da_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:textColorHint="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bgd"
-                    android:padding="8dp"/>
+                    android:hint="Name"
+                    android:padding="8dp"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/da_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:hint="E-mail"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bgd"
-                    android:padding="8dp">
-                </EditText>
+                    android:hint="E-mail"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold"></EditText>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
@@ -111,7 +111,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/button"
+                            android:id="@+id/da_update"
                             android:layout_width="75dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"

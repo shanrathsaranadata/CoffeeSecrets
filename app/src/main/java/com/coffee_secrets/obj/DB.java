@@ -86,7 +86,6 @@ public class DB {
                         Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                     }
 
-
                 }
                 else{
 
@@ -116,15 +115,15 @@ public class DB {
 
 
     }
-
-    @Deprecated
-    public static Coffee getCoffeeByID(int ID, Context context){
-        Coffee coffee = new Coffee();
-        coffee.setName("Check");
-        coffee.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso));
-
-        return coffee;
-    }
+//
+//    @Deprecated
+//    public static Coffee getCoffeeByID(int ID, Context context){
+//        Coffee coffee = new Coffee();
+//        coffee.setName("Check");
+//        coffee.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso));
+//
+//        return coffee;
+//    }
 
     public static Coffee setCoffeeByID(int ID){
 

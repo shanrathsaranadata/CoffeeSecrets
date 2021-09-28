@@ -6,32 +6,61 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.coffee_secrets.R;
 
 public class PayActivity extends AppCompatActivity {
-
-    private Button mComnfirm;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay);
 
+        EditText name = findViewById(R.id.py_name);
+        EditText number = findViewById(R.id.py_card);
+        EditText cvc = findViewById(R.id.py_cvc);
+        EditText expire = findViewById(R.id.py_ex_date);
+        TextView total = findViewById(R.id.py_amount);
 
-        mComnfirm = findViewById(R.id.comnfirm);
+        total.setText("Rs. "+30.00f+" /=");
 
 
-        mComnfirm.setOnClickListener(new View.OnClickListener() {
+        Button confirm = findViewById(R.id.py_confirm);
+
+
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String Name = name.getText().toString();
+                String Num = number.getText().toString();
+                String CVC = cvc.getText().toString();
+                String Expire = expire.getText().toString();
+
+                if (Name.length()<3){
+                    name.setError("Invalid name!");
+                    return;
+                }
+
+                if (Num.length()!=16 || !Num.matches("[0-9]+")){
+                    name.setError("Invalid number!");
+                    return;
+                }
+
+                if (CVC.length()!=3 || !CVC.matches("[0-9]+")){
+                    name.setError("Invalid CVC!");
+                    return;
+                }
+
+
+                if (Expire.length()!=5 || !Expire.matches("(1[0-2])|(0[0-9])|(0-9)/([2-3][0-9])")){
+                    name.setError("Invalid expiration date!");
+                    return;
+                }
 
                 Intent i = new Intent(PayActivity.this,Delivery_Activity.class);
+                i.putExtra("Order", -1);
                 startActivity(i);
 
             }
