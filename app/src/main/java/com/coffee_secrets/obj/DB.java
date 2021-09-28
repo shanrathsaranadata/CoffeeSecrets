@@ -46,6 +46,30 @@ public class DB {
 
     static Order loadOrder(int ID){
 
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Order");
+        Query query = usersRef.orderByChild("id").equalTo(ID);
+
+
+        ArrayList<Order> Order = new ArrayList<Order>();
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
+                    Order orders= snapshot .getValue(Order.class);
+                    Order.add(orders);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        query.addListenerForSingleValueEvent(valueEventListener);
+
         return null;
     }
 
@@ -289,7 +313,28 @@ public class DB {
 
     public static ArrayList<Coffee.Category> getAllCategories(){
 
-        return new ArrayList<Coffee.Category>();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Category");
+        ArrayList<Coffee.Category> coffees = new ArrayList<Coffee.Category>();
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Coffee.Category coffee = snapshot.getValue(Coffee.Category.class);
+                    coffees.add(coffee);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        usersRef.addValueEventListener(valueEventListener);
+        return coffees;
 
     }
 
