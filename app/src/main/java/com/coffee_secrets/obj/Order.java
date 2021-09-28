@@ -45,7 +45,7 @@ public class Order {
         return DB.getOrders();
     }
 
-    public Coffee getBasicCoffee()
+//    public Coffee getBasicCoffee()
 
     public Order(Coffee coffee){
         id = getOrderID();

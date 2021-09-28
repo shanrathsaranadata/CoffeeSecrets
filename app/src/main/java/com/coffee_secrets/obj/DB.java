@@ -110,6 +110,7 @@ public class DB {
                     float price= Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("price").getValue()).toString());
                     float discount = Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("discount").getValue()).toString());
                     String image= Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
+
                     Bitmap imagebitmap = URItoBitMap(image);
                     if (imagebitmap==null){
                         imagebitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso);

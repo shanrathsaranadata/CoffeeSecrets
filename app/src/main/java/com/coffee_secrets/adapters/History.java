@@ -54,7 +54,7 @@ public class History extends BaseAdapter {
 
         Order order = orders.get(i);
 
-        image.setImageBitmap(order.getIcon());
+//        image.setImageBitmap(order.getIcon());
 
 
 

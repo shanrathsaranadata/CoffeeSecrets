@@ -107,7 +107,7 @@ public class Coffee {
 
         public void setBitmap(String bitmap) {
             try {
-                this.bitmap = MediaStore.Images.Media.getBitmap(this,bitmap);
+            //    this.bitmap = MediaStore.Images.Media.getBitmap(this,bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
