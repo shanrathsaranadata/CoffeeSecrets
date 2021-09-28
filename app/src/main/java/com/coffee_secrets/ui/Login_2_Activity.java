@@ -1,5 +1,7 @@
 package com.coffee_secrets.ui;
 
+import static com.coffee_secrets.obj.User.isEditTextContainEmail;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -80,9 +82,8 @@ public class Login_2_Activity extends AppCompatActivity {
                     return;
                 }
 
-                if (mail.isEmpty()){
-
-                    mMail.setError("Email is required.");
+                if(!(isEditTextContainEmail(mMail))){
+                    mMail.setError("Enter Valid Email is required");
                     mMail.requestFocus();
                     return;
                 }

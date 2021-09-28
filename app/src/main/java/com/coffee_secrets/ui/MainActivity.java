@@ -1,5 +1,7 @@
 package com.coffee_secrets.ui;
 
+import static com.coffee_secrets.obj.User.isEditTextContainEmail;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +18,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,9 +79,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String email = siemail.getText().toString();
 
-                if (email.isEmpty()){
-
-                    siemail.setError("Email is required.");
+                if(!(isEditTextContainEmail(siemail))){
+                    siemail.setError("Enter Valid Email is required");
                     siemail.requestFocus();
                     return;
                 }
@@ -105,14 +109,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void loginuser() {
 
         final String email = siemail.getText().toString();
         final String password = sipassword.getText().toString();
 
-        if (email.isEmpty()){
-
-            siemail.setError("Email is required.");
+        if(!(isEditTextContainEmail(siemail))){
+            siemail.setError("Enter Valid Email is required");
             siemail.requestFocus();
             return;
         }
