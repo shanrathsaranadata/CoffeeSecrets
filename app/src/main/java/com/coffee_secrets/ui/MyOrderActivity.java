@@ -59,7 +59,7 @@ public class MyOrderActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MyOrderActivity.this, PayActivity.class);
                 order.save();
-                intent.putExtra("Order", order.getID());
+                intent.putExtra("OrderID", order.getID());
                 startActivity(intent);
             }
         });

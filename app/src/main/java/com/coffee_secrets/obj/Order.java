@@ -26,7 +26,7 @@ public class Order {
 
     }
 
-    static Order get(int ID){
+    public static Order get(int ID){
         //Load Order from db
         if (order_ID.contains(ID)){
             return orders.get(order_ID.indexOf((Integer) ID));

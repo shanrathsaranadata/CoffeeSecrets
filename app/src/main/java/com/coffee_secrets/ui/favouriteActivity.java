@@ -35,6 +35,14 @@ public class favouriteActivity extends AppCompatActivity {
 
 
         Button order = findViewById(R.id.fav_cc_order2);
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(favouriteActivity.this, PayActivity.class);
+                intent.putExtra("Total", favourite.refreshTotal());
+                startActivity(intent);
+            }
+        });
 
 
 

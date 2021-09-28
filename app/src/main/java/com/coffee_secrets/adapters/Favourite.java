@@ -108,7 +108,7 @@ public abstract class Favourite extends BaseAdapter {
                     }
                 }
 
-                setTotal();
+                refreshTotal();
             }
         });
 
@@ -119,7 +119,7 @@ public abstract class Favourite extends BaseAdapter {
         return checkedCoffee;
     }
 
-    public void setTotal(){
+    public float refreshTotal(){
 
         float total = 0f;
         for (int i=0; i<checkedCoffee.size(); i++){
@@ -128,7 +128,7 @@ public abstract class Favourite extends BaseAdapter {
         }
 
         updateTotal((float) ((int)total*100)/100);
-
+        return total;
     }
 
     public abstract void updateTotal(float total);
