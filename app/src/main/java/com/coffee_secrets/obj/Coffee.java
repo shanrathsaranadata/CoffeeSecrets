@@ -5,8 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.coffee_secrets.adapters.CoffeeCats;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +83,9 @@ public class Coffee {
         String name;
         Bitmap bitmap;
 
+        public Category(){
 
+        }
 
 
         public Category(String name, Bitmap bitmap) {
@@ -99,8 +105,11 @@ public class Coffee {
         }
 
         public void setBitmap(String bitmap) {
-
-            this.bitmap = URItoBitMap(bitmap);
+            try {
+                this.bitmap =Picasso.get().load(bitmap).get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         public String getName() {
@@ -176,5 +185,7 @@ public class Coffee {
             return null;
         }
     }
+
+
 
 }
