@@ -19,9 +19,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class MainActivity extends AppCompatActivity {
 
     private Button mLogin;
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         mReg = findViewById(R.id.reg);
         siemail=findViewById(R.id.lemail);
         sipassword=findViewById(R.id.lpassword);
-        forgetpw= findViewById(R.id.lforgetpw);
+        forgetpw= findViewById(R.id.da_delete);
 
         imauth = FirebaseAuth.getInstance();
         lodingbar=new ProgressDialog(this);

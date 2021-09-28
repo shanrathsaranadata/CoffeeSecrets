@@ -124,7 +124,7 @@
                         </Space>
 
                         <Button
-                            android:id="@+id/lforgetpw"
+                            android:id="@+id/da_delete"
                             android:layout_width="75dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
@@ -133,7 +133,7 @@
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/button3"
+                        android:id="@+id/da_confirm"
                         android:layout_width="200dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
