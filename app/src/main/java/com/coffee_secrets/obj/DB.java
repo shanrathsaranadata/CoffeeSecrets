@@ -1,11 +1,14 @@
 package com.coffee_secrets.obj;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.coffee_secrets.R;
 import com.google.android.gms.tasks.Continuation;
@@ -13,15 +16,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class DB {
     
@@ -49,16 +58,55 @@ public class DB {
     }
 
 
+    public static Coffee getCoffeeByID(int ID,Context context){
+
+
+
+        DatabaseReference arts = FirebaseDatabase.getInstance().getReference().child("Coffee").child(String.valueOf(ID));
+
+        arts.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+
+                    int ID=Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("ID").getValue()).toString());
+                    String name= Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
+                    String category= Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString();
+                    String ingredients= Objects.requireNonNull(dataSnapshot.child("ingredients").getValue()).toString();
+                    float price= Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("price").getValue()).toString());
+                    float discount = Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("discount").getValue()).toString());
+                    String image= Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
+
+                    try {
+                        URL url = new URL(image);
+                        Bitmap imagebitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                    } catch(IOException e) {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+                else{
+
+                    Toast.makeText(context, "You coffee is not Exists", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
 
 
 
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                Toast.makeText(context, "database error", Toast.LENGTH_SHORT).show();
 
+            }
+        });
 
-
-
-    public static Coffee getCoffeeByID(int ID){
 
         return coffees.get(ID);
     }
