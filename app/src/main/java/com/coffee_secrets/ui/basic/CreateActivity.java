@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import androidx.appcompat.app.AppCompatActivity;
 

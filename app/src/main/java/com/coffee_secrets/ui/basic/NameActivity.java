@@ -1,9 +1,8 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
-import com.coffee_secrets.obj.DB;
 
 import java.util.ArrayList;
 import java.util.List;

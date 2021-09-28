@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.ui.basic.MyOrderActivity;
 
 public class PromosActivity extends AppCompatActivity {
 

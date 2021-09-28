@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.coffee_secrets.R;
-import com.coffee_secrets.ui.Home_Activity;
+import com.coffee_secrets.ui.basic.Home_Activity;
 
 public class Spash extends AppCompatActivity {
 

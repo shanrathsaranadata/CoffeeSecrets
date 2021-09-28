@@ -23,7 +23,7 @@
             android:name=".ui.ReviewActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.CreateActivity"
+            android:name=".ui.basic.CreateActivity"
             android:exported="true" />
         <activity
             android:name=".ui.CofffebarActivity"
@@ -35,32 +35,32 @@
             android:name=".ui.OderHistoryActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.favouriteActivity"
+            android:name=".ui.basic.favouriteActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.Delivery_Activity"
+            android:name=".ui.basic.Delivery_Activity"
             android:exported="true" />
         <activity
-            android:name=".ui.PayActivity"
+            android:name=".ui.basic.PayActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.MyOrderActivity"
+            android:name=".ui.basic.MyOrderActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.details_Activity"
+            android:name=".ui.basic.details_Activity"
             android:exported="true" />
         <activity
-            android:name=".ui.Home_Activity"
+            android:name=".ui.basic.Home_Activity"
             android:exported="true"
             android:theme="@style/Theme.CoffeeSecrets.NoActionBar" />
         <activity
             android:name=".ui.beforehome.Login_2_Activity"
             android:exported="true" />
         <activity
-            android:name=".ui.NameActivity"
+            android:name=".ui.basic.NameActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.basic.MainActivity"
             android:exported="true" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

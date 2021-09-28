@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.User;
-import com.coffee_secrets.ui.Home_Activity;
+import com.coffee_secrets.ui.basic.Home_Activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.theartofdev.edmodo.cropper.CropImage;
 

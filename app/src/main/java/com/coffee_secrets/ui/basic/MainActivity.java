@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui;
+package com.coffee_secrets.ui.basic;
 
 import static com.coffee_secrets.obj.User.isEditTextContainEmail;
 

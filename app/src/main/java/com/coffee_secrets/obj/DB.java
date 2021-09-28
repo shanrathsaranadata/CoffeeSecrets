@@ -82,6 +82,10 @@ public class DB {
         return 0;
     }
 
+    static ArrayList<Order> getOrders(){
+        return null;
+    }
+
 
     public static Coffee getCoffeeByID(int ID,Context context){
 
