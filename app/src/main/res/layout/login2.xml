@@ -59,7 +59,7 @@
                 android:padding="20dp">
 
                 <ImageView
-                    android:id="@+id/image"
+                    android:id="@+id/dt_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"

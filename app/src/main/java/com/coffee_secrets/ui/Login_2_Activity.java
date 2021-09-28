@@ -42,7 +42,7 @@ public class Login_2_Activity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         
-        imageView = findViewById(R.id.image);
+        imageView = findViewById(R.id.dt_image);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

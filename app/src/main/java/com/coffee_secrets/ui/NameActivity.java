@@ -96,6 +96,18 @@ public class NameActivity extends AppCompatActivity {
             iv.setImageBitmap(coffee.getBitmap());
             tv.setText(coffee.getName());
 
+
+            //Set on click listner
+            ll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(NameActivity.this, details_Activity.class);
+                    intent.putExtra("CoffeeID", coffee.getID());
+                    startActivity(intent);
+                }
+            });
+
+
             cl.addView(view);
             set.constrainHeight(view.getId(),width_unit*6);
             set.constrainWidth(view.getId(), width_unit*5);

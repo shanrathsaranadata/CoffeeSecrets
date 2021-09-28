@@ -21,6 +21,11 @@ public class Myoders_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myoders);
 
+        int ID = getIntent().getIntExtra("CoffeeID", -1);
+        if (ID==-1){
+            finish();
+        }
+
 
         mOderr = findViewById(R.id.oderr);
 

@@ -14,7 +14,7 @@
         app:srcCompat="@drawable/a4" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/dt_ingr"
         android:layout_width="87dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView5"
@@ -43,7 +43,7 @@
         android:textStyle="bold" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/dt_rating"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
@@ -57,7 +57,7 @@
         android:id="@+id/textView9"
         android:layout_width="151dp"
         android:layout_height="23dp"
-        android:layout_below="@+id/ratingBar"
+        android:layout_below="@+id/dt_rating"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="-4dp"

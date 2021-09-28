@@ -1,5 +1,6 @@
 package com.coffee_secrets.obj;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.widget.EditText;
 
@@ -40,6 +41,18 @@ public class User {
 
     }
 
+
+    static boolean isFavouriteCoffee(int ID){
+        return favourites.contains(ID);
+    }
+
+    static void addFavourite(int ID, boolean fav){
+        if (!favourites.contains(ID) && fav){
+            favourites.add(ID);
+        }else if (favourites.contains(ID)){
+            favourites.remove((Integer) ID);
+        }
+    }
 
     public static boolean isEditTextContainEmail(EditText argEditText) {
 

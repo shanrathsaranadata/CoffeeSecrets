@@ -28,6 +28,14 @@ public class Coffee {
         this.bitmap = bitmap;
     }
 
+    public boolean isFavourite(){
+        return User.isFavouriteCoffee(this.ID);
+    }
+
+    public void setFavourite(boolean fav){
+        User.addFavourite(ID, fav);
+    }
+
 
 
     public static ArrayList<Coffee.Category> getAllCategories(){
