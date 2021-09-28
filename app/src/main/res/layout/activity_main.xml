@@ -63,7 +63,7 @@
             android:paddingRight="50dp">
 
             <Button
-                android:id="@+id/lforgetpw"
+                android:id="@+id/da_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
