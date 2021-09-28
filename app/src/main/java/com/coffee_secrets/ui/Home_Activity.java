@@ -24,6 +24,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.coffee_secrets.obj.Coffee;
+import com.coffee_secrets.obj.DB;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class Home_Activity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        DB.load();
 
         drawerLayout = findViewById(R.id.drawer_layout1);
         navigationView = findViewById(R.id.nav1);

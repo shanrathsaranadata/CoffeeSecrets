@@ -32,6 +32,13 @@ public class DB {
         return coffees.get(ID);
     }
 
+    public static void load(){
+
+
+
+    }
+
+    @Deprecated
     public static Coffee getCoffeeByID(int ID, Context context){
         Coffee coffee = new Coffee();
         coffee.setName("Check");
@@ -42,8 +49,12 @@ public class DB {
 
     public static Coffee setCoffeeByID(int ID){
 
-        return coffees.get(ID);
-
+        if (coffees.containsKey(ID)) {
+            return coffees.get(ID);
+        }else {
+            //TODO get from DB
+            return null;
+        }
     }
 
 

@@ -20,6 +20,22 @@ public class Coffee {
     float discount = 0f;
     Bitmap bitmap;
 
+    Coffee(int ID, String name, String category, byte rating, String ingredients, float price, float discount, Bitmap bitmap) {
+        this.ID = ID;
+        this.name = name;
+        this.category = category;
+        this.rating = rating;
+        this.ingredients = ingredients;
+        this.price = price;
+        this.discount = discount;
+        this.bitmap = bitmap;
+    }
+
+    @Deprecated
+    public Coffee(){
+
+    }
+
     public Bitmap getBitmap() {
         return bitmap;
     }
