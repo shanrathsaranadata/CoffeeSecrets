@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -230,35 +231,72 @@ public class DB {
         //Get all coffees from the database
         //Its better to include locally
 
-        return new ArrayList<Coffee>();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Coffee");
+        Query query = usersRef.orderByChild("category").equalTo(categoryName);
+
+
+        ArrayList<Coffee> coffees = new ArrayList<Coffee>();
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
+                    Coffee coffee = snapshot .getValue(Coffee.class);
+                    coffees.add(coffee);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        query.addListenerForSingleValueEvent(valueEventListener);
+
+        return coffees;
 
 
     }
 
     public static List<Coffee> getAllCoffees(){
-        //Get all coffees from the database
-        //Its better to include locally
 
-        return new ArrayList<Coffee>();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Coffee");
+        ArrayList<Coffee> coffees = new ArrayList<Coffee>();
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Coffee coffee = snapshot.getValue(Coffee.class);
+                    coffees.add(coffee);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        usersRef.addValueEventListener(valueEventListener);
+        return coffees;
 
     }
-
 
     public static ArrayList<Coffee.Category> getAllCategories(){
-        //Get all cats from DB
-        return new ArrayList<>();
+
+        return new ArrayList<Coffee.Category>();
+
     }
+
     public static boolean doesExists(String email){
         //Check already reg
 
         return false;
-
-    }
-
-    public static Coffee getUsers(int ID){
-
-
-        return coffees.get(ID);
 
     }
 
