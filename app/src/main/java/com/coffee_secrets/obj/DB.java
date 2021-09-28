@@ -70,8 +70,9 @@ public class DB {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.exists()){
-
+                    Bitmap imagebitmap = null;
                     int ID=Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("ID").getValue()).toString());
+                    int rating = Integer.parseInt(Objects.requireNonNull(dataSnapshot.child("rating").getValue()).toString());
                     String name= Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
                     String category= Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString();
                     String ingredients= Objects.requireNonNull(dataSnapshot.child("ingredients").getValue()).toString();
@@ -81,10 +82,13 @@ public class DB {
 
                     try {
                         URL url = new URL(image);
-                        Bitmap imagebitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                        imagebitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
                     } catch(IOException e) {
                         Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                     }
+
+                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,imagebitmap);
+
 
                 }
                 else{
