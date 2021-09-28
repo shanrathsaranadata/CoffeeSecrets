@@ -7,24 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.adapters.Favourite;
 
 public class favouriteActivity extends AppCompatActivity {
-
-    private Button mDet;
-    private Button mOder;
-    private Button mDelet;
-    private LinearLayout mLay;
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -32,45 +21,72 @@ public class favouriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favourite);
 
+        ListView lv = findViewById(R.id.fav_list);
+        TextView totalTV = findViewById(R.id.fav_total);
 
-        mDet = findViewById(R.id.det);
-        mOder = findViewById(R.id.oder);
-        mDelet = findViewById(R.id.delet);
-        mLay = findViewById(R.id.lay);
-
-
-
-        mDet.setOnClickListener(new View.OnClickListener() {
+        Favourite favourite = new Favourite(this) {
             @Override
-            public void onClick(View v) {
+            public void updateTotal(float total) {
+                totalTV.setText("Rs. "+total+" /=");
+            }
+        };
+        lv.setAdapter(favourite);
 
-                Intent i = new Intent(favouriteActivity.this,details_Activity.class);
-                startActivity(i);
 
+
+        Button order = findViewById(R.id.fav_cc_order2);
+
+
+
+
+        Button delete = findViewById(R.id.fav_cc_delete2);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
 
-        mOder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent i = new Intent(favouriteActivity.this,PayActivity.class);
-                startActivity(i);
-
-            }
-        });
-
-
-
-        mDelet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                mLay.setVisibility(View.GONE);
-
-            }
-        });
+//        mDet = findViewById(R.id.fav_cc_details);
+//        mOder = findViewById(R.id.fav_cc_order);
+//        mDelet = findViewById(R.id.fav_cc_delete);
+//        mLay = findViewById(R.id.lay);
+//
+//
+//
+//        mDet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent i = new Intent(favouriteActivity.this,details_Activity.class);
+//                startActivity(i);
+//
+//            }
+//        });
+//
+//
+//        mOder.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent i = new Intent(favouriteActivity.this,PayActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
+//
+//
+//
+//        mDelet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mLay.setVisibility(View.GONE);
+//
+//            }
+//        });
 
 
 

@@ -57,7 +57,7 @@
                     android:textStyle="bold"/>
 
                 <ImageView
-                    android:id="@+id/dt_fav"
+                    android:id="@+id/fav_cc_image"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginRight="10dp"

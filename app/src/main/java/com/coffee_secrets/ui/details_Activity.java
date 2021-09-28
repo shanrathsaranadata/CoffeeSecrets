@@ -43,7 +43,7 @@ public class details_Activity extends AppCompatActivity {
         TextView name = findViewById(R.id.dt_name);
         TextView indr = findViewById(R.id.dt_ingr);
 
-        ImageView fav = findViewById(R.id.dt_fav);
+        ImageView fav = findViewById(R.id.fav_cc_image);
         RatingBar rate = findViewById(R.id.dt_rating);
         Button order = findViewById(R.id.dt_order);
 

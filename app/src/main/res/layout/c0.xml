@@ -25,14 +25,14 @@
 
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/fav_cc_cb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="CheckBox" />
 
                 <ImageView
-                    android:id="@+id/dt_fav"
+                    android:id="@+id/fav_cc_image"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_gravity="center"
