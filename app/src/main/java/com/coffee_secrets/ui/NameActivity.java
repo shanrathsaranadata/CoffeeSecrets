@@ -78,7 +78,6 @@ public class NameActivity extends AppCompatActivity {
         int width_unit = getWidth()/12;
 
         boolean left = true;
-        int lastID = ConstraintSet.PARENT_ID;
 
         for (int i=0; i<coffees.size(); i++){
             Coffee coffee = coffees.get(i);
