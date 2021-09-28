@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.ui.beforehome.Login_2_Activity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,Login_2_Activity.class);
+                Intent i = new Intent(MainActivity.this, Login_2_Activity.class);
                 startActivity(i);
 
             }
