@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 
 import com.coffee_secrets.adapters.CoffeeCats;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,17 @@ public class Coffee {
         this.price = price;
         this.discount = discount;
         this.bitmap = bitmap;
+    }
+
+    public Coffee(String ID, String name, String category, String rating, String ingredients, String price, String discount, String bitmap) {
+        this.ID = Integer.parseInt(ID);
+        this.name = name;
+        this.category = category;
+        this.rating = (byte) Integer.parseInt(rating);
+        this.ingredients = ingredients;
+        this.price = Float.parseFloat(price);
+        this.discount = Float.parseFloat(discount);
+        this.bitmap = URItoBitMap(bitmap);
     }
 
     @Deprecated
@@ -68,10 +81,26 @@ public class Coffee {
 
 
 
+
         public Category(String name, Bitmap bitmap) {
             this.name = name;
             this.bitmap = bitmap;
 
+        }
+
+        public Category(String name, String bitmap) {
+            this.name = name;
+            this.bitmap = URItoBitMap(bitmap);
+
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setBitmap(String bitmap) {
+
+            this.bitmap = URItoBitMap(bitmap);
         }
 
         public String getName() {
@@ -137,6 +166,15 @@ public class Coffee {
     }
     public void setDiscount(float discount) {
         this.discount = discount;
+    }
+
+    static Bitmap URItoBitMap(String uri){
+        try {
+            URL url = new URL(uri);
+            return BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch(IOException e) {
+            return null;
+        }
     }
 
 }
