@@ -3,6 +3,7 @@ package com.coffee_secrets.obj;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.provider.MediaStore;
 
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.squareup.picasso.Picasso;
@@ -106,7 +107,7 @@ public class Coffee {
 
         public void setBitmap(String bitmap) {
             try {
-                this.bitmap =Picasso.get().load(bitmap).get();
+                this.bitmap = MediaStore.Images.Media.getBitmap(this,bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
