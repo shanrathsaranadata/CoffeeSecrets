@@ -183,6 +183,16 @@ public class DB {
 
 
     }
+
+    public static List<Coffee> getAllCoffees(){
+        //Get all coffees from the database
+        //Its better to include locally
+
+        return new ArrayList<Coffee>();
+
+    }
+
+
     public static ArrayList<Coffee.Category> getAllCategories(){
         //Get all cats from DB
         return new ArrayList<>();
