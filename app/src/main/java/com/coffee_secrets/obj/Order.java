@@ -16,14 +16,13 @@ public class Order {
     static ArrayList<Integer> order_ID = new ArrayList<>();
 
     static int getOrderID(){
-        //TODO Database get new order ID
-        return 1;
+        return DB.getOrderID();
     }
 
     public void save(){
         orders.add(this);
         order_ID.add(this.id);
-        //TODO Send data to db
+        DB.saveOrder(this);
 
     }
 
@@ -32,8 +31,8 @@ public class Order {
         if (order_ID.contains(ID)){
             return orders.get(order_ID.indexOf((Integer) ID));
         }else {
-            //TODO load from db
-            return null;
+
+            return DB.loadOrder(ID);
         }
 
 

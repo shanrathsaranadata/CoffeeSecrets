@@ -27,6 +27,37 @@ public class DB {
     
     static HashMap<Integer, Coffee> coffees = new HashMap<>();
 
+
+    //Order
+    static void saveOrder(Order order){
+
+
+    }
+
+    static Order loadOrder(int ID){
+
+        return null;
+    }
+
+    static void deleteOrder(Order order){
+
+
+    }
+
+    static int getOrderID(){
+        return 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public static Coffee getCoffeeByID(int ID){
 
         return coffees.get(ID);
