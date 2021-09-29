@@ -204,11 +204,11 @@ public class DB {
         Ordered = FirebaseDatabase.getInstance().getReference();
 
         HashMap<String,Object>userdata = new HashMap<>();
-        userdata.put("ID",order.id);
-        userdata.put("coffeeIDs",order.coffeeIDs);
-        userdata.put("soldPrice",order.soldPrice);
-        userdata.put("quantity",order.quantity);
-        userdata.put("datetime",order.datetime);
+        userdata.put("ID",String.valueOf(order.id));
+        userdata.put("coffeeIDs",String.valueOf(order.coffeeIDs));
+        userdata.put("soldPrice",String.valueOf(order.soldPrice));
+        userdata.put("quantity",String.valueOf(order.quantity));
+        userdata.put("datetime",String.valueOf(order.datetime));
 
         Ordered.child("Order").child(String.valueOf(order.id)).updateChildren(userdata)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -355,6 +355,39 @@ public class DB {
             //TODO get from DB
             return null;
         }
+    }
+
+    public static void setUserID(int ID){
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("User").child(String.valueOf(ID));
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+
+                    User.ID= Integer.parseInt(Objects.requireNonNull(snapshot.child("sid").getValue()).toString());
+                    User.Name= Objects.requireNonNull(snapshot.child("Name").getValue()).toString();
+                    User.Email= Objects.requireNonNull(snapshot.child("Email").getValue()).toString();
+                    User.Street= Objects.requireNonNull(snapshot.child("Street").getValue()).toString();
+                    User.City= Objects.requireNonNull(snapshot.child("City=").getValue()).toString();
+                    User.ContactNum= Objects.requireNonNull(snapshot.child("ContactNum").getValue()).toString();
+                    User.Imageuri= Uri.parse(Objects.requireNonNull(snapshot.child("Image").getValue()).toString());
+                    User.Password= Objects.requireNonNull(snapshot.child("Password").getValue()).toString();
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
     }
 
 
