@@ -28,6 +28,11 @@ public class CoffeeCats extends BaseAdapter {
         inflter = (LayoutInflater.from(context));
         this.context = context;
     }
+    public CoffeeCats(Context context) {
+        this.categories = new ArrayList<>();
+        inflter = (LayoutInflater.from(context));
+        this.context = context;
+    }
 
     @Override
     public int getCount() {
@@ -58,5 +63,10 @@ public class CoffeeCats extends BaseAdapter {
         text.setText(category.getName());
 
         return view;
+    }
+
+    public void addCategory(Coffee.Category category){
+        categories.add(category);
+        notifyDataSetChanged();
     }
 }

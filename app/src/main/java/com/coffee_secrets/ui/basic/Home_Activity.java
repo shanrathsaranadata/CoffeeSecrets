@@ -63,18 +63,12 @@ public class Home_Activity extends AppCompatActivity implements
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        ArrayList<Coffee.Category> t = DB.getAllCategories();
-
-//        for (int i=0; i<5; i++){
-//            Coffee.Category c = new Coffee.Category("Test "+i,
-//                    BitmapFactory.decodeResource(getResources(), R.drawable.espresso));
-//
-//            t.add(c);
-//        }
-
-
         CoffeeCats coffeeCats =
-                new CoffeeCats(t,this);
+                new CoffeeCats(this);
+
+
+        ArrayList<Coffee.Category> allCategories = DB.getAllCategories(coffeeCats);
+
 
         ListView cardList = findViewById(R.id.mh_cat_list);
         cardList.setAdapter(coffeeCats);
@@ -89,9 +83,9 @@ public class Home_Activity extends AppCompatActivity implements
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 ArrayList<Coffee.Category> newList = new ArrayList<>();
-                for (int j=0; j<t.size(); j++){
-                    if (charSequence.length()==0 || t.get(j).getName().startsWith(String.valueOf(charSequence))){
-                        newList.add(t.get(j));
+                for (int j=0; j<allCategories.size(); j++){
+                    if (charSequence.length()==0 || allCategories.get(j).getName().startsWith(String.valueOf(charSequence))){
+                        newList.add(allCategories.get(j));
                     }
                     CoffeeCats coffeeCats = new CoffeeCats(newList,Home_Activity.this);
                     cardList.setAdapter(coffeeCats);

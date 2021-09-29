@@ -24,6 +24,8 @@ import java.util.List;
 
 public class NameActivity extends AppCompatActivity {
 
+    static ConstraintLayout cl;
+    static int width_unit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,32 +33,17 @@ public class NameActivity extends AppCompatActivity {
         setContentView(R.layout.name);
 
         String catName = getIntent().getStringExtra("CatName");
-        List<Coffee> coffees = DB.getAllCoffees(catName);
+        DB.loadAllCoffees(catName, this);
 
 
-        ConstraintLayout cl = findViewById(R.id.name_cl);
-        setUpLayout(coffees, cl);
-
-//        mItam = findViewById(R.id.itam);
-
-
-//        mItam.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//               Intent mahara = new Intent(NameActivity.this,details_Activity.class);
-//                startActivity(mahara);
-//
-//            }
-//        });
+        width_unit = getWidth()/12;
+        cl = findViewById(R.id.name_cl);
 
     }
 
-    void setUpLayout(List<Coffee> coffees, ConstraintLayout cl){
+    public static void setUpLayout(List<Coffee> coffees, Context context){
 
         ConstraintSet set = new ConstraintSet();
-
-        int width_unit = getWidth()/12;
 
         boolean left = true;
 
@@ -64,7 +51,7 @@ public class NameActivity extends AppCompatActivity {
             Coffee coffee = coffees.get(i);
             //TODO Array Index OOB
 
-            View view = LayoutInflater.from(this).inflate(R.layout.coffee_items, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.coffee_items, null);
             view.setId(View.generateViewId());
             LinearLayout ll = view.findViewById(R.id.ci_main);
             ll.setId(View.generateViewId());
@@ -82,9 +69,9 @@ public class NameActivity extends AppCompatActivity {
             ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(NameActivity.this, details_Activity.class);
+                    Intent intent = new Intent(context, details_Activity.class);
                     intent.putExtra("CoffeeID", coffee.getID());
-                    startActivity(intent);
+                    context.startActivity(intent);
                 }
             });
 
