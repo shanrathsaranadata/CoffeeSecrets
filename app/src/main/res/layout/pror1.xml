@@ -24,7 +24,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="18dp"
-        android:layout_toStartOf="@+id/textView9"
+        android:layout_toStartOf="@+id/b_name"
         android:text="Heshani"
         android:textColor="@color/black" />
 
@@ -54,7 +54,7 @@
         android:layout_toEndOf="@+id/imageView5" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/b_name"
         android:layout_width="151dp"
         android:layout_height="23dp"
         android:layout_below="@+id/dt_rating"
