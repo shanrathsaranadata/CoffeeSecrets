@@ -6,35 +6,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.adapters.Cart;
 import com.coffee_secrets.ui.basic.PayActivity;
 
 public class CartActivity extends AppCompatActivity {
 
-    private Button mCOder;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cart);
+        setContentView(R.layout.cart_new);
 
-        mCOder = findViewById(R.id.c_oder);
+        TextView[] textViews = {
+                findViewById(R.id.cn_page),
+                findViewById(R.id.cn_pb_1),
+                findViewById(R.id.cn_pb_2),
+                findViewById(R.id.cn_pb_3),
+                findViewById(R.id.cn_pb_4)
+        };
 
-        mCOder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(CartActivity.this, PayActivity.class);
-                startActivity(i);
-
-            }
-        });
-
-
+        Cart cart = new Cart(this, textViews);
+        ListView lv = findViewById(R.id.cart_list);
+        lv.setAdapter(cart);
 
     }
 }

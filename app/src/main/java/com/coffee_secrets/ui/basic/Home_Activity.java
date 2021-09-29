@@ -31,6 +31,7 @@ import com.coffee_secrets.ui.OderHistoryActivity;
 import com.coffee_secrets.ui.ProductActivity;
 import com.coffee_secrets.ui.PromosActivity;
 import com.coffee_secrets.ui.ReviewActivity;
+import com.coffee_secrets.ui.favouriteActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -165,7 +166,7 @@ public class Home_Activity extends AppCompatActivity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_favourits:
-                Intent i = new Intent(Home_Activity.this,favouriteActivity.class);
+                Intent i = new Intent(Home_Activity.this, favouriteActivity.class);
                 startActivity(i);
                 break;
             case R.id.oder_hi:

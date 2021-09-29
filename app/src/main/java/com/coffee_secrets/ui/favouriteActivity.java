@@ -1,4 +1,4 @@
-package com.coffee_secrets.ui.basic;
+package com.coffee_secrets.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.Favourite;
+import com.coffee_secrets.ui.basic.PayActivity;
 
 public class favouriteActivity extends AppCompatActivity {
 

@@ -37,7 +37,7 @@
             android:name=".ui.OderHistoryActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.basic.favouriteActivity"
+            android:name=".ui.favouriteActivity"
             android:exported="true" />
         <activity
             android:name=".ui.basic.Delivery_Activity"
