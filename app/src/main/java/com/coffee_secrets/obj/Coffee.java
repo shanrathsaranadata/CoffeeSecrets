@@ -3,15 +3,22 @@ package com.coffee_secrets.obj;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +33,8 @@ public class Coffee {
     float price;
     float discount = 0f;
     Bitmap bitmap;
+
+    public static Bitmap firbaseurl=null;
 
     Coffee(int ID, String name, String category, byte rating, String ingredients, float price, float discount, Bitmap bitmap) {
         this.ID = ID;
@@ -88,38 +97,45 @@ public class Coffee {
 
         }
 
-
-        public Category(String name, Bitmap bitmap) {
+        public Category(String name,Bitmap bitmap) {
             this.name = name;
             this.bitmap = bitmap;
 
-        }
-
-        public Category(String name, String bitmap) {
-            this.name = name;
-            this.bitmap = URItoBitMap(bitmap);
-
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setBitmap(String bitmap) {
-//            try {
-//            //    this.bitmap = MediaStore.Images.Media.getBitmap(this,bitmap);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            this.bitmap = null;
         }
 
         public String getName() {
             return name;
         }
 
+        public void setName(String name) {
+            this.name = name;
+        }
+
         public Bitmap getBitmap() {
             return bitmap;
+        }
+
+        public void setBitmap(String bitmap) {
+
+//            Picasso.get().load(bitmap).into(new Target() {
+//                @Override
+//                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+//
+//                    this.bitmap = bitmap;
+//
+//                }
+//
+//                @Override
+//                public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+//
+//                }
+//
+//                @Override
+//                public void onPrepareLoad(Drawable placeHolderDrawable) {
+//
+//                }
+//            });
+
         }
 
         public List<Coffee> getAllCoffees(){
@@ -188,6 +204,39 @@ public class Coffee {
         }
     }
 
+    public static class GetImagefromUrl extends AsyncTask<String,Void,Bitmap>{
+
+        @Override
+        protected Bitmap doInBackground(String... uri) {
+            String datauri = uri[0];
+            URI uri2 = null;
+            firbaseurl=null;
+            InputStream src = null;
+            try {
+                uri2 = new URI(datauri);
+                URL url = uri2.toURL();
+                src = url.openStream();
+                firbaseurl = BitmapFactory.decodeStream(src);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return firbaseurl;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap2) {
+            super.onPostExecute(bitmap2);
+
+
+
+        }
+    }
 
 
 }
