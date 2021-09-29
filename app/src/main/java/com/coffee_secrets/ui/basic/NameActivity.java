@@ -17,19 +17,12 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
+import com.coffee_secrets.obj.DB;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NameActivity extends AppCompatActivity {
-
-    private ImageView mItam;
-
-
-
-
-
-
 
 
     @Override
@@ -38,17 +31,7 @@ public class NameActivity extends AppCompatActivity {
         setContentView(R.layout.name);
 
         String catName = getIntent().getStringExtra("CatName");
-//        List<Coffee> coffees = DB.getAllCoffees(catName);
-//
-        List<Coffee> coffees = new ArrayList<>();
-        Coffee coffee = new Coffee();
-
-        for (int i=0; i<5; i++) {
-            coffee.setName("Check");
-            coffee.setBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.espresso));
-
-            coffees.add(coffee);
-        }
+        List<Coffee> coffees = DB.getAllCoffees(catName);
 
 
         ConstraintLayout cl = findViewById(R.id.name_cl);
