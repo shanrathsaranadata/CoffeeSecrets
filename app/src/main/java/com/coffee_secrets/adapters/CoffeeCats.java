@@ -54,6 +54,7 @@ public class CoffeeCats extends BaseAdapter {
 
         card.setBackground(new BitmapDrawable(context.getResources(),
                 category.getBitmap()));
+
         text.setText(category.getName());
 
         return view;
