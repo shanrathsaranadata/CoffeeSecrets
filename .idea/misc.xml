@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/drawable/border.xml" value="0.12128378378378378" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/activity_main.xml" value="0.11081081081081082" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/c.xml" value="0.11081081081081082" />
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/c0.xml" value="0.33" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cardview.xml" value="0.5" />
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart.xml" value="0.18" />
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart_new.xml" value="0.33" />
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart_single_item.xml" value="0.1" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cc.xml" value="0.22147197839297772" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/coffee_cats.xml" value="0.1" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/create.xml" value="0.11081081081081082" />

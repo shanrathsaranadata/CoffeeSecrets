@@ -1,5 +1,6 @@
 package com.coffee_secrets.obj;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +20,11 @@ public class Order {
 
     static int getOrderID(){
         return DB.getOrderID();
+    }
+
+
+    public String getDatetime() {
+        return datetime;
     }
 
     public void save(){
@@ -45,7 +51,9 @@ public class Order {
         return DB.getOrders();
     }
 
-//    public Coffee getBasicCoffee()
+    public Coffee getBasicCoffee(Context context){
+        return DB.getCoffeeByID(coffeeIDs.get(0)[0],context);
+    }
 
     public Order(Coffee coffee){
         id = getOrderID();

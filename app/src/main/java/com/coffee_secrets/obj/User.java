@@ -20,6 +20,7 @@ public class User {
     public static String Password;
 
     public static ArrayList<Integer> favourites = new ArrayList<>();
+    public static ArrayList<Integer> cart = new ArrayList<>();
 
     public static String getAddress(){
         return Name+", "+Street+", "+City;

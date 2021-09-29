@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.Order;
 
 import org.w3c.dom.Text;
@@ -53,12 +54,13 @@ public class History extends BaseAdapter {
         TextView order_date = view.findViewById(R.id.oha_date);
 
         Order order = orders.get(i);
+        Coffee coffee = order.getBasicCoffee(context);
 
-//        image.setImageBitmap(order.getIcon());
+        image.setImageBitmap(coffee.getBitmap());
+        name.setText(coffee.getName());
+        price.setText("Rs. "+coffee.getDiscountedPrice()+" /=");
+        order_date.setText(order.getDatetime().split(" ")[0]);
 
-
-
-
-        return null;
+        return view;
     }
 }
