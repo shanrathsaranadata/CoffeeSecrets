@@ -357,10 +357,10 @@ public class DB {
         }
     }
 
-    public static void setUserID(int ID){
+    public static void setUserID(String ID){
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference usersRef = rootRef.child("User").child(String.valueOf(ID));
+        DatabaseReference usersRef = rootRef.child("User").child(ID);
         usersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
