@@ -111,15 +111,8 @@ public class DB {
                     String ingredients= Objects.requireNonNull(dataSnapshot.child("ingredients").getValue()).toString();
                     float price= Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("price").getValue()).toString());
                     float discount = Float.parseFloat(Objects.requireNonNull(dataSnapshot.child("discount").getValue()).toString());
-                    String image= Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
-
-                    Bitmap imagebitmap = URItoBitMap(image);
-                    if (imagebitmap==null){
-                        imagebitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso);
-                    }
-
-
-                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,imagebitmap);
+                    Bitmap image= URItoBitMap(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
+                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,image);
 
 
                 }
@@ -273,7 +266,16 @@ public class DB {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
-                    Coffee coffee = snapshot .getValue(Coffee.class);
+
+                    int ID=Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());
+                    int rating = Integer.parseInt(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+                    String name= Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                    String category= Objects.requireNonNull(snapshot.child("category").getValue()).toString();
+                    String ingredients= Objects.requireNonNull(snapshot.child("ingredients").getValue()).toString();
+                    float price= Float.parseFloat(Objects.requireNonNull(snapshot.child("price").getValue()).toString());
+                    float discount = Float.parseFloat(Objects.requireNonNull(snapshot.child("discount").getValue()).toString());
+                    Bitmap image= URItoBitMap(Objects.requireNonNull(snapshot.child("image").getValue()).toString());
+                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,image);
                     coffees.add(coffee);
 
                 }
@@ -300,9 +302,17 @@ public class DB {
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator(); iterator.hasNext(); ) {
-                    DataSnapshot snapshot = iterator.next();
-                    Coffee coffee = snapshot.getValue(Coffee.class);
+                for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
+
+                    int ID=Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());
+                    int rating = Integer.parseInt(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+                    String name= Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                    String category= Objects.requireNonNull(snapshot.child("category").getValue()).toString();
+                    String ingredients= Objects.requireNonNull(snapshot.child("ingredients").getValue()).toString();
+                    float price= Float.parseFloat(Objects.requireNonNull(snapshot.child("price").getValue()).toString());
+                    float discount = Float.parseFloat(Objects.requireNonNull(snapshot.child("discount").getValue()).toString());
+                    Bitmap image= URItoBitMap(Objects.requireNonNull(snapshot.child("image").getValue()).toString());
+                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,image);
                     coffees.add(coffee);
 
                 }
