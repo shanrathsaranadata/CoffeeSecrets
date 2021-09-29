@@ -46,6 +46,10 @@ public class Cart extends BaseAdapter {
 
     @Override
     public int getCount() {
+        if (pages==currentPage){
+            return User.cart.size()-((pages-1)*COFFEE_PER_PAGE);
+        }
+
         return Math.min(User.cart.size(), COFFEE_PER_PAGE);
     }
 
@@ -130,7 +134,8 @@ public class Cart extends BaseAdapter {
 
         float total = 0f;
         for (int i=0; i<checkedCoffee.size(); i++){
-            Coffee coffee = DB.getCoffeeByID(i, context);
+            int c_id = checkedCoffee.get(i);
+            Coffee coffee = DB.getCoffeeByID(c_id, context);
             total+=coffee.getDiscountedPrice();
         }
 

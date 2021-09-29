@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.ui.basic.Home_Activity;
+import com.coffee_secrets.ui.basic.MainActivity;
 
 public class Spash extends AppCompatActivity {
 
@@ -22,26 +23,15 @@ public class Spash extends AppCompatActivity {
 
 
         mButton = findViewById(R.id.da_update);
-        DB.startUp start = new DB.startUp() {
+        new DB.startUp() {
             @Override
             public void done() {
                 Intent i = new Intent(Spash.this,
-                        Home_Activity.class);
+                        MainActivity.class);
                 startActivity(i);
             }
         };
 
-
-//        mButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent i = new Intent(Spash.this,
-//                        Home_Activity.class);
-//                startActivity(i);
-//
-//            }
-//        });
 
 
 

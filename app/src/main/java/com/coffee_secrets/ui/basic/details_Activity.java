@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
+import com.coffee_secrets.obj.User;
 
 public class details_Activity extends AppCompatActivity {
 
@@ -46,6 +48,8 @@ public class details_Activity extends AppCompatActivity {
         ImageView fav = findViewById(R.id.fav_cc_image);
         RatingBar rate = findViewById(R.id.dt_rating);
         Button order = findViewById(R.id.dt_order);
+        Button cart = findViewById(R.id.dt_cart);
+
 
         image.setImageBitmap(coffee.getBitmap());
         name.setText(coffee.getName());
@@ -80,6 +84,14 @@ public class details_Activity extends AppCompatActivity {
                         Intent i = new Intent(details_Activity.this, MyOrderActivity.class);
                         i.putExtra("CoffeeID", coffee.getID());
                         startActivity(i);
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(details_Activity.this, "Item was added to cart.", Toast.LENGTH_SHORT).show();
+                User.cart.add(coffee.getID());
             }
         });
 

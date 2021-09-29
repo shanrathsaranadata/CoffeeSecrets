@@ -159,7 +159,7 @@ public class Coffee {
     public float getPrice() {
         int p = (int) (price*100);
 
-        return price/100;
+        return (float)p/100f;
     }
     public float getDiscountedPrice() {
         return price*(discount/100);

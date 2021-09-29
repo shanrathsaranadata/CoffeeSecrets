@@ -90,7 +90,7 @@ public abstract class Favourite extends BaseAdapter {
             }
         });
 
-        ImageView image = view.findViewById(R.id.image);
+        ImageView image = view.findViewById(R.id.fav_cc_image);
         image.setImageBitmap(coffee.getBitmap());
 
         CheckBox check = view.findViewById(R.id.fav_cc_cb);
