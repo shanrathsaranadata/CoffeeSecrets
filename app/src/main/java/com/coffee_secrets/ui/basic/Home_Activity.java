@@ -33,6 +33,7 @@ import com.coffee_secrets.ui.PromosActivity;
 import com.coffee_secrets.ui.ReviewActivity;
 import com.coffee_secrets.ui.favouriteActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,9 @@ public class Home_Activity extends AppCompatActivity implements
 
         CoffeeCats coffeeCats =
                 new CoffeeCats(this);
+
+
+        DB.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
         ArrayList<Coffee.Category> allCategories = DB.getAllCategories(coffeeCats);
