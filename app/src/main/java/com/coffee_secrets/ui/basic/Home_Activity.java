@@ -53,7 +53,6 @@ public class Home_Activity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        DB.load();
 
         drawerLayout = findViewById(R.id.drawer_layout1);
         navigationView = findViewById(R.id.nav1);

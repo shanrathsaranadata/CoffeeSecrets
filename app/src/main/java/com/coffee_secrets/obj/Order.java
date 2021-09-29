@@ -55,6 +55,35 @@ public class Order {
         return DB.getCoffeeByID(coffeeIDs.get(0)[0],context);
     }
 
+    public Order(int id, ArrayList<int[]> coffeeIDs,
+                 ArrayList<Float> soldPrice, ArrayList<Integer> quantity,
+                 String datetime) {
+        this.id = id;
+        this.coffeeIDs = coffeeIDs;
+        this.soldPrice = soldPrice;
+        this.quantity = quantity;
+        this.datetime = datetime;
+    }
+    public Order(int id, int coffeeIDs,
+                 float soldPrice, int quantity,
+                 String datetime) {
+        this.id = id;
+        ArrayList<int[]> a = new ArrayList<>();
+        a.add(new int[]{coffeeIDs});
+
+        this.coffeeIDs = a;
+
+        ArrayList<Float> b = new ArrayList<>();
+        b.add(soldPrice);
+        this.soldPrice = b;
+
+        ArrayList<Integer> c = new ArrayList<>();
+        c.add(quantity);
+
+        this.quantity = c;
+        this.datetime = datetime;
+    }
+
     public Order(Coffee coffee){
         id = getOrderID();
         coffeeIDs.add(new int[]{coffee.getID()});
@@ -90,7 +119,7 @@ public class Order {
     }
 
     public void changeQuantity(Coffee coffee, int relativeQuantity){
-        int index = quantity.indexOf(coffee.getID());
+        int index = 0; //TODO remove
 
         int q = quantity.get(index)+relativeQuantity;
 
@@ -101,7 +130,7 @@ public class Order {
     }
 
     public int getQuantity(Coffee coffee){
-        int index = quantity.indexOf(coffee.getID());
+        int index = 0;//TODO quantity.indexOf(coffee.getID());
 
         return quantity.get(index);
 

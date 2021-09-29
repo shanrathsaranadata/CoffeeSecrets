@@ -3,15 +3,8 @@ package com.coffee_secrets.obj;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.provider.MediaStore;
-
-import com.coffee_secrets.adapters.CoffeeCats;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +126,7 @@ public class Coffee {
 
         float r = 0f;
         for (int j : coffeeID) {
-            r += DB.coffees.get(j).getDiscountedPrice();
+            r += DB.coffees_old.get(j).getDiscountedPrice();
         }
 
         return r/size;

@@ -25,7 +25,6 @@ import java.util.List;
 public class NameActivity extends AppCompatActivity {
 
     static ConstraintLayout cl;
-    static int width_unit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +32,19 @@ public class NameActivity extends AppCompatActivity {
         setContentView(R.layout.name);
 
         String catName = getIntent().getStringExtra("CatName");
-        DB.loadAllCoffees(catName, this);
+//        DB.loadAllCoffees(catName, this);
 
 
-        width_unit = getWidth()/12;
+
         cl = findViewById(R.id.name_cl);
+        setUpLayout(DB.getAllCoffees(catName));
 
     }
 
-    public static void setUpLayout(List<Coffee> coffees, Context context){
+    public void setUpLayout(List<Coffee> coffees){
 
+
+        int width_unit = getWidth()/12;
         ConstraintSet set = new ConstraintSet();
 
         boolean left = true;
@@ -51,7 +53,7 @@ public class NameActivity extends AppCompatActivity {
             Coffee coffee = coffees.get(i);
             //TODO Array Index OOB
 
-            View view = LayoutInflater.from(context).inflate(R.layout.coffee_items, null);
+            View view = LayoutInflater.from(this).inflate(R.layout.coffee_items, null);
             view.setId(View.generateViewId());
             LinearLayout ll = view.findViewById(R.id.ci_main);
             ll.setId(View.generateViewId());
@@ -69,9 +71,9 @@ public class NameActivity extends AppCompatActivity {
             ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, details_Activity.class);
+                    Intent intent = new Intent(NameActivity.this, details_Activity.class);
                     intent.putExtra("CoffeeID", coffee.getID());
-                    context.startActivity(intent);
+                    NameActivity.this.startActivity(intent);
                 }
             });
 

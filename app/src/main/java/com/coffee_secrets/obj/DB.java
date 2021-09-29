@@ -1,7 +1,6 @@
 package com.coffee_secrets.obj;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.coffee_secrets.ui.basic.NameActivity;
 import com.google.android.gms.tasks.Continuation;
@@ -34,23 +32,173 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 public class DB {
     
-    static HashMap<Integer, Coffee> coffees = new HashMap<>();
+    static HashMap<Integer, Coffee> coffees_old = new HashMap<>();
+
+    static ArrayList<Coffee> coffees = new ArrayList<>();
     static ArrayList<Integer> coffeeIDs = new ArrayList<>();
+    static ArrayList<Coffee.Category> categories = new ArrayList<>();
 
     static ArrayList<Order> orders = new ArrayList<>();
     static ArrayList<Integer> orderIDs = new ArrayList<>();
+
+
+    //Start up
+    public abstract static class startUp {
+        int o = 0;
+        int cat = 0;
+        int cof = 0;
+
+        public startUp(){
+            loadOrders();
+            getAllCategories();
+            getAllCoffees();
+        }
+
+
+        void loadOrders() {
+            orders.clear();
+            orderIDs.clear();
+
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference usersRef = rootRef.child("Order");
+
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        int id = Integer.parseInt(Objects.requireNonNull(snapshot.child("id").getValue()).toString());
+                        int coffeeIDs = Integer.parseInt(Objects.requireNonNull(snapshot.child("coffeeIDs").child("id1").getValue()).toString());
+                        float soldPrice = Float.parseFloat(Objects.requireNonNull(snapshot.child("soldPrice").getValue()).toString());
+                        int quantity = Integer.parseInt(Objects.requireNonNull(snapshot.child("quantity").getValue()).toString());
+                        String datetime = Objects.requireNonNull(snapshot.child("datetime").getValue()).toString();
+                        Order order = new Order(id, coffeeIDs, soldPrice, quantity, datetime);
+                        orders.add(order);
+                        orderIDs.add(order.getID());
+
+                    }
+                    o = 1;
+                    check();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    o = -1;
+                    check();
+                }
+            };
+
+            usersRef.addValueEventListener(valueEventListener);
+        }
+        void getAllCoffees(){
+
+            coffees.clear();
+            coffeeIDs.clear();
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference usersRef = rootRef.child("Coffee");
+
+
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
+
+                        int ID=Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());
+                        int rating = Integer.parseInt(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+                        String name= Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                        String category= Objects.requireNonNull(snapshot.child("category").getValue()).toString();
+                        String ingredients= Objects.requireNonNull(snapshot.child("ingredients").getValue()).toString();
+                        float price= Float.parseFloat(Objects.requireNonNull(snapshot.child("price").getValue()).toString());
+                        float discount = Float.parseFloat(Objects.requireNonNull(snapshot.child("discount").getValue()).toString());
+                        Bitmap image= URItoBitMap(Objects.requireNonNull(snapshot.child("bitmap").getValue()).toString());
+                        Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,image);
+                        coffees.add(coffee);
+                        coffeeIDs.add(coffee.getID());
+
+
+                    }
+                    cof =1;
+                    check();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    cof = -1;
+                    check();
+                }
+            };
+
+            usersRef.addValueEventListener(valueEventListener);
+        }
+        void getAllCategories(){
+
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference usersRef = rootRef.child("Category");
+
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        try {
+                            String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                            Bitmap bitmap = URItoBitMap(Objects.requireNonNull(snapshot.child("bitmap").getValue()).toString());
+                            Coffee.Category category = new Coffee.Category(name, bitmap);
+                            categories.add(category);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    cat = 1;
+                    check();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    cat = -1;
+                    check();
+                }
+            };
+
+            usersRef.addValueEventListener(valueEventListener);
+
+        }
+
+        void check(){
+            if (!(o==0 || cat==0 || cof ==0)){
+                if (o==-1){
+                    loadOrders();
+                }else if (cat==-1){
+                    getAllCategories();
+                }else if (cof==-1){
+                    getAllCoffees();
+                }else {
+                    done();
+                }
+            }
+
+
+        }
+
+        public abstract void done();
+
+    }
+
 
 
 
 
     //Order
     static void saveOrder(Order order){
+        orders.add(order);
+        orderIDs.add(order.getID());
+        if (true) return;
+
 
         final DatabaseReference Ordered;
         Ordered = FirebaseDatabase.getInstance().getReference();
@@ -62,109 +210,33 @@ public class DB {
         userdata.put("quantity",order.quantity);
         userdata.put("datetime",order.datetime);
 
-        Ordered.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(!(dataSnapshot.child("Order").child(String.valueOf(order.id)).exists()))
-                {
+        Ordered.child("Order").child(String.valueOf(order.id)).updateChildren(userdata)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+
+                        if(task.isSuccessful()){
+
+                            System.out.println(task.toString());
 
 
-                    Ordered.child("Order").child(String.valueOf(order.id)).updateChildren(userdata)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task)
-                                {
+                        }
+                        else{
 
-                                    if(task.isSuccessful()){
+                            System.out.println("not saved");
 
-                                        System.out.println(task.toString());
-
-
-                                    }
-                                    else{
-
-                                        System.out.println("not saved");
-
-                                    }
-                                }
-                            });
-
-
-                }
-                else{
-
-                    Ordered.child("Order").child(String.valueOf(order.id)).updateChildren(userdata)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task)
-                                {
-
-                                    if(task.isSuccessful()){
-
-                                        System.out.println(task.toString());
-
-
-                                    }
-                                    else{
-
-                                        System.out.println("not saved");
-
-                                    }
-                                }
-                            });
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                System.out.println(databaseError.toString());
-
-            }
-        });
+                        }
+                    }
+                });
 
 
     }
-
-//
-//    public static abstract class OrderLoad{
-//        public OrderLoad(int ID){
-//
-//        }
-//
-//        public abstract void onLoaded(Order order);
-//
-//        void loadOrder(int ID){
-//
-//            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-//            DatabaseReference usersRef = rootRef.child("Order");
-//            Query query = usersRef.orderByChild("id").equalTo(ID);
-//
-//
-//            ValueEventListener valueEventListener = new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    Order orders= dataSnapshot.getValue(Order.class);
-//                    onLoaded(orders);
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            };
-//            query.addListenerForSingleValueEvent(valueEventListener);
-//
-//
-//        }
-//
-//
-//
-//    }
-//
-
     static Order loadOrder(int ID){
+        if (orderIDs.contains(ID)){
+            return orders.get(orderIDs.indexOf(ID));
+        }
+
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("Order");
@@ -198,7 +270,6 @@ public class DB {
 
         return null;
     }
-
     static void deleteOrder(Order order){
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
@@ -215,47 +286,19 @@ public class DB {
 
 
     }
-
     static int getOrderID(){
-        return 0;
+        return orders.size()+1;
     }
 
+
     static ArrayList<Order> getOrders(){
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference usersRef = rootRef.child("Coffee");
-        ArrayList<Order> orders = new ArrayList<Order>();
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
-
-                    int id = Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());;
-                    int coffeeIDs= Integer.parseInt(Objects.requireNonNull(snapshot.child("coffeeIDs").getValue()).toString());
-                    float soldPrice= Float.parseFloat(Objects.requireNonNull(snapshot.child("soldPrice").getValue()).toString());
-                    int quantity = Integer.parseInt(Objects.requireNonNull(snapshot.child("quantity").getValue()).toString());
-                    String datetime = Objects.requireNonNull(snapshot.child("datetime").getValue()).toString();
-                    Order order = new Order(id,coffeeIDs,soldPrice,quantity,datetime);
-                    orders.add(order);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-
-        usersRef.addValueEventListener(valueEventListener);
         return orders;
     }
 
 
     public static Coffee getCoffeeByID(int ID,Context context){
         if (DB.coffeeIDs.contains(ID)){
-            return coffees.get(ID);
+            return coffees.get(coffeeIDs.indexOf(ID));
         }
 
 
@@ -300,28 +343,14 @@ public class DB {
         });
 
 
-        return coffees.get(ID);
+        return coffees_old.get(ID);
     }
 
-    public static void load(){
-
-
-
-    }
-//
-//    @Deprecated
-//    public static Coffee getCoffeeByID(int ID, Context context){
-//        Coffee coffee = new Coffee();
-//        coffee.setName("Check");
-//        coffee.setBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.espresso));
-//
-//        return coffee;
-//    }
 
     public static Coffee setCoffeeByID(int ID){
 
-        if (coffees.containsKey(ID)) {
-            return coffees.get(ID);
+        if (coffees_old.containsKey(ID)) {
+            return coffees_old.get(ID);
         }else {
             //TODO get from DB
             return null;
@@ -419,6 +448,25 @@ public class DB {
         //Get all coffees from the database
         //Its better to include locally
 
+
+        if (coffees.size()>0){
+            ArrayList<Coffee> r = new ArrayList<>();
+            for (int i=0; i<coffees.size(); i++){
+                Coffee coffee = coffees.get(i);
+                if (coffee.getCategory().equals(categoryName)){
+                    r.add(coffee);
+                }
+
+
+
+
+            }
+            return r;
+        }
+
+
+
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("Coffee");
         Query query = usersRef.orderByChild("category").equalTo(categoryName);
@@ -456,60 +504,65 @@ public class DB {
 
 
     }
-
-    public static void loadAllCoffees(String categoryName,Context context){
-        //Get all coffees from the database
-        //Its better to include locally
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference usersRef = rootRef.child("Coffee");
-        Query query = usersRef.orderByChild("category").equalTo(categoryName);
-
-
-
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Coffee> coffees = new ArrayList<Coffee>();
-
-
-                for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
-
-                    int ID=Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());
-                    int rating = Integer.parseInt(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
-                    String name= Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-                    String category= Objects.requireNonNull(snapshot.child("category").getValue()).toString();
-                    String ingredients= Objects.requireNonNull(snapshot.child("ingredients").getValue()).toString();
-                    float price= Float.parseFloat(Objects.requireNonNull(snapshot.child("price").getValue()).toString());
-                    float discount = Float.parseFloat(Objects.requireNonNull(snapshot.child("discount").getValue()).toString());
-                    Bitmap image= URItoBitMap(Objects.requireNonNull(snapshot.child("bitmap").getValue()).toString());
-                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,image);
-                    coffees.add(coffee);
-
-                    if (!DB.coffeeIDs.contains(ID)){
-                        DB.coffeeIDs.add(ID);
-                        DB.coffees.put(ID,coffee);
-                    }
-
-
-                }
-
-
-
-                NameActivity.setUpLayout(coffees,context);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-        query.addListenerForSingleValueEvent(valueEventListener);
-
-    }
+//
+//    public static void loadAllCoffees(String categoryName,Context context){
+//        //Get all coffees from the database
+//        //Its better to include locally
+//
+//
+//
+//        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference usersRef = rootRef.child("Coffee");
+//        Query query = usersRef.orderByChild("category").equalTo(categoryName);
+//
+//
+//
+//
+//        ValueEventListener valueEventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                ArrayList<Coffee> coffees = new ArrayList<Coffee>();
+//
+//
+//                for(DataSnapshot snapshot  : dataSnapshot.getChildren()) {
+//
+//                    int ID=Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());
+//                    int rating = Integer.parseInt(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+//                    String name= Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+//                    String category= Objects.requireNonNull(snapshot.child("category").getValue()).toString();
+//                    String ingredients= Objects.requireNonNull(snapshot.child("ingredients").getValue()).toString();
+//                    float price= Float.parseFloat(Objects.requireNonNull(snapshot.child("price").getValue()).toString());
+//                    float discount = Float.parseFloat(Objects.requireNonNull(snapshot.child("discount").getValue()).toString());
+//                    Bitmap image= URItoBitMap(Objects.requireNonNull(snapshot.child("bitmap").getValue()).toString());
+//                    Coffee coffee = new Coffee(ID,name,category, (byte) rating,ingredients,price,discount,image);
+//                    coffees.add(coffee);
+//
+//                    if (!DB.coffeeIDs.contains(ID)){
+//                        DB.coffeeIDs.add(ID);
+//                        DB.coffees_old.put(ID,coffee);
+//                    }
+//
+//
+//                }
+//
+//
+//
+//                NameActivity.setUpLayout(coffees,context);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        };
+//        query.addListenerForSingleValueEvent(valueEventListener);
+//
+//    }
 
     public static List<Coffee> getAllCoffees(){
+        if (coffees.size()>0){
+            return coffees;
+        }
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("Coffee");
@@ -547,6 +600,11 @@ public class DB {
 
     public static ArrayList<Coffee.Category> getAllCategories(){
 
+        if (categories.size()>0){
+            return categories;
+        }
+
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("Category");
         ArrayList<Coffee.Category> coffees = new ArrayList<Coffee.Category>();
@@ -576,6 +634,12 @@ public class DB {
     }
 
     public static ArrayList<Coffee.Category> getAllCategories(CoffeeCats coffeeCats){
+        if (categories.size()>0){
+            for (int i=0; i<categories.size(); i++){
+                coffeeCats.addCategory(categories.get(i));
+            }
+        }
+
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("Category");
