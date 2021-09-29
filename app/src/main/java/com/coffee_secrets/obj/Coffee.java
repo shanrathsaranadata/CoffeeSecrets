@@ -105,13 +105,13 @@ public class Coffee {
             this.name = name;
         }
 
-        public void setBitmap(String bitmap) {
+        public void setBitmap(Bitmap bitmap) {
 //            try {
 //            //    this.bitmap = MediaStore.Images.Media.getBitmap(this,bitmap);
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
-            this.bitmap = null;
+            this.bitmap = bitmap;
         }
 
         public String getName() {

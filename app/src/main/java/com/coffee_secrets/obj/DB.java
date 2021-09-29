@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.StrictMode;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -328,8 +329,11 @@ public class DB {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Coffee.Category coffee = snapshot.getValue(Coffee.Category.class);
-                    coffees.add(coffee);
+
+                    String name = snapshot.child("name").getValue().toString();
+                    Bitmap bitmap = URItoBitMap(snapshot.child("bitmap").getValue().toString());
+                    Coffee.Category category = new Coffee.Category(name, bitmap);
+                    coffees.add(category);
 
                 }
             }
@@ -353,6 +357,9 @@ public class DB {
     }
 
     static Bitmap URItoBitMap(String uri){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         try {
             URL url = new URL(uri);
             return BitmapFactory.decodeStream(url.openConnection().getInputStream());
