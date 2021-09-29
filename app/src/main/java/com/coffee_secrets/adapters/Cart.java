@@ -46,7 +46,7 @@ public class Cart extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return COFFEE_PER_PAGE;
+        return Math.min(User.cart.size(), COFFEE_PER_PAGE);
     }
 
     @Override

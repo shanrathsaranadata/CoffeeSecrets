@@ -53,23 +53,23 @@ public class PayActivity extends AppCompatActivity {
                 }
 
                 if (Num.length()!=16 || !Num.matches("[0-9]+")){
-                    name.setError("Invalid number!");
+                    number.setError("Invalid number!");
                     return;
                 }
 
                 if (CVC.length()!=3 || !CVC.matches("[0-9]+")){
-                    name.setError("Invalid CVC!");
+                    cvc.setError("Invalid CVC!");
                     return;
                 }
 
 
-                if (Expire.length()!=5 || !Expire.matches("(1[0-2])|(0[0-9])|(0-9)/([2-3][0-9])")){
-                    name.setError("Invalid expiration date!");
+                if (Expire.length()!=5 || !Expire.matches("((1[0-2])|(0[0-9])|(0-9))[/][2-3][0-9]")){
+                    expire.setError("Invalid expiration date!");
                     return;
                 }
 
                 Intent i = new Intent(PayActivity.this,Delivery_Activity.class);
-                i.putExtra("Order", -1);
+                i.putExtra("Order", orderID);
                 startActivity(i);
 
             }
