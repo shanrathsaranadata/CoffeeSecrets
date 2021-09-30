@@ -1,5 +1,6 @@
 package com.coffee_secrets.ui.beforehome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -9,8 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.ProgressBarAnimation;
+import com.coffee_secrets.ui.basic.MainActivity;
 
-public class Spash extends AppCompatActivity {
+public class Splash extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private TextView textView;
@@ -23,13 +25,15 @@ public class Spash extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         textView = findViewById(R.id.progress_bar_tv);
 
+        ProgressBarAnimation PBA = new ProgressBarAnimation(Splash.this, progressBar, textView, 0f, 100f);
+        PBA.setDuration(30000);
+        progressBar.setAnimation(PBA);
 
-        DB.startUp start = new DB.startUp() {
+        new DB.startUp() {
             @Override
             public void done() {
-                ProgressBarAnimation PBA = new ProgressBarAnimation(Spash.this,progressBar,textView,0f,100f);
-                PBA.setDuration(5000);
-                progressBar.setAnimation(PBA);
+                startActivity(new Intent(Splash.this, MainActivity.class));
+
             }
         };
 

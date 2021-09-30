@@ -28,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -195,8 +196,10 @@ public class DB {
 
     //Order
     static void saveOrder(Order order){
-        orders.add(order);
-        orderIDs.add(order.getID());
+        if (!orderIDs.contains(order.getID())) {
+            orders.add(order);
+            orderIDs.add(order.getID());
+        }
         if (true) return;
 
 
@@ -373,7 +376,7 @@ public class DB {
                     User.Street= Objects.requireNonNull(snapshot.child("Street").getValue()).toString();
                     User.City= Objects.requireNonNull(snapshot.child("City").getValue()).toString();
                     User.ContactNum= Objects.requireNonNull(snapshot.child("ContactNum").getValue()).toString();
-                    User.Imageuri= Uri.parse(Objects.requireNonNull(snapshot.child("Image").getValue()).toString());
+                    User.bitmap= URItoBitMap(Uri.parse(Objects.requireNonNull(snapshot.child("Image").getValue()).toString()).toString());
                     User.Password= Objects.requireNonNull(snapshot.child("password").getValue()).toString();
 
                 }
@@ -413,7 +416,8 @@ public class DB {
                             final StorageReference fileref = storageReference
                                     .child(sid+".jpg");
 
-                            uploadTask[0] =fileref.putFile(User.Imageuri);
+
+                            uploadTask[0] =fileref.putFile(User.uri);
 
                             uploadTask[0].continueWithTask(new Continuation() {
                                 @Override
@@ -667,42 +671,6 @@ public class DB {
 
     }
 
-    public static ArrayList<Coffee.Category> getAllCategories(CoffeeCats coffeeCats){
-        if (categories.size()>0){
-            for (int i=0; i<categories.size(); i++){
-                coffeeCats.addCategory(categories.get(i));
-            }
-        }
-
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference usersRef = rootRef.child("Category");
-        ArrayList<Coffee.Category> coffees = new ArrayList<Coffee.Category>();
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                    String name = snapshot.child("name").getValue().toString();
-                    Bitmap bitmap = URItoBitMap(snapshot.child("bitmap").getValue().toString());
-                    Coffee.Category category = new Coffee.Category(name, bitmap);
-                    coffeeCats.addCategory(category);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                int a =0;
-            }
-        };
-
-        usersRef.addValueEventListener(valueEventListener);
-        return coffees;
-
-    }
-
     public static boolean doesExists(String email){
         //Check already reg
 
@@ -721,9 +689,6 @@ public class DB {
             return null;
         }
     }
-
-
-
 
 
 }

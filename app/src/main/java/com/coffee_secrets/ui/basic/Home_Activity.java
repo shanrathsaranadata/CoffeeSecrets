@@ -60,6 +60,12 @@ public class Home_Activity extends AppCompatActivity implements
 
 
         drawerLayout = findViewById(R.id.drawer_layout1);
+
+
+
+
+
+
         navigationView = findViewById(R.id.nav1);
         mRe = findViewById(R.id.re);
         nameuser = findViewById(R.id.Name_tv);
@@ -69,8 +75,6 @@ public class Home_Activity extends AppCompatActivity implements
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        CoffeeCats coffeeCats =
-                new CoffeeCats(this);
 
         String name = User.Name;
 
@@ -78,7 +82,9 @@ public class Home_Activity extends AppCompatActivity implements
 //        Picasso.get().load(User.Imageuri.toString()).into(pfuser);
 
 
-        ArrayList<Coffee.Category> allCategories = DB.getAllCategories(coffeeCats);
+        ArrayList<Coffee.Category> allCategories = DB.getAllCategories();
+        CoffeeCats coffeeCats =
+                new CoffeeCats(allCategories,this);
 
 
         ListView cardList = findViewById(R.id.mh_cat_list);
@@ -146,6 +152,12 @@ public class Home_Activity extends AppCompatActivity implements
             public void onClick(View v) {
 
                 drawerLayout.openDrawer(Gravity.START);
+                ImageView image = drawerLayout.findViewById(R.id.pf_image);
+                TextView name = drawerLayout.findViewById(R.id.Name_tv);
+
+                image.setImageBitmap(User.bitmap);
+//                Picasso.get().load(User.uri).into(image);
+                name.setText(User.Name);
 
             }
         });

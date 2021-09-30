@@ -74,7 +74,7 @@
         android:background="@drawable/bgdd2"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Rs. 550 /="
+        android:text="Rs. 0 /="
         android:textColor="#000"
         app:layout_constraintBottom_toTopOf="@+id/fav_cc_delete2"
         app:layout_constraintEnd_toEndOf="parent"

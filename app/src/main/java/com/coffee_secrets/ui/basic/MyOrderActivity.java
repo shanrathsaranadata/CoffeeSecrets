@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
@@ -57,6 +58,11 @@ public class MyOrderActivity extends AppCompatActivity {
         findViewById(R.id.order_place).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (order.getTotal()==0){
+                    Toast.makeText(MyOrderActivity.this, "Insufficient quantity.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent intent = new Intent(MyOrderActivity.this, PayActivity.class);
                 order.save();
                 intent.putExtra("OrderID", order.getID());
@@ -67,7 +73,7 @@ public class MyOrderActivity extends AppCompatActivity {
         //Basic
         image.setImageBitmap(coffee.getBitmap());
         name.       setText("Name      - "+coffee.getName());
-        price.      setText("Price     - Rs. "+coffee.getPrice()+" /=");
+        price.      setText("Price     - Rs. "+coffee.getDiscountedPrice()+" /=");
         quantity.   setText("Quantity  - "+1);
 
 

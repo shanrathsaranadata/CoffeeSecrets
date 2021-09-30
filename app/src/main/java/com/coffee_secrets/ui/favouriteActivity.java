@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.Favourite;
+import com.coffee_secrets.obj.User;
 import com.coffee_secrets.ui.basic.PayActivity;
+
+import java.util.ArrayList;
 
 public class favouriteActivity extends AppCompatActivity {
 
@@ -51,50 +54,17 @@ public class favouriteActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                ArrayList<Integer> coffees = favourite.getSelectedCoffees();
+                for (int i=0; i< coffees.size(); i++){
+                    User.favourites.remove((Integer) coffees.get(i));
+
+                }
+                favourite.notifyDataSetChanged();
+                favourite.refreshTotal();
+
             }
         });
 
-
-
-//        mDet = findViewById(R.id.fav_cc_details);
-//        mOder = findViewById(R.id.fav_cc_order);
-//        mDelet = findViewById(R.id.fav_cc_delete);
-//        mLay = findViewById(R.id.lay);
-//
-//
-//
-//        mDet.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent i = new Intent(favouriteActivity.this,details_Activity.class);
-//                startActivity(i);
-//
-//            }
-//        });
-//
-//
-//        mOder.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent i = new Intent(favouriteActivity.this,PayActivity.class);
-//                startActivity(i);
-//
-//            }
-//        });
-//
-//
-//
-//        mDelet.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mLay.setVisibility(View.GONE);
-//
-//            }
-//        });
 
 
 

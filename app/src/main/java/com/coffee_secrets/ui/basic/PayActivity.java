@@ -26,17 +26,14 @@ public class PayActivity extends AppCompatActivity {
         TextView total = findViewById(R.id.py_amount);
 
         int orderID =getIntent().getIntExtra("OrderID", -1);
-        float sum = getIntent().getFloatExtra("Total", -1f);
 
-        if (orderID!=-1) {
-            Order order = Order.get(orderID);
-            total.setText("Rs. " + order.getTotal() + " /=");
 
-        }else if (sum != -1f){
-            total.setText("Rs. " + sum + " /=");
-        }else {
+        if (orderID==-1) {
             finish();
         }
+        Order order = Order.get(orderID);
+        total.setText("Rs. " + order.getTotal() + " /=");
+
 
         Button confirm = findViewById(R.id.py_confirm);
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +67,7 @@ public class PayActivity extends AppCompatActivity {
 
                 Intent i = new Intent(PayActivity.this,Delivery_Activity.class);
                 i.putExtra("Order", orderID);
+                order.setPayed(true);
                 startActivity(i);
 
             }

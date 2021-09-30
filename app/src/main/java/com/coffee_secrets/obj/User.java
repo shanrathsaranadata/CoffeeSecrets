@@ -1,9 +1,13 @@
 package com.coffee_secrets.obj;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.widget.EditText;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,8 +20,9 @@ public class User {
     public  static String Street;
     public  static String City;
     public  static String ContactNum;
-    public  static Uri Imageuri;
+    public  static Bitmap bitmap;
     public static String Password;
+    public static Uri uri;
 
     public static ArrayList<Integer> favourites = new ArrayList<>();
     public static ArrayList<Integer> cart = new ArrayList<>();
@@ -28,8 +33,9 @@ public class User {
 
 
     public static void create(String name, String email,
-                String street, String city,
-                String contactNum, Uri imageuri,String password) {
+                              String street, String city,
+                              String contactNum, Uri imageuri, String password,
+                              Context context) {
 
         User.ID = null;
         Name = name;
@@ -38,10 +44,12 @@ public class User {
         City = city;
         ContactNum = contactNum;
         Password = password;
-        User.Imageuri = imageuri;
-
-
-
+        uri = imageuri;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), imageuri);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

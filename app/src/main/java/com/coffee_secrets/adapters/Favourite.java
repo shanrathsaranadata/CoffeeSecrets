@@ -59,7 +59,7 @@ public abstract class Favourite extends BaseAdapter {
         name.setText(coffee.getName());
 
         TextView price = view.findViewById(R.id.fav_cc_price);
-        price.setText("Rs. "+coffee.getPrice()+" /=");
+        price.setText("Rs. "+coffee.getDiscountedPrice()+" /=");
 
         Button order = view.findViewById(R.id.fav_cc_order);
         order.setOnClickListener(new View.OnClickListener() {

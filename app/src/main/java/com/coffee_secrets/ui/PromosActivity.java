@@ -12,9 +12,6 @@ import com.coffee_secrets.ui.basic.MyOrderActivity;
 
 public class PromosActivity extends AppCompatActivity {
 
-    private Button mPle;
-    private Button mPle2;
-
     ;
 
 
@@ -24,8 +21,8 @@ public class PromosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.promos);
 
-        mPle = findViewById(R.id.ple);
-        mPle2 = findViewById(R.id.ple2);
+        Button mPle = findViewById(R.id.ple);
+        Button mPle2 = findViewById(R.id.ple2);
 
 
         mPle.setOnClickListener(new View.OnClickListener() {

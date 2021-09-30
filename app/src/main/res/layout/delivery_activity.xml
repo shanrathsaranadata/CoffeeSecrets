@@ -55,6 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bgd"
+                    android:enabled="false"
                     android:hint="Address"
                     android:padding="8dp"
                     android:textColorHint="@color/white"
@@ -67,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bgd"
+                    android:enabled="false"
                     android:hint="Phone Number"
                     android:padding="8dp"
                     android:textColorHint="@color/white"
@@ -79,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bgd"
+                    android:enabled="false"
                     android:hint="Name"
                     android:padding="8dp"
                     android:textColorHint="@color/white"
@@ -92,6 +95,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bgd"
+                    android:enabled="false"
                     android:hint="E-mail"
                     android:padding="8dp"
                     android:textColor="@color/white"
@@ -105,41 +109,34 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/da_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Edit" />
 
-                        <Button
-                            android:id="@+id/da_update"
-                            android:layout_width="75dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:text="UPDATE" />
-
-                        <Space
-                            android:layout_width="20dp"
-                            android:layout_height="20dp">
-
-                        </Space>
-
-                        <Button
-                            android:id="@+id/da_delete"
-                            android:layout_width="75dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:text="DELETE" />
-
-                    </LinearLayout>
+                    <Button
+                        android:id="@+id/da_delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:backgroundTint="#E91E63"
+                        android:gravity="center"
+                        android:text="Delete order" />
 
                     <Button
                         android:id="@+id/da_confirm"
                         android:layout_width="200dp"
                         android:layout_height="50dp"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="CONFIRM"
+                        android:backgroundTint="#4CAF50"
                         android:gravity="center"
-                        android:layout_gravity="center" />
+                        android:text="Confirm" />
 
                 </LinearLayout>
 

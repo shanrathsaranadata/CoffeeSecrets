@@ -10,13 +10,124 @@ import java.util.Date;
 public class Order {
 
     int id;
-    ArrayList<int[]> coffeeIDs= new ArrayList<>();
+    ArrayList<Integer> coffeeIDs= new ArrayList<>();
     ArrayList<Float> soldPrice= new ArrayList<>();
     ArrayList<Integer> quantity = new ArrayList<>();
     String datetime;
 
     static ArrayList<Order> orders = new ArrayList<>();
     static ArrayList<Integer> order_ID = new ArrayList<>();
+
+    boolean payed = false;
+    String changed_address;
+    String changed_name;
+    String changed_number;
+    String changed_email;
+
+
+
+    public void setChangedDetails(String address,
+                                  String name, String number,
+                                  String email){
+
+        changed_address = address;
+        changed_name = name;
+        changed_email = email;
+        changed_number = number;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Integer> getCoffeeIDs() {
+        return coffeeIDs;
+    }
+
+    public void setCoffeeIDs(ArrayList<Integer> coffeeIDs) {
+        this.coffeeIDs = coffeeIDs;
+    }
+
+    public ArrayList<Float> getSoldPrice() {
+        return soldPrice;
+    }
+
+    public void setSoldPrice(ArrayList<Float> soldPrice) {
+        this.soldPrice = soldPrice;
+    }
+
+    public ArrayList<Integer> getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(ArrayList<Integer> quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public static ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public static void setOrders(ArrayList<Order> orders) {
+        Order.orders = orders;
+    }
+
+    public static ArrayList<Integer> getOrder_ID() {
+        return order_ID;
+    }
+
+    public static void setOrder_ID(ArrayList<Integer> order_ID) {
+        Order.order_ID = order_ID;
+    }
+
+    public boolean isPayed() {
+        return payed;
+    }
+
+    public void setPayed(boolean payed) {
+        this.payed = payed;
+    }
+
+    public String getChanged_address() {
+        return changed_address;
+    }
+
+    public void setChanged_address(String changed_address) {
+        this.changed_address = changed_address;
+    }
+
+    public String getChanged_name() {
+        return changed_name;
+    }
+
+    public void setChanged_name(String changed_name) {
+        this.changed_name = changed_name;
+    }
+
+    public String getChanged_number() {
+        return changed_number;
+    }
+
+    public void setChanged_number(String changed_number) {
+        this.changed_number = changed_number;
+    }
+
+    public String getChanged_email() {
+        return changed_email;
+    }
+
+    public void setChanged_email(String changed_email) {
+        this.changed_email = changed_email;
+    }
 
     static int getOrderID(){
         return DB.getOrderID();
@@ -51,11 +162,11 @@ public class Order {
         return DB.getOrders();
     }
 
-    public Coffee getBasicCoffee(Context context){
-        return DB.getCoffeeByID(coffeeIDs.get(0)[0],context);
+    public Coffee getFirstCoffee(Context context){
+        return DB.getCoffeeByID(coffeeIDs.get(0),context);
     }
 
-    public Order(int id, ArrayList<int[]> coffeeIDs,
+    public Order(int id, ArrayList<Integer> coffeeIDs,
                  ArrayList<Float> soldPrice, ArrayList<Integer> quantity,
                  String datetime) {
         this.id = id;
@@ -68,25 +179,17 @@ public class Order {
                  float soldPrice, int quantity,
                  String datetime) {
         this.id = id;
-        ArrayList<int[]> a = new ArrayList<>();
-        a.add(new int[]{coffeeIDs});
 
-        this.coffeeIDs = a;
+        this.coffeeIDs.add(coffeeIDs);
+        this.soldPrice.add(soldPrice);
 
-        ArrayList<Float> b = new ArrayList<>();
-        b.add(soldPrice);
-        this.soldPrice = b;
-
-        ArrayList<Integer> c = new ArrayList<>();
-        c.add(quantity);
-
-        this.quantity = c;
+        this.quantity.add(quantity);
         this.datetime = datetime;
     }
 
     public Order(Coffee coffee){
         id = getOrderID();
-        coffeeIDs.add(new int[]{coffee.getID()});
+        coffeeIDs.add(coffee.getID());
         soldPrice.add(coffee.getDiscountedPrice());
         quantity.add(1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/DD HH:mm:ss");
@@ -97,7 +200,7 @@ public class Order {
     public Order(Coffee coffee, int Quantity){
         id = getOrderID();
 
-        coffeeIDs.add(new int[]{coffee.getID()});
+        coffeeIDs.add(coffee.getID());
         soldPrice.add(coffee.getDiscountedPrice());
         quantity.add(Quantity);
 
@@ -107,6 +210,9 @@ public class Order {
         System.out.println(datetime);
     }
 
+    public void delete(){
+        DB.deleteOrder(this);
+    }
 
     public float getTotal(){
         float price = 0f;

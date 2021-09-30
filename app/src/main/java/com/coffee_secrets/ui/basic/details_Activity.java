@@ -75,6 +75,7 @@ public class details_Activity extends AppCompatActivity {
         });
 
         rate.setRating(((float) coffee.getRating())/2);
+        rate.setIsIndicator(true);
 
         indr.setText(coffee.getIngredients());
 

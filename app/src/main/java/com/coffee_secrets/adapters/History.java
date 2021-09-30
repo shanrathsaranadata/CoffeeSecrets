@@ -12,8 +12,6 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.Order;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class History extends BaseAdapter {
@@ -54,7 +52,7 @@ public class History extends BaseAdapter {
         TextView order_date = view.findViewById(R.id.oha_date);
 
         Order order = orders.get(i);
-        Coffee coffee = order.getBasicCoffee(context);
+        Coffee coffee = order.getFirstCoffee(context);
 
         image.setImageBitmap(coffee.getBitmap());
         name.setText(coffee.getName());
