@@ -50,7 +50,7 @@
                 android:alpha="0.9">
 
 
-                <TextView
+                <EditText
                     android:id="@+id/da_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

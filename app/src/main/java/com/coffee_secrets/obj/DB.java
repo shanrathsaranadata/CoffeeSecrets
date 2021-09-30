@@ -38,8 +38,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class DB {
-    
-    static HashMap<Integer, Coffee> coffees_old = new HashMap<>();
 
     static ArrayList<Coffee> coffees = new ArrayList<>();
     static ArrayList<Integer> coffeeIDs = new ArrayList<>();
@@ -264,7 +262,11 @@ public class DB {
 
     }
     static int getOrderID(){
-        return Collections.max(orderIDs)+1;
+        if (orderIDs.size()>0) {
+            return Collections.max(orderIDs) + 1;
+        }else {
+            return 1;
+        }
     }
     static ArrayList<Order> getOrders(){
         return orders;
@@ -278,6 +280,47 @@ public class DB {
         }
         return null;
     }
+    static List<Coffee> getAllCoffees(String categoryName){
+            ArrayList<Coffee> r = new ArrayList<>();
+            for (int i=0; i<coffees.size(); i++){
+                Coffee coffee = coffees.get(i);
+                if (coffee.getCategory().equals(categoryName)){
+                    r.add(coffee);
+                }
+
+
+
+
+            }
+            return r;
+    }
+    static List<Coffee> getAllCoffees(){
+            return coffees;
+    }
+    static ArrayList<Coffee.Category> getAllCategories(){
+        return categories;
+    }
+
+
+    public static boolean doesExists(String email){
+        //TODO Check already reg
+
+        return false;
+
+    }
+    static Bitmap URItoBitMap(String uri){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+        try {
+            URL url = new URL(uri);
+            return BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch(IOException e) {
+            return null;
+        }
+    }
+
+
     public static void setUserID(String ID){
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
@@ -397,45 +440,4 @@ public class DB {
 
         return true;
     }
-    static List<Coffee> getAllCoffees(String categoryName){
-            ArrayList<Coffee> r = new ArrayList<>();
-            for (int i=0; i<coffees.size(); i++){
-                Coffee coffee = coffees.get(i);
-                if (coffee.getCategory().equals(categoryName)){
-                    r.add(coffee);
-                }
-
-
-
-
-            }
-            return r;
-    }
-    static List<Coffee> getAllCoffees(){
-            return coffees;
-    }
-    static ArrayList<Coffee.Category> getAllCategories(){
-        return categories;
-    }
-
-
-    public static boolean doesExists(String email){
-        //TODO Check already reg
-
-        return false;
-
-    }
-    static Bitmap URItoBitMap(String uri){
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        StrictMode.setThreadPolicy(policy);
-        try {
-            URL url = new URL(uri);
-            return BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch(IOException e) {
-            return null;
-        }
-    }
-
-
 }

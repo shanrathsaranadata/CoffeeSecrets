@@ -102,7 +102,6 @@ public class User {
     static boolean isFavouriteCoffee(int ID){
         return favourites.contains(ID);
     }
-
     static void addFavourite(int ID, boolean fav){
         if (!favourites.contains(ID) && fav){
             favourites.add(ID);

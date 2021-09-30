@@ -37,47 +37,37 @@ public class Order {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public ArrayList<Integer> getCoffeeIDs() {
         return coffeeIDs;
     }
-
     public void setCoffeeIDs(ArrayList<Integer> coffeeIDs) {
         this.coffeeIDs = coffeeIDs;
     }
-
     public ArrayList<Float> getSoldPrice() {
         return soldPrice;
     }
-
     public void setSoldPrice(ArrayList<Float> soldPrice) {
         this.soldPrice = soldPrice;
     }
-
     public ArrayList<Integer> getQuantity() {
         return quantity;
     }
-
     public void setQuantity(ArrayList<Integer> quantity) {
         this.quantity = quantity;
     }
-
     public void setDatetime(String datetime) {
         this.datetime = datetime;
     }
 
     public static ArrayList<Order> getOrders() {
-        return orders;
+        return DB.orders;
     }
-
     public static void setOrders(ArrayList<Order> orders) {
         Order.orders = orders;
     }
-
     public static ArrayList<Integer> getOrder_ID() {
         return order_ID;
     }
@@ -189,7 +179,7 @@ public class Order {
         coffeeIDs.add(coffee.getID());
         soldPrice.add(coffee.getDiscountedPrice());
         quantity.add(1);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/DD HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         datetime = sdf.format(date);
     }
