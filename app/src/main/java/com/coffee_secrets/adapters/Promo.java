@@ -14,6 +14,7 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.Order;
+import com.coffee_secrets.ui.basic.MyOrderActivity;
 
 import java.util.ArrayList;
 
@@ -73,8 +74,9 @@ public class Promo extends BaseAdapter {
         place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Order order = new Order(coffee,1);
-               // Intent intent = new Intent(context, )
+               Intent intent = new Intent(context, MyOrderActivity.class);
+               intent.putExtra("CoffeeID", coffee.getID());
+               context.startActivity(intent);
             }
         });
 

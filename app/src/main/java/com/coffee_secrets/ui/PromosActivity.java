@@ -6,45 +6,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.coffee_secrets.R;
+import com.coffee_secrets.adapters.Promo;
+import com.coffee_secrets.ui.basic.Home_Activity;
 import com.coffee_secrets.ui.basic.MyOrderActivity;
 
 public class PromosActivity extends AppCompatActivity {
-
-    ;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.promos);
 
-        Button mPle = findViewById(R.id.ple);
-        Button mPle2 = findViewById(R.id.ple2);
+        setUp();
 
+    }
 
-        mPle.setOnClickListener(new View.OnClickListener() {
+    void setUp(){
+        findViewById(R.id.p_home).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(PromosActivity.this, MyOrderActivity.class);
-                startActivity(i);
-
+            public void onClick(View view) {
+                startActivity(new Intent(PromosActivity.this, Home_Activity.class));
             }
         });
 
+        ListView lv = findViewById(R.id.lv_promo);
+        Promo promo = new Promo(this);
+        lv.setAdapter(promo);
 
-        mPle2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(PromosActivity.this, MyOrderActivity.class);
-                startActivity(i);
-
-            }
-        });
 
 
 

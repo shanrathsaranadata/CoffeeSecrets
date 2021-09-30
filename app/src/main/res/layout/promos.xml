@@ -1,85 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PromosActivity"
-    android:orientation="vertical"
-    android:background="@drawable/gradiuns">
+    android:background="@drawable/gradiuns"
+    tools:context=".ui.PromosActivity">
 
 
-    <ScrollView
+    <Button
+        android:id="@+id/p_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dt_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="Today Deals"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/lv_promo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/p_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dt_name" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-
-            <TextView
-                android:id="@+id/dt_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Today Deals"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:textSize="25dp"
-                android:layout_margin="20dp"
-                android:textStyle="bold"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:srcCompat="@drawable/dsfd"
-                    tools:src="@drawable/dsfd"
-                    tools:srcCompat="@drawable/dsfd" />
-
-                <TextView
-                    android:id="@+id/comment_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Name -       Espresso"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"/>
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Discount -  20%"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"/>
-
-                <Button
-                    android:id="@+id/ple"
-                    android:layout_width="320dp"
-                    android:layout_height="wrap_content"
-                    android:text="Add to Place Order"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
