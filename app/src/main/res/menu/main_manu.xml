@@ -26,11 +26,6 @@
             android:title="Coffee Bar" />
 
         <item
-            android:id="@+id/review"
-            android:icon="@drawable/ic_reviews"
-            android:title="Review" />
-
-        <item
             android:id="@+id/app_review"
             android:icon="@drawable/ic_reviews"
             android:title="App_Review" />

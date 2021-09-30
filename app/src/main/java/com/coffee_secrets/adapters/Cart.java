@@ -55,8 +55,8 @@ public class Cart extends BaseAdapter {
     public Object getItem(int i) {
         int index = (currentPage-1)*COFFEE_PER_PAGE + i;
 
-        return DB.getCoffeeByID(User.getCoffeeIDFromCart(index),
-                context);
+        return DB.getCoffeeByID(User.getCoffeeIDFromCart(index)
+        );
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Cart extends BaseAdapter {
 
         int i = (currentPage-1)*COFFEE_PER_PAGE + in;
 
-        Coffee coffee = DB.getCoffeeByID((int) getItemId(i), context);
+        Coffee coffee = DB.getCoffeeByID((int) getItemId(i));
 
         ImageView image = view.findViewById(R.id.order_img);
         TextView name = view.findViewById(R.id.order_name);
@@ -148,7 +148,7 @@ public class Cart extends BaseAdapter {
         float total = 0f;
         for (int i=0; i<checkedCoffee.size(); i++){
             int c_id = checkedCoffee.get(i);
-            Coffee coffee = DB.getCoffeeByID(c_id, context);
+            Coffee coffee = DB.getCoffeeByID(c_id);
             total+=coffee.getDiscountedPrice();
         }
 

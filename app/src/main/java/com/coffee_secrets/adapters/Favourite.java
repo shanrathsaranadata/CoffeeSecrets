@@ -40,8 +40,8 @@ public abstract class Favourite extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return DB.getCoffeeByID(User.favourites.get(i),
-                context);
+        return DB.getCoffeeByID(User.favourites.get(i)
+        );
     }
 
     @Override
@@ -53,7 +53,7 @@ public abstract class Favourite extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.cc, null);
 
-        Coffee coffee = DB.getCoffeeByID((int) getItemId(i), context);
+        Coffee coffee = DB.getCoffeeByID((int) getItemId(i));
 
         TextView name = view.findViewById(R.id.fav_cc_name);
         name.setText(coffee.getName());
@@ -124,7 +124,7 @@ public abstract class Favourite extends BaseAdapter {
         float total = 0f;
         for (int i=0; i<checkedCoffee.size(); i++){
             int index = checkedCoffee.get(i);
-            Coffee coffee = DB.getCoffeeByID(index, context);
+            Coffee coffee = DB.getCoffeeByID(index);
             total+=coffee.getDiscountedPrice();
         }
 

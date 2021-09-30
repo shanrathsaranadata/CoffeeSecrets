@@ -82,7 +82,7 @@ public class Home_Activity extends AppCompatActivity implements
 //        Picasso.get().load(User.Imageuri.toString()).into(pfuser);
 
 
-        ArrayList<Coffee.Category> allCategories = DB.getAllCategories();
+        ArrayList<Coffee.Category> allCategories = Coffee.getAllCategories();
         CoffeeCats coffeeCats =
                 new CoffeeCats(allCategories,this);
 
@@ -201,10 +201,6 @@ public class Home_Activity extends AppCompatActivity implements
                 startActivity(co);
                 break;
 
-            case R.id.review:
-                Intent re = new Intent(Home_Activity.this, ReviewActivity.class);
-                startActivity(re);
-                break;
             case R.id.app_review:
                 Intent app = new Intent(Home_Activity.this, ProductActivity.class);
                 startActivity(app);

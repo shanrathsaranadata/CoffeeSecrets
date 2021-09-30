@@ -28,12 +28,12 @@ public class Promo extends BaseAdapter {
     public Promo(Context context){
         this.context = context;
         inflter = (LayoutInflater.from(context));
-        ArrayList<Coffee> coffees = (ArrayList<Coffee>) DB.getAllCoffees();
+        ArrayList<Coffee> coffees = (ArrayList<Coffee>) Coffee.getAllCoffees();
 
         for (int i=0; i<coffees.size(); i++){
             Coffee coffee = coffees.get(i);
 
-            if (coffee.getPrice()==coffee.getDiscountedPrice()){
+            if (coffee.getPrice()>coffee.getDiscountedPrice()){
                 discounts.add(coffee);
             }
 
@@ -68,8 +68,8 @@ public class Promo extends BaseAdapter {
 
         image.setImageBitmap(coffee.getBitmap());
         name.setText(coffee.getName());
-        int discount = (int) ((1-coffee.getDiscountedPrice()/ coffee.getPrice())*100);
-        disc.setText(discount/100);
+        int discount = (int) ((1-(coffee.getDiscountedPrice()/ coffee.getPrice()))*100);
+        disc.setText((discount)+" %");
 
         place.setOnClickListener(new View.OnClickListener() {
             @Override

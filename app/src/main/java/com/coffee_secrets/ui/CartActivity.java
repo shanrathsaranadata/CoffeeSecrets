@@ -53,7 +53,7 @@ public class CartActivity extends AppCompatActivity {
                 ArrayList<Integer> quantity = new ArrayList<>();
 
                 for (int i=0; i<c.size(); i++){
-                    Coffee coffee = DB.getCoffeeByID(c.get(i), CartActivity.this);
+                    Coffee coffee = DB.getCoffeeByID(c.get(i));
                     coffees.add(coffee);
                     quantity.add(User.getQuantityFromCart(c.get(i)));
                 }

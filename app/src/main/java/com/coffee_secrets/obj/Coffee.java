@@ -20,6 +20,7 @@ public class Coffee {
     float discount = 0f;
     Bitmap bitmap;
 
+    //Constructors
     Coffee(int ID, String name, String category, byte rating, String ingredients, float price, float discount, Bitmap bitmap) {
         this.ID = ID;
         this.name = name;
@@ -30,7 +31,6 @@ public class Coffee {
         this.discount = discount;
         this.bitmap = bitmap;
     }
-
     public Coffee(String ID, String name, String category, String rating, String ingredients, String price, String discount, String bitmap) {
         this.ID = Integer.parseInt(ID);
         this.name = name;
@@ -41,37 +41,9 @@ public class Coffee {
         this.discount = Float.parseFloat(discount);
         this.bitmap = URItoBitMap(bitmap);
     }
-
-    @Deprecated
     public Coffee(){
 
     }
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
-
-    public boolean isFavourite(){
-        return User.isFavouriteCoffee(this.ID);
-    }
-
-    public void setFavourite(boolean fav){
-        User.addFavourite(ID, fav);
-    }
-
-
-
-    public static ArrayList<Coffee.Category> getAllCategories(){
-        //Get all cats from DB
-
-
-        return DB.getAllCategories();
-    }
-
     public static class Category{
 
         String name;
@@ -120,18 +92,33 @@ public class Coffee {
         }
     }
 
-
-    public static float getCoffeePrice(int[] coffeeID){
-        int size = coffeeID.length;
-
-        float r = 0f;
-        for (int j : coffeeID) {
-            r += DB.coffees_old.get(j).getDiscountedPrice();
-        }
-
-        return r/size;
+    //Statics
+    public static ArrayList<Coffee.Category> getAllCategories(){
+        //Get all cats from DB
+        return DB.getAllCategories();
+    }
+    public static List<Coffee> getAllCoffees(String categoryName){
+        return DB.getAllCoffees(categoryName);
+    }
+    public static List<Coffee> getAllCoffees(){
+        return DB.getAllCoffees();
     }
 
+
+
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+    public boolean isFavourite(){
+        return User.isFavouriteCoffee(this.ID);
+    }
+    public void setFavourite(boolean fav){
+        User.addFavourite(ID, fav);
+    }
 
     public int getID() {
         return ID;
@@ -142,8 +129,6 @@ public class Coffee {
     public void setName(String name) {
         this.name = name;
     }
-
-
     public String getCategory() {
         return category;
     }
@@ -162,9 +147,10 @@ public class Coffee {
         return (float)p/100f;
     }
     public float getDiscountedPrice() {
-        return price*(discount/100);
-    }
+        int p = (int) ((price*(discount/100)*100));
 
+        return (float)p/100f;
+    }
     public float getDiscount() {
         return discount;
     }

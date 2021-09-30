@@ -52,7 +52,7 @@ public class History extends BaseAdapter {
         TextView order_date = view.findViewById(R.id.oha_date);
 
         Order order = orders.get(i);
-        Coffee coffee = order.getFirstCoffee(context);
+        Coffee coffee = order.getFirstCoffee();
 
         image.setImageBitmap(coffee.getBitmap());
         name.setText(coffee.getName());

@@ -15,6 +15,7 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.User;
+import com.coffee_secrets.ui.ReviewActivity;
 
 public class details_Activity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class details_Activity extends AppCompatActivity {
     }
 
     void setLayout(int ID){
-        Coffee coffee = DB.getCoffeeByID(ID, this);
+        Coffee coffee = DB.getCoffeeByID(ID);
 
 
         ImageView image = findViewById(R.id.dt_image);
@@ -97,7 +98,9 @@ public class details_Activity extends AppCompatActivity {
         findViewById(R.id.dt_rev).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(details_Activity.this, ReviewActivity.class);
+                intent.putExtra("CoffeeID", coffee.getID());
+                startActivity(intent);
             }
         });
     }

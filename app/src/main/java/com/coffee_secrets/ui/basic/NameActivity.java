@@ -37,7 +37,7 @@ public class NameActivity extends AppCompatActivity {
 
 
         cl = findViewById(R.id.name_cl);
-        setUpLayout(DB.getAllCoffees(catName));
+        setUpLayout(Coffee.getAllCoffees(catName));
 
     }
 

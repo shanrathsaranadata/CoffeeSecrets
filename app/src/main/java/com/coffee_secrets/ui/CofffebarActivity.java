@@ -17,7 +17,6 @@ import com.coffee_secrets.obj.Order;
 import com.coffee_secrets.ui.basic.CreateActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CofffebarActivity extends AppCompatActivity {
 
@@ -27,7 +26,7 @@ public class CofffebarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cofffebar);
 
-        ArrayList<Coffee> allCoffees = (ArrayList<Coffee>) DB.getAllCoffees();
+        ArrayList<Coffee> allCoffees = (ArrayList<Coffee>) Coffee.getAllCoffees();
         Bar bar = new Bar(allCoffees,this);
         ListView lv = findViewById(R.id.cb_list);
         lv.setAdapter(bar);
@@ -50,7 +49,7 @@ public class CofffebarActivity extends AppCompatActivity {
                 ArrayList<Integer> quantity = new ArrayList<>();
 
                 for (int i=0; i<selected.size(); i++){
-                    Coffee coffee = DB.getCoffeeByID(selected.get(i), CofffebarActivity.this);
+                    Coffee coffee = DB.getCoffeeByID(selected.get(i));
                     coffees.add(coffee);
                     quantity.add(coffee.getID());
                 }

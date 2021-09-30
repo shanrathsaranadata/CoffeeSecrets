@@ -35,7 +35,7 @@ public class MyOrderActivity extends AppCompatActivity {
     }
 
     void setUp(int coffeeID){
-        Coffee coffee = DB.getCoffeeByID(coffeeID, this);
+        Coffee coffee = DB.getCoffeeByID(coffeeID);
 
         ImageView image = findViewById(R.id.order_img);
         TextView name = findViewById(R.id.order_name);
@@ -58,7 +58,7 @@ public class MyOrderActivity extends AppCompatActivity {
         findViewById(R.id.order_place).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (order.getTotal()==0){
+                if (order.getTotal()==0 || order.getQuantity(coffee)==0){
                     Toast.makeText(MyOrderActivity.this, "Insufficient quantity.", Toast.LENGTH_SHORT).show();
                     return;
                 }

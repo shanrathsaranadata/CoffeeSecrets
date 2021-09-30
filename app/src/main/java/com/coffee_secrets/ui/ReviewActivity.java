@@ -25,10 +25,11 @@ public class ReviewActivity extends AppCompatActivity {
         int coffeeID = getIntent().getIntExtra("CoffeeID", -1);
         if (coffeeID==-1) return;
 
+        setUp(coffeeID);
     }
 
     void setUp(int id){
-        Coffee coffee = DB.getCoffeeByID(id, null);
+        Coffee coffee = DB.getCoffeeByID(id);
 
         ImageView image = findViewById(R.id.imageView2);
         TextView title = findViewById(R.id.textView2);

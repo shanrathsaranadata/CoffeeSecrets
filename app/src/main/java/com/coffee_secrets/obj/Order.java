@@ -1,8 +1,5 @@
 package com.coffee_secrets.obj;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -162,8 +159,8 @@ public class Order {
         return DB.getOrders();
     }
 
-    public Coffee getFirstCoffee(Context context){
-        return DB.getCoffeeByID(coffeeIDs.get(0),context);
+    public Coffee getFirstCoffee(){
+        return DB.getCoffeeByID(coffeeIDs.get(0));
     }
 
     public Order(int id, ArrayList<Integer> coffeeIDs,
@@ -213,7 +210,7 @@ public class Order {
     public Order(ArrayList<Coffee> coffees, ArrayList<Integer> Quantity){
         id = getOrderID();
 
-        for (int i=0; i< coffeeIDs.size(); i++){
+        for (int i=0; i< coffees.size(); i++){
             coffeeIDs.add(coffees.get(i).getID());
             soldPrice.add(coffees.get(i).getDiscountedPrice());
             quantity.add(Quantity.get(i));

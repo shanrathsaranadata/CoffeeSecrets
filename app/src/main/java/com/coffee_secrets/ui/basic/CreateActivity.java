@@ -20,7 +20,6 @@ import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.obj.Order;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -79,7 +78,7 @@ public class CreateActivity extends AppCompatActivity {
         boolean left = true;
 
         for (int i=0; i<coffees.size(); i++){
-            Coffee coffee = DB.getCoffeeByID(coffees.get(i), this);
+            Coffee coffee = DB.getCoffeeByID(coffees.get(i));
 
             View view = LayoutInflater.from(this).inflate(R.layout.coffee_items, null);
             view.setId(View.generateViewId());
