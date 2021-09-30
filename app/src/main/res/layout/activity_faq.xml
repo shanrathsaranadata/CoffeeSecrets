@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.FaqActivity"
+    android:orientation="vertical"
+    android:background="@drawable/gradiuns">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+            <TextView
+                android:id="@+id/dt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/FAQ"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:layout_margin="20dp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/discussionillustration" />
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/faq01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="I thought you were a coworking space?" />
+
+                        <TextView
+                            android:id="@+id/ans01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="402 S Lafayette Ave in Royal Oak, Michigan.
+                            We are on the Southwest corner on the same
+                            intersection as the Royal Oak Music Theater."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="So you’re a coffee shop?" />
+
+                        <TextView
+                            android:id="@+id/ans02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Yes, we are open to the public 7 days a a week
+                             featuring Gourmet Coffee from Kalamazoo’s Water Street Coffee
+                             Roasters, fresh baked goods from Ferndale’s New York Bagel and sandwiches,
+                             wraps and salads from Detroit’s Fresh Corner Cafe.  We also
+                            feature great hot and cold coffee drinks, hot teas, iced teas, breakfast sandwiches and delicious smoothies."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="I thought you were a coworking space?" />
+
+                        <TextView
+                            android:id="@+id/ans03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="That too.  We offer space
+                             for memberships and business services to start ups and entrepreneurs.
+                             Each membership level includes preferred internet, blocks of hours to
+                             reserve our private offices or tables in our coworking corner.
+                             Our higher membership levels even offer a private mailbox to have your
+                             mail delivered here and/or advertising opportunities to promote your
+                             brand in our store, on our website and on our social media.
+                             Visit our Memberships page to see which option might be right for you."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Where are you located?" />
+
+                        <TextView
+                            android:id="@+id/ans04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="402 S Lafayette Ave in Royal Oak, Michigan.
+                            We are on the Southwest corner on the same intersection
+                            as the Royal Oak Music Theater."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Where are you located?" />
+
+                        <TextView
+                            android:id="@+id/ans05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="402 S Lafayette Ave in Royal
+                            Oak, Michigan.  We are on the Southwest
+                            corner on the same intersection as the
+                            Royal Oak Music Theater."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Where are you located?" />
+
+                        <TextView
+                            android:id="@+id/an06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="402 S Lafayette Ave in
+                             Royal Oak, Michigan.  We are on the
+                             Southwest corner on the same intersection
+                             as the Royal Oak Music Theater."
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

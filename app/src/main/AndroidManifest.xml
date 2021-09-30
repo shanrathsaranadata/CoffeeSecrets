@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoffeeSecrets">
         <activity
+            android:name=".ui.InquiryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.FaqActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.HelpActivity"
             android:exported="true" />
         <activity
