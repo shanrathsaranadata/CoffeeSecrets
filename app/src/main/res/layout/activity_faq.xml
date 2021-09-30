@@ -66,16 +66,14 @@
                             android:textSize="20dp"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="I thought you were a coworking space?" />
+                            android:text="Where are you located?" />
 
                         <TextView
                             android:id="@+id/ans01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="402 S Lafayette Ave in Royal Oak, Michigan.
-                            We are on the Southwest corner on the same
-                            intersection as the Royal Oak Music Theater."
+                            android:text="402 S Lafayette Ave in Royal Oak, Michigan. We are on the Southwest corner on the same intersection as the Royal Oak Music Theater."
                             android:textColor="@color/black" />
 
                         <TextView
@@ -85,7 +83,7 @@
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="30dp"
                             android:text="So you’re a coffee shop?" />
 
                         <TextView
@@ -93,11 +91,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Yes, we are open to the public 7 days a a week
-                             featuring Gourmet Coffee from Kalamazoo’s Water Street Coffee
-                             Roasters, fresh baked goods from Ferndale’s New York Bagel and sandwiches,
-                             wraps and salads from Detroit’s Fresh Corner Cafe.  We also
-                            feature great hot and cold coffee drinks, hot teas, iced teas, breakfast sandwiches and delicious smoothies."
+                            android:text="Yes, we are open to the public 7 days a a week featuring Gourmet Coffee from Kalamazoo’s Water Street Coffee Roasters, fresh baked goods from Ferndale’s New York Bagel and sandwiches, wraps and salads from Detroit’s Fresh Corner Cafe.  We also feature great hot and cold coffee drinks, hot teas, iced teas, breakfast sandwiches and delicious smoothies."
                             android:textColor="@color/black" />
 
                         <TextView
@@ -107,7 +101,7 @@
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="30dp"
                             android:text="I thought you were a coworking space?" />
 
                         <TextView
@@ -115,14 +109,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="That too.  We offer space
-                             for memberships and business services to start ups and entrepreneurs.
-                             Each membership level includes preferred internet, blocks of hours to
-                             reserve our private offices or tables in our coworking corner.
-                             Our higher membership levels even offer a private mailbox to have your
-                             mail delivered here and/or advertising opportunities to promote your
-                             brand in our store, on our website and on our social media.
-                             Visit our Memberships page to see which option might be right for you."
+                            android:text="That too.  We offer space for memberships and business services to start ups and entrepreneurs.Each membership level includes preferred internet, blocks of hours to reserve our private offices or tables in our coworking corner. Our higher membership levels even offer a private mailbox to have your mail delivered here and/or advertising opportunities to promote your brand in our store, on our website and on our social media. Visit our Memberships page to see which option might be right for you."
                             android:textColor="@color/black" />
 
                         <TextView
@@ -132,17 +119,15 @@
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Where are you located?" />
+                            android:layout_marginTop="30dp"
+                            android:text="But you have free Wi-Fi, right?" />
 
                         <TextView
                             android:id="@+id/ans04"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="402 S Lafayette Ave in Royal Oak, Michigan.
-                            We are on the Southwest corner on the same intersection
-                            as the Royal Oak Music Theater."
+                            android:text="Yes, we have Wi-Fi and it is free.  Members just get preferred access (it’s faster)."
                             android:textColor="@color/black" />
 
                         <TextView
@@ -152,18 +137,15 @@
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Where are you located?" />
+                            android:layout_marginTop="30dp"
+                            android:text="So what’s your layout?" />
 
                         <TextView
                             android:id="@+id/ans05"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="402 S Lafayette Ave in Royal
-                            Oak, Michigan.  We are on the Southwest
-                            corner on the same intersection as the
-                            Royal Oak Music Theater."
+                            android:text="Everything.  The Garage can be reserved for up to 20 people.  Our conference room can seat 6 and our private offices seat 3 each.  We also feature comfortable coaches, chairs, tables and barstools in our cafe.  Oh and we have electrical outlets just about everywhere we could possible shove them."
                             android:textColor="@color/black" />
 
                         <TextView
@@ -173,18 +155,87 @@
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="Where are you located?" />
+                            android:layout_marginTop="30dp"
+                            android:text="What if I don’t want to be a member, I just have a really important meeting and need a private office or a conference room?" />
 
                         <TextView
                             android:id="@+id/an06"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="402 S Lafayette Ave in
-                             Royal Oak, Michigan.  We are on the
-                             Southwest corner on the same intersection
-                             as the Royal Oak Music Theater."
+                            android:text="To book an meeting location you have to become an OCS member but it is FREE. Anyone can purchase blocks of time for the conference room, the offices or tables in the coworking corner. Just go to our Reservations page to purchase your time and schedule the date you need a space."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="30dp"
+                            android:text="What if I don’t want to reserve a space?" />
+
+                        <TextView
+                            android:id="@+id/an07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Our cafe is open to the public on a first come first serve basis.  Most of our community is pretty friendly. If someone asks to use an empty seat at a table you’re at…please share."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq08"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="30dp"
+                            android:text="I have an office, but I want to advertise with you and take advantage of all your foot traffic." />
+
+                        <TextView
+                            android:id="@+id/an08"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="We’ll sell you space on the wall.  See Mike!"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq09"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="I hear you have live music." />
+
+                        <TextView
+                            android:id="@+id/an09"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="We try to.  Know a great local musician that wants to play on a Friday night?  Have them call and ask for Kourtney."
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/faq10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="What does “Pay It Forward” mean?" />
+
+                        <TextView
+                            android:id="@+id/an10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Our goal at OCS is to create a place for where People help People. OCS gives back 5% of each purchase at the counter and we let YOU choose your charity of choice. We started out with 4 charities for our first year but no we rotate them every quarter because so many great charities wanted to participate. If you are a charity and would like to get involved please contact us at info@theofficecoffeeshop.com."
                             android:textColor="@color/black" />
 
                     </LinearLayout>

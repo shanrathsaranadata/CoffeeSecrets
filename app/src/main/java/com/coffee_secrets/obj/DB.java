@@ -72,8 +72,8 @@ public class DB {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                        int id = Integer.parseInt(Objects.requireNonNull(snapshot.child("id").getValue()).toString());
-                        int coffeeIDs = Integer.parseInt(Objects.requireNonNull(snapshot.child("coffeeIDs").child("id1").getValue()).toString());
+                        int id = Integer.parseInt(Objects.requireNonNull(snapshot.child("ID").getValue()).toString());
+                        int coffeeIDs = Integer.parseInt(Objects.requireNonNull(snapshot.child("coffeeIDs").getValue()).toString());
                         float soldPrice = Float.parseFloat(Objects.requireNonNull(snapshot.child("soldPrice").getValue()).toString());
                         int quantity = Integer.parseInt(Objects.requireNonNull(snapshot.child("quantity").getValue()).toString());
                         String datetime = Objects.requireNonNull(snapshot.child("datetime").getValue()).toString();
@@ -193,7 +193,36 @@ public class DB {
     //TODO connect with database
     //Review
     static void addOrUpdate(CoffeeReview review){
-        //Save to database under user
+        final DatabaseReference CoffeeReviews;
+        CoffeeReviews = FirebaseDatabase.getInstance().getReference();
+        HashMap<String,Object>userdata = new HashMap<>();
+
+        userdata.put("coffeeIDs",String.valueOf(review.coffeeID));
+        userdata.put("userID",String.valueOf(review.userID));
+        userdata.put("comment",String.valueOf(review.comment));
+        userdata.put("price",String.valueOf(review.price));
+        userdata.put("quality",String.valueOf(review.quality));
+        userdata.put("support",String.valueOf(review.support));
+
+        CoffeeReviews.child("CoffeeReviews").child(String.valueOf(review.coffeeID+review.userID)).updateChildren(userdata)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+
+                        if(task.isSuccessful()){
+
+                            return;
+
+
+                        }
+                        else{
+
+                            return;
+
+                        }
+                    }
+                });
     }
 
 
@@ -203,21 +232,21 @@ public class DB {
             orders.add(order);
             orderIDs.add(order.getID());
         }
-        if (true) return;
-        //TODO send to DB
+
 
 
         final DatabaseReference Ordered;
         Ordered = FirebaseDatabase.getInstance().getReference();
-
         HashMap<String,Object>userdata = new HashMap<>();
         userdata.put("ID",String.valueOf(order.id));
-        userdata.put("coffeeIDs",String.valueOf(order.coffeeIDs));
-        userdata.put("soldPrice",String.valueOf(order.soldPrice));
-        userdata.put("quantity",String.valueOf(order.quantity));
+        userdata.put("sid",User.ID);
+        userdata.put("coffeeIDs",String.valueOf(order.coffeeIDs.get(0)));
+        userdata.put("soldPrice",String.valueOf(order.soldPrice.get(0)));
+        userdata.put("quantity",String.valueOf(order.quantity.get(0)));
         userdata.put("datetime",String.valueOf(order.datetime));
 
-        Ordered.child("Order").child(String.valueOf(order.id)).updateChildren(userdata)
+
+        Ordered.child("Order").child(String.valueOf(order.id+User.ID)).updateChildren(userdata)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)
@@ -225,13 +254,13 @@ public class DB {
 
                         if(task.isSuccessful()){
 
-                            System.out.println(task.toString());
+                            if(true) return;
 
 
                         }
                         else{
 
-                            System.out.println("not saved");
+                           return;
 
                         }
                     }
@@ -370,10 +399,10 @@ public class DB {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                            String sid = imauth.getCurrentUser().getUid();
+                            User.ID = imauth.getCurrentUser().getUid();
 
                             final StorageReference fileref = storageReference
-                                    .child(sid+".jpg");
+                                    .child(User.ID+".jpg");
 
 
                             uploadTask[0] =fileref.putFile(User.uri);
@@ -399,7 +428,7 @@ public class DB {
 
                                         HashMap<String,Object> sellermap = new HashMap<>();
 
-                                        sellermap.put("sid",sid);
+                                        sellermap.put("sid",User.ID);
                                         sellermap.put("Name",User.Name);
                                         sellermap.put("Email",User.Email);
                                         sellermap.put("Street",User.Street);
@@ -408,7 +437,7 @@ public class DB {
                                         sellermap.put("password",User.Password);
                                         sellermap.put("ContactNum",User.ContactNum);
 
-                                        rootref.child("User").child(sid).updateChildren(sellermap)
+                                        rootref.child("User").child(User.ID).updateChildren(sellermap)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {

@@ -23,7 +23,7 @@
                 android:id="@+id/dt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/FAQ"
+                android:text="@string/Inquiry"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textColor="#000"
@@ -35,7 +35,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp">
 
@@ -47,48 +46,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="100dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp">
-
-                    <ImageView
-                        android:id="@+id/ci_image"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_help_center_24"
-                        tools:src="@tools:sample/avatars" />
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_phone_24"
-                        tools:src="@tools:sample/avatars" />
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_ugc_24" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -101,43 +59,24 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <EditText
                             android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:text="@string/Inquiry"
-                            android:layout_marginLeft="60dp"/>
+                            android:hint="@string/Inquiry"/>
 
-                        <TextView
+                        <Button
                             android:id="@+id/textView6"
-                            android:layout_width="114dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
                             android:layout_weight="1"
-                            android:text="Connect Us"
+                            android:text="Send"
                             android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/dt_ingr"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:text="@string/FAQ"
-                            android:textColor="@color/black"/>
                     </LinearLayout>
+
+
                 </LinearLayout>
-
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/help_home"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/ic_home_24"
-                android:layout_marginTop="50dp"/>
-
 
         </LinearLayout>
     </ScrollView>
