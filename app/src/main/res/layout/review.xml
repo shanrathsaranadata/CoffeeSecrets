@@ -89,8 +89,8 @@
                     android:id="@+id/dt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Product Qualty"
                     android:gravity="center"
+                    android:text="Product Quality"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />

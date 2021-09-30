@@ -1,15 +1,17 @@
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="120dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/text"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
     android:layout_margin="5dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@drawable/text">
 
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="72dp"
         android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="29dp"
         android:padding="10dp"
         app:srcCompat="@drawable/a1" />
 
@@ -19,11 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView5"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="7dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginBottom="18dp"
         android:layout_toStartOf="@+id/b_name"
         android:text="Mathisha"
         android:textColor="@color/black" />
@@ -44,24 +44,26 @@
 
     <RatingBar
         android:id="@+id/dt_rating"
-        android:layout_width="260dp"
+        android:layout_width="246dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="28dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="42dp"
+        android:layout_marginEnd="55dp"
         android:layout_toEndOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/b_name"
-        android:layout_width="151dp"
-        android:layout_height="23dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
         android:layout_below="@+id/dt_rating"
+        android:layout_alignStart="@+id/dt_rating"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="-4dp"
-        android:layout_marginEnd="154dp"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="31dp"
         android:layout_marginBottom="9dp"
         android:text="Comment"
         android:textColor="@color/black"

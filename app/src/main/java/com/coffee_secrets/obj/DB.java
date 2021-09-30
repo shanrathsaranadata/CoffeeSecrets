@@ -40,6 +40,33 @@ public class DB {
     static ArrayList<Order> orders = new ArrayList<>();
     static ArrayList<Integer> orderIDs = new ArrayList<>();
 
+    static ArrayList<Review> reviews = new ArrayList<>();
+
+
+    //Product review
+    public static void saveOrUpdateProductReview(Review review){
+        if (review==null){
+            //Remove user review from DB
+        }else {
+
+            //Add/Update to db
+        }
+
+
+        //Save to db
+    }
+
+    static ArrayList<Review> getAllReviews(){
+        //Get all reviews except this user
+
+        return new ArrayList<>();
+    }
+    public static Review getUserReview(){
+
+        return null;
+    }
+
+
 
     //Start up
     public abstract static class startUp {

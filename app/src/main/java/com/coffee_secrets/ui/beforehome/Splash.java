@@ -17,6 +17,8 @@ public class Splash extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView textView;
 
+    static boolean loaded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class Splash extends AppCompatActivity {
         new DB.startUp() {
             @Override
             public void done() {
+
                 startActivity(new Intent(Splash.this, MainActivity.class));
 
             }

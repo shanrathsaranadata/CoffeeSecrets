@@ -11,7 +11,7 @@
         <item
             android:id="@+id/oder_hi"
             android:icon="@drawable/ic_time"
-            android:title="Oder Histoty" />
+            android:title="Order History" />
 
 
 
@@ -28,7 +28,7 @@
         <item
             android:id="@+id/app_review"
             android:icon="@drawable/ic_reviews"
-            android:title="App_Review" />
+            android:title="App Review" />
 
 
 
@@ -40,7 +40,7 @@
         <item
             android:id="@+id/help"
             android:icon="@drawable/ic_help"
-            android:title="Neeed Help ?" />
+            android:title="Need Help ?" />
 
     </group>
 
