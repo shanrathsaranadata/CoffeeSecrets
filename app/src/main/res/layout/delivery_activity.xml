@@ -57,12 +57,13 @@
                     android:background="@drawable/bgd"
                     android:enabled="false"
                     android:hint="Address"
+                    android:minHeight="48dp"
                     android:padding="8dp"
                     android:textColorHint="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/da_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,12 +71,13 @@
                     android:background="@drawable/bgd"
                     android:enabled="false"
                     android:hint="Phone Number"
+                    android:minHeight="48dp"
                     android:padding="8dp"
                     android:textColorHint="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/da_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,6 +85,7 @@
                     android:background="@drawable/bgd"
                     android:enabled="false"
                     android:hint="Name"
+                    android:minHeight="48dp"
                     android:padding="8dp"
                     android:textColorHint="@color/white"
                     android:textSize="20dp"
@@ -91,7 +94,7 @@
                 <EditText
                     android:id="@+id/da_email"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="54dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bgd"

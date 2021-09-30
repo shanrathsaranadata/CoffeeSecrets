@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +27,10 @@ public class Delivery_Activity extends AppCompatActivity {
         Order order = Order.get(orderID);
 
 
-        TextView address = findViewById(R.id.da_address);
-        TextView phone = findViewById(R.id.da_phone);
-        TextView name = findViewById(R.id.da_name);
-        TextView email = findViewById(R.id.da_email);
+        EditText address = findViewById(R.id.da_address);
+        EditText phone = findViewById(R.id.da_phone);
+        EditText name = findViewById(R.id.da_name);
+        EditText email = findViewById(R.id.da_email);
 
         address.setText(User.getAddress());
         phone.setText(User.ContactNum);
@@ -46,7 +47,7 @@ public class Delivery_Activity extends AppCompatActivity {
                 address.setEnabled(true);
                 phone.setEnabled(true);
                 email.setEnabled(true);
-                name.setEnabled(true);
+                //name.setEnabled(true);
             }
         });
 
@@ -65,13 +66,24 @@ public class Delivery_Activity extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!User.isEditTextContainEmail(email)){
+                    email.setError("Invalid email");
+                    return;
+                };
+
+                if (address.getText().toString().isEmpty()){
+                    address.setError("Address can't be empty.");
+                    return;
+                }
+
+                //TODO validate number
+
                 if (address.isEnabled()){
                     order.setChangedDetails(
                             address.getText().toString(),
                             name.getText().toString(),
                             phone.getText().toString(),
                             email.getText().toString()
-                            //TODO validate
                             );
                 }
 
