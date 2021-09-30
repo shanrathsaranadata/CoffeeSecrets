@@ -45,7 +45,7 @@ public class User {
         }
 
     }
-    public static int getFromCart(int coffeeID){
+    public static int getQuantityFromCart(int coffeeID){
         if (cart.contains(coffeeID)){
             return cart_quantity.get(cart.indexOf(coffeeID));
         }

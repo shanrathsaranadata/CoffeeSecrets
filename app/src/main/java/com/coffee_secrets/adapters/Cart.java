@@ -1,7 +1,6 @@
 package com.coffee_secrets.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +10,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
-import com.coffee_secrets.obj.Order;
 import com.coffee_secrets.obj.User;
-import com.coffee_secrets.ui.basic.MyOrderActivity;
-import com.coffee_secrets.ui.basic.PayActivity;
-import com.coffee_secrets.ui.basic.details_Activity;
 
 import java.util.ArrayList;
 
@@ -107,7 +101,7 @@ public class Cart extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 User.addToCart(coffee.getID(),1,false);
-                quantity.setText("Quantity  - "+User.getFromCart(coffee.getID()));
+                quantity.setText("Quantity  - "+User.getQuantityFromCart(coffee.getID()));
 
             }
         });
@@ -116,7 +110,7 @@ public class Cart extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 User.addToCart(coffee.getID(),-1,false);
-                quantity.setText("Quantity  - "+User.getFromCart(coffee.getID()));
+                quantity.setText("Quantity  - "+User.getQuantityFromCart(coffee.getID()));
             }
         });
 

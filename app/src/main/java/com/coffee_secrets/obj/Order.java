@@ -210,6 +210,21 @@ public class Order {
         System.out.println(datetime);
     }
 
+    public Order(ArrayList<Coffee> coffees, ArrayList<Integer> Quantity){
+        id = getOrderID();
+
+        for (int i=0; i< coffeeIDs.size(); i++){
+            coffeeIDs.add(coffees.get(i).getID());
+            soldPrice.add(coffees.get(i).getDiscountedPrice());
+            quantity.add(Quantity.get(i));
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/DD HH:MM:ss");
+        Date date = new Date();
+        datetime = sdf.format(date);
+        System.out.println(datetime);
+    }
+
     public void delete(){
         DB.deleteOrder(this);
     }

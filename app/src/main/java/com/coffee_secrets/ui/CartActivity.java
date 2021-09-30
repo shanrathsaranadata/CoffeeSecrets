@@ -5,13 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.Cart;
+import com.coffee_secrets.obj.Coffee;
+import com.coffee_secrets.obj.DB;
+import com.coffee_secrets.obj.Order;
+import com.coffee_secrets.obj.User;
 import com.coffee_secrets.ui.basic.PayActivity;
+
+import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -31,6 +37,32 @@ public class CartActivity extends AppCompatActivity {
         Cart cart = new Cart(this, textViews);
         ListView lv = findViewById(R.id.cart_list);
         lv.setAdapter(cart);
+
+        findViewById(R.id.cart_cc_order2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Integer> c = cart.getSelectedCoffees();
+
+                if (c.size()==0){
+                    Toast.makeText(CartActivity.this, "Please select at least one item.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ArrayList<Coffee> coffees = new ArrayList<>();
+                ArrayList<Integer> quantity = new ArrayList<>();
+
+                for (int i=0; i<c.size(); i++){
+                    Coffee coffee = DB.getCoffeeByID(c.get(i), CartActivity.this);
+                    coffees.add(coffee);
+                    quantity.add(User.getQuantityFromCart(c.get(i)));
+                }
+
+                Order order = new Order(coffees,quantity);
+                Intent intent = new Intent(CartActivity.this, PayActivity.class);
+                intent.putExtra("OrderID", order.getID());
+                startActivity(intent);
+            }
+        });
 
     }
 }
