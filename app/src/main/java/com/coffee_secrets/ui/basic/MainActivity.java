@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.DB;
 import com.coffee_secrets.ui.beforehome.Login_2_Activity;
+import com.coffee_secrets.ui.beforehome.Splash;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText siemail,sipassword;
 
 
-
+    static boolean loaded = false;
 
 
 
@@ -145,11 +146,27 @@ public class MainActivity extends AppCompatActivity {
 
                             if(task.isSuccessful()){
                                 DB.setUserID(imauth.getUid());
-                                Intent intent = new Intent(MainActivity.this,Home_Activity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                finish();
-                                Toast.makeText(MainActivity.this, "Your login is Successful", Toast.LENGTH_SHORT).show();
+
+
+                                new DB.startUp(true) {
+                                    @Override
+                                    public void done() {
+                                        if (!loaded) {
+                                            loaded = true;
+
+                                            {
+                                                Intent intent = new Intent(MainActivity.this, Home_Activity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                                finish();
+                                                Toast.makeText(MainActivity.this, "Your login is Successful", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                        }
+                                    }
+                                };
+
+
 
                             }
                             else{

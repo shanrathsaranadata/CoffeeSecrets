@@ -73,11 +73,17 @@ public class DB {
         int o = 0;
         int cat = 0;
         int cof = 0;
+        boolean l = false;
 
-        public startUp(){
-            loadOrders();
-            getAllCategories();
-            getAllCoffees();
+        public startUp(boolean logged){
+            l = logged;
+            if (logged) {
+                loadOrders();
+
+            }else {
+                getAllCategories();
+                getAllCoffees();
+            }
         }
 
 
@@ -190,17 +196,35 @@ public class DB {
 
         }
 
+        void dummy(){
+            //jsfosdpg
+
+        }
+
         void check(){
-            if (!(o==0 || cat==0 || cof ==0)){
-                if (o==-1){
-                    loadOrders();
-                }else if (cat==-1){
-                    getAllCategories();
-                }else if (cof==-1){
-                    getAllCoffees();
-                }else {
-                    done();
+            if (l){
+                if (!(o==0)){
+                    if (o==-1){
+                        loadOrders();
+                    }else {
+                        done();
+                    }
                 }
+
+
+            }else {
+
+                if (!(cat==0 || cof ==0)){
+                    if (cat==-1){
+                        getAllCategories();
+                    }else if (cof==-1){
+                        getAllCoffees();
+                    }else {
+                        done();
+                    }
+                }
+
+
             }
 
 
@@ -209,6 +233,23 @@ public class DB {
         public abstract void done();
 
     }
+
+    public abstract static class dummy{
+
+        public dummy(){
+            method();
+        }
+
+        public void method(){
+
+                done();
+
+        }
+
+        public abstract void done();
+
+    }
+
 
 
     //TODO connect with database

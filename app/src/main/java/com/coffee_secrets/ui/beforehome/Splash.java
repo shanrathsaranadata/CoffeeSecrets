@@ -31,12 +31,13 @@ public class Splash extends AppCompatActivity {
         PBA.setDuration(30000);
         progressBar.setAnimation(PBA);
 
-        new DB.startUp() {
+        new DB.startUp(false) {
             @Override
             public void done() {
-
-                startActivity(new Intent(Splash.this, MainActivity.class));
-
+                if (!loaded) {
+                    loaded = true;
+                    startActivity(new Intent(Splash.this, MainActivity.class));
+                }
             }
         };
 

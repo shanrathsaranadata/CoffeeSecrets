@@ -191,7 +191,7 @@ public class Order {
         soldPrice.add(coffee.getDiscountedPrice());
         quantity.add(Quantity);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd HH:MM:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         datetime = sdf.format(date);
         System.out.println(datetime);
