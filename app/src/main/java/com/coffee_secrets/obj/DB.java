@@ -367,7 +367,7 @@ public class DB {
 
                 if(snapshot.exists()){
 
-                    User.ID= Integer.parseInt(Objects.requireNonNull(snapshot.child("id").getValue()).toString());
+                    User.ID= Objects.requireNonNull(snapshot.child("sid").getValue()).toString();
                     User.Name= Objects.requireNonNull(snapshot.child("Name").getValue()).toString();
                     User.Email= Objects.requireNonNull(snapshot.child("Email").getValue()).toString();
                     User.Street= Objects.requireNonNull(snapshot.child("Street").getValue()).toString();
@@ -443,7 +443,7 @@ public class DB {
                                         sellermap.put("City",User.City);
                                         sellermap.put("Image", myuri[0]);
                                         sellermap.put("password",User.Password);
-                                        sellermap.put("id",User.ID);
+                                        sellermap.put("ContactNum",User.ContactNum);
 
                                         rootref.child("User").child(sid).updateChildren(sellermap)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {

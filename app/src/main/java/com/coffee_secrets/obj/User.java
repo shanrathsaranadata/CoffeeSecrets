@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class User {
 
-    public  static int ID;
+    public  static String ID;
     public  static String Name;
     public  static String Email;
     public  static String Street;
@@ -31,7 +31,7 @@ public class User {
                 String street, String city,
                 String contactNum, Uri imageuri,String password) {
 
-        User.ID = 0;
+        User.ID = null;
         Name = name;
         Email = email;
         Street = street;

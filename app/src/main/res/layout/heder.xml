@@ -9,13 +9,13 @@
 
 
     <ImageView
-        android:id="@+id/ci_image"
+        android:id="@+id/pf_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:srcCompat="@drawable/avater" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/Name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"

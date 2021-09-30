@@ -24,6 +24,7 @@ import com.coffee_secrets.R;
 import com.coffee_secrets.adapters.CoffeeCats;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
+import com.coffee_secrets.obj.User;
 import com.coffee_secrets.ui.CartActivity;
 import com.coffee_secrets.ui.CofffebarActivity;
 import com.coffee_secrets.ui.HelpActivity;
@@ -34,6 +35,7 @@ import com.coffee_secrets.ui.ReviewActivity;
 import com.coffee_secrets.ui.favouriteActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,8 @@ public class Home_Activity extends AppCompatActivity implements
 
     private RelativeLayout mCata;
     private ImageView mRe;
+    private TextView nameuser;
+    private ImageView pfuser;
 
 
 
@@ -58,6 +62,8 @@ public class Home_Activity extends AppCompatActivity implements
         drawerLayout = findViewById(R.id.drawer_layout1);
         navigationView = findViewById(R.id.nav1);
         mRe = findViewById(R.id.re);
+        nameuser = findViewById(R.id.Name_tv);
+        pfuser = findViewById(R.id.pf_image);
 
 
 
@@ -66,8 +72,10 @@ public class Home_Activity extends AppCompatActivity implements
         CoffeeCats coffeeCats =
                 new CoffeeCats(this);
 
+        String name = User.Name;
 
-        DB.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//        nameuser.setText(User.Name);
+//        Picasso.get().load(User.Imageuri.toString()).into(pfuser);
 
 
         ArrayList<Coffee.Category> allCategories = DB.getAllCategories(coffeeCats);
