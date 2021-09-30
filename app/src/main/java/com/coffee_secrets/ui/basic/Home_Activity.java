@@ -73,6 +73,8 @@ public class Home_Activity extends AppCompatActivity implements
 
 
 
+
+
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -158,6 +160,16 @@ public class Home_Activity extends AppCompatActivity implements
                 image.setImageBitmap(User.bitmap);
 //                Picasso.get().load(User.uri).into(image);
                 name.setText(User.Name);
+
+                drawerLayout.findViewById(R.id.logout_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(Home_Activity.this,MainActivity.class));
+
+                    }
+                });
 
             }
         });

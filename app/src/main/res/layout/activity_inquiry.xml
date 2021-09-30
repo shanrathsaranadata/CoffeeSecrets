@@ -60,14 +60,14 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/textView5"
+                            android:id="@+id/inquriysend_et"
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:hint="@string/Inquiry"/>
 
                         <Button
-                            android:id="@+id/textView6"
+                            android:id="@+id/inquriysend_btn"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -76,7 +76,16 @@
                     </LinearLayout>
 
 
+
                 </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvinquiry"
+                android:layout_width="match_parent"
+                android:layout_height="472dp"
+                android:layout_marginTop="20dp"
+                android:scrollbars="vertical"
+                tools:ignore="NotSibling" />
 
         </LinearLayout>
     </ScrollView>

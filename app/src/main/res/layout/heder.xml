@@ -22,4 +22,15 @@
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="35dp" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/inquiry_et"
+        android:text="LOG OUT"
+        android:textColor="@color/white"
+        android:layout_alignParentLeft="true" />
 </LinearLayout>
