@@ -123,7 +123,8 @@ public abstract class Favourite extends BaseAdapter {
 
         float total = 0f;
         for (int i=0; i<checkedCoffee.size(); i++){
-            Coffee coffee = DB.getCoffeeByID(i, context);
+            int index = checkedCoffee.get(i);
+            Coffee coffee = DB.getCoffeeByID(index, context);
             total+=coffee.getDiscountedPrice();
         }
 
