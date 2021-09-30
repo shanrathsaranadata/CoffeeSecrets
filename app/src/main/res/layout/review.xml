@@ -76,8 +76,7 @@
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Product Imfrom" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -97,11 +96,11 @@
                     android:textStyle="bold" />
 
 
-
                 <RatingBar
+                    android:id="@+id/quality_rb"
                     android:layout_width="250dp"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 
@@ -122,9 +121,10 @@
                     android:textStyle="bold" />
 
                 <RatingBar
+                    android:id="@+id/support_rb"
                     android:layout_width="250dp"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 
@@ -145,19 +145,20 @@
                     android:textStyle="bold" />
 
                 <RatingBar
+                    android:id="@+id/price_rb"
                     android:layout_width="250dp"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
-                <TextView
-                    android:id="@+id/textView5"
+                <EditText
+                    android:id="@+id/comment_rv"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:text="Comment..."
-                    android:background="@drawable/edittext"
-                    android:padding="10dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edittext"
+                    android:hint="Comment"
+                    android:padding="10dp" />
 
             </LinearLayout>
 
@@ -165,5 +166,11 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/rv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
 
 </LinearLayout>

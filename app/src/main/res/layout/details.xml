@@ -70,7 +70,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/comment_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rating"
@@ -132,6 +132,15 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:text="Add to cart"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/dt_rev"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:text="Add a review"
                     android:textAllCaps="false" />
             </LinearLayout>
 

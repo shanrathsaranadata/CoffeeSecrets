@@ -38,6 +38,7 @@ public class CartActivity extends AppCompatActivity {
         ListView lv = findViewById(R.id.cart_list);
         lv.setAdapter(cart);
 
+
         findViewById(R.id.cart_cc_order2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,11 +59,23 @@ public class CartActivity extends AppCompatActivity {
                 }
 
                 Order order = new Order(coffees,quantity);
+                order.save();
                 Intent intent = new Intent(CartActivity.this, PayActivity.class);
                 intent.putExtra("OrderID", order.getID());
                 startActivity(intent);
             }
         });
+        findViewById(R.id.cart_cc_delete2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Integer> c = cart.getSelectedCoffees();
+                for (int i=0; i<c.size(); i++){
+                    User.removeFromCart(c.get(i));
+                }
+                cart.notifyDataSetChanged();
+            }
+        });
+
 
     }
 }

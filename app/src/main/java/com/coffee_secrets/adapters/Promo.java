@@ -1,6 +1,7 @@
 package com.coffee_secrets.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
+import com.coffee_secrets.obj.Order;
 
 import java.util.ArrayList;
 
@@ -59,15 +61,23 @@ public class Promo extends BaseAdapter {
         Coffee coffee = discounts.get(i);
 
         ImageView image = view.findViewById(R.id.imageView2);
-        TextView name = view.findViewById(R.id.textView5);
+        TextView name = view.findViewById(R.id.comment_rv);
         TextView disc = view.findViewById(R.id.pd_disc);
         Button place = view.findViewById(R.id.ple);
 
         image.setImageBitmap(coffee.getBitmap());
         name.setText(coffee.getName());
-//        disc.setText();
+        int discount = (int) ((1-coffee.getDiscountedPrice()/ coffee.getPrice())*100);
+        disc.setText(discount/100);
 
+        place.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Order order = new Order(coffee,1);
+               // Intent intent = new Intent(context, )
+            }
+        });
 
-        return null;
+        return view;
     }
 }

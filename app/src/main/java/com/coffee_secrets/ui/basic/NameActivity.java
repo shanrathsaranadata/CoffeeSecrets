@@ -103,13 +103,6 @@ public class NameActivity extends AppCompatActivity {
     }
 
 
-    int getHeight(){
-        DisplayMetrics metrics = new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        return metrics.heightPixels;
-    }
-
     int getWidth(){
         DisplayMetrics metrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -117,6 +110,13 @@ public class NameActivity extends AppCompatActivity {
 
 
         return metrics.widthPixels;
+    }
+
+    int getHeight(){
+        DisplayMetrics metrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        return metrics.heightPixels;
     }
 
 

@@ -48,7 +48,7 @@
                     tools:srcCompat="@drawable/dsfd" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/comment_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Name -       Espresso"
@@ -77,98 +77,6 @@
                     android:layout_marginTop="20dp"/>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Combo Packs"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:textColor="#000"
-                    android:textSize="25dp"
-                    android:layout_margin="20dp"
-                    android:textStyle="bold"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp">
-
-                    <ImageView
-                        android:id="@+id/ci_image"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/images"
-                        tools:src="@tools:sample/avatars" />
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/cvb"
-                        tools:src="@tools:sample/avatars"
-                        tools:srcCompat="@drawable/vxb" />
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/dsfds"
-                        tools:src="@tools:sample/avatars"
-                        tools:srcCompat="@drawable/dsfds" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp">
-
-                    <TextView
-                        android:id="@+id/dt_ingr"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Name -       Cappuccino"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/black"/>
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Discount -  30%"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/black"/>
-
-                    <Button
-                        android:id="@+id/ple2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Add to Place Order"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginRight="40dp"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
 
 
         </LinearLayout>

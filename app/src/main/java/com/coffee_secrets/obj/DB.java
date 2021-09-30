@@ -191,7 +191,10 @@ public class DB {
     }
 
 
-
+    //TODO connect with database
+    static void addOrUpdate(CoffeeReview review){
+        //Save to database
+    }
 
 
     //Order

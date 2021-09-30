@@ -87,7 +87,6 @@ public class details_Activity extends AppCompatActivity {
                         startActivity(i);
             }
         });
-
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +94,11 @@ public class details_Activity extends AppCompatActivity {
                 User.addToCart(coffee.getID(),0,false);
             }
         });
+        findViewById(R.id.dt_rev).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
     }
 }
