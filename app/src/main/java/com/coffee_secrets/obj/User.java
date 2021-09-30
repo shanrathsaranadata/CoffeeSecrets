@@ -25,7 +25,51 @@ public class User {
     public static Uri uri;
 
     public static ArrayList<Integer> favourites = new ArrayList<>();
-    public static ArrayList<Integer> cart = new ArrayList<>();
+    private static ArrayList<Integer> cart = new ArrayList<>();
+    public static ArrayList<Integer> cart_quantity = new ArrayList<>();
+
+
+    public static void addToCart(int coffeeID, int quantity, boolean set){
+        if (cart.contains(coffeeID)){
+            int index = cart.indexOf(coffeeID);
+            if (set){
+                cart_quantity.set(index, Math.max(0,quantity));
+            }else {
+                int new_q = quantity+ cart_quantity.get(index);
+                cart_quantity.set(index, Math.max(new_q, 0));
+            }
+
+        }else {
+            cart.add(coffeeID);
+            cart_quantity.add(quantity);
+        }
+
+    }
+    public static int getFromCart(int coffeeID){
+        if (cart.contains(coffeeID)){
+            return cart_quantity.get(cart.indexOf(coffeeID));
+        }
+        return -1;
+    }
+    public static void removeFromCart(int coffeeID){
+        if (cart.contains(coffeeID)){
+            int index = cart.indexOf(coffeeID);
+            cart.remove(index);
+            cart_quantity.remove(index);
+        }
+
+    }
+    public static int getCartCount(){
+        return cart.size();
+    }
+    public static int getCoffeeIDFromCart(int index){
+        if (cart.size()>index && index>=0){
+            return cart.get(index);
+        }
+
+        return -1;
+    }
+
 
     public static String getAddress(){
         return Name+", "+Street+", "+City;

@@ -92,7 +92,7 @@ public class details_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(details_Activity.this, "Item was added to cart.", Toast.LENGTH_SHORT).show();
-                User.cart.add(coffee.getID());
+                User.addToCart(coffee.getID(),0,false);
             }
         });
 

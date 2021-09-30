@@ -11,11 +11,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coffee_secrets.R;
 import com.coffee_secrets.obj.Coffee;
 import com.coffee_secrets.obj.DB;
+import com.coffee_secrets.obj.Order;
 import com.coffee_secrets.obj.User;
+import com.coffee_secrets.ui.basic.MyOrderActivity;
+import com.coffee_secrets.ui.basic.PayActivity;
 import com.coffee_secrets.ui.basic.details_Activity;
 
 import java.util.ArrayList;
@@ -36,8 +40,8 @@ public class Cart extends BaseAdapter {
         this.context = context;
         inflter = (LayoutInflater.from(context));
         currentPage = 1;
-        pages = (User.cart.size()%COFFEE_PER_PAGE==0)?
-                (User.cart.size()/COFFEE_PER_PAGE) : (User.cart.size()/COFFEE_PER_PAGE)+1;
+        pages = (User.getCartCount()%COFFEE_PER_PAGE==0)?
+                (User.getCartCount()/COFFEE_PER_PAGE) : (User.getCartCount()/COFFEE_PER_PAGE)+1;
 
         this.textViews = textViews;
 
@@ -47,64 +51,79 @@ public class Cart extends BaseAdapter {
     @Override
     public int getCount() {
         if (pages==currentPage){
-            return User.cart.size()-((pages-1)*COFFEE_PER_PAGE);
+            return User.getCartCount()-((pages-1)*COFFEE_PER_PAGE);
         }
 
-        return Math.min(User.cart.size(), COFFEE_PER_PAGE);
+        return Math.min(User.getCartCount(), COFFEE_PER_PAGE);
     }
 
     @Override
     public Object getItem(int i) {
         int index = (currentPage-1)*COFFEE_PER_PAGE + i;
 
-        return DB.getCoffeeByID(User.cart.get(index),
+        return DB.getCoffeeByID(User.getCoffeeIDFromCart(index),
                 context);
     }
 
     @Override
     public long getItemId(int i) {
         int index = (currentPage-1)*COFFEE_PER_PAGE + i;
-        return User.cart.get(index) ;
+        return User.getCoffeeIDFromCart(index) ;
     }
 
     @Override
     public View getView(int in, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.c0, null);
+        view = inflter.inflate(R.layout.cart_si, null);
 
         int i = (currentPage-1)*COFFEE_PER_PAGE + in;
 
         Coffee coffee = DB.getCoffeeByID((int) getItemId(i), context);
 
-        TextView name = view.findViewById(R.id.cart_si_name);
-        name.setText(coffee.getName());
+        ImageView image = view.findViewById(R.id.order_img);
+        TextView name = view.findViewById(R.id.order_name);
+        TextView price = view.findViewById(R.id.order_price);
+        TextView quantity = view.findViewById(R.id.order_quantity);
 
-        TextView price = view.findViewById(R.id.cart_si_price);
-        price.setText("Rs. "+coffee.getPrice()+" /=");
 
+        Button plus = view.findViewById(R.id.order_plus);
+        Button minus = view.findViewById(R.id.order_minus);
 
-        Button update = view.findViewById(R.id.cart_update);
-        update.setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.order_del).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, details_Activity.class);
-//                intent.putExtra("CoffeeID", coffee.getID());
-//                context.startActivity(intent);
-            }
-        });
-
-        Button delete = view.findViewById(R.id.cart_si_del);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                User.cart.remove(i);
+                User.removeFromCart(coffee.getID());
                 notifyDataSetChanged();
             }
         });
 
-        ImageView image = view.findViewById(R.id.cart_cc_image);
+        //Basic
+        image.setImageBitmap(coffee.getBitmap());
+        name.       setText("Name      - "+coffee.getName());
+        price.      setText("Price     - Rs. "+coffee.getDiscountedPrice()+" /=");
+        quantity.   setText("Quantity  - "+1);
+
+
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User.addToCart(coffee.getID(),1,false);
+                quantity.setText("Quantity  - "+User.getFromCart(coffee.getID()));
+
+            }
+        });
+
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User.addToCart(coffee.getID(),-1,false);
+                quantity.setText("Quantity  - "+User.getFromCart(coffee.getID()));
+            }
+        });
+
+
         image.setImageBitmap(coffee.getBitmap());
 
-        CheckBox check = view.findViewById(R.id.cart_cc_cb);
+        CheckBox check = view.findViewById(R.id.cart_cb);
         check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

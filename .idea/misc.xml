@@ -10,6 +10,7 @@
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cardview.xml" value="0.5" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart.xml" value="0.18" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart_new.xml" value="0.33" />
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart_si.xml" value="0.33" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cart_single_item.xml" value="0.1" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/cc.xml" value="0.22147197839297772" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/co1.xml" value="0.33" />
@@ -29,7 +30,7 @@
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/mm_home.xml" value="0.17" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/myoders.xml" value="0.33" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/name.xml" value="0.1" />
-        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/oder.xml" value="0.67" />
+        <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/oder.xml" value="0.33" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/oder_history.xml" value="0.25" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/order_history_adapter.xml" value="0.5" />
         <entry key="..\:/Programming/VPSProjects/01_CoffeSecrets/Project/app/src/main/res/layout/pay.xml" value="0.21" />
