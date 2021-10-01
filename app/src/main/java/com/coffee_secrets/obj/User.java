@@ -128,5 +128,17 @@ public class User {
         }
     }
 
+    public static boolean isEditTextContainphone(EditText argEditText) {
+
+        try {
+            Pattern pattern = Pattern.compile("^\\d{10}$");
+            Matcher matcher = pattern.matcher(argEditText.getText());
+            return matcher.matches();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 }

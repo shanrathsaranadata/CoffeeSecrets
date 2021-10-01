@@ -70,6 +70,10 @@ public class Delivery_Activity extends AppCompatActivity {
                     email.setError("Invalid email");
                     return;
                 };
+                if (!User.isEditTextContainphone(phone)){
+                    phone.setError("Invalid email");
+                    return;
+                };
 
                 if (address.getText().toString().isEmpty()){
                     address.setError("Address can't be empty.");

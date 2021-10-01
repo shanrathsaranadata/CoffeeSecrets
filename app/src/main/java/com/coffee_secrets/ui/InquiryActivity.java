@@ -97,7 +97,7 @@ public class InquiryActivity extends AppCompatActivity {
 
                                         };
                                 AlertDialog.Builder builder = new AlertDialog.Builder(InquiryActivity.this);
-                                builder.setTitle("Do you want to Update this User. Are you");
+                                builder.setTitle("Do you want to Update this Inquiry. Are you");
 
                                 builder.setItems(options, new DialogInterface.OnClickListener() {
                                     @Override
@@ -135,7 +135,7 @@ public class InquiryActivity extends AppCompatActivity {
 
                                         };
                                 AlertDialog.Builder builder = new AlertDialog.Builder(InquiryActivity.this);
-                                builder.setTitle("Do you want to Delete this Users. Are you");
+                                builder.setTitle("Do you want to Delete this Inquiry. Are you");
 
                                 builder.setItems(options, new DialogInterface.OnClickListener() {
                                     @Override

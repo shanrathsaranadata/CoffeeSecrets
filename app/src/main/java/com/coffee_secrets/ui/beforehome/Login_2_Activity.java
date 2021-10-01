@@ -1,6 +1,7 @@
 package com.coffee_secrets.ui.beforehome;
 
 import static com.coffee_secrets.obj.User.isEditTextContainEmail;
+import static com.coffee_secrets.obj.User.isEditTextContainphone;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -84,7 +85,7 @@ public class Login_2_Activity extends AppCompatActivity {
                 }
 
                 if(!(isEditTextContainEmail(mMail))){
-                    mMail.setError("Enter Valid Email is required");
+                    mMail.setError("Email is not valid");
                     mMail.requestFocus();
                     return;
                 }
@@ -103,9 +104,9 @@ public class Login_2_Activity extends AppCompatActivity {
                     return;
                 }
 
-                if (con.isEmpty()){
+                if (!(isEditTextContainphone(mConnu))){
 
-                    mConnu.setError("Phone number is required.");
+                    mConnu.setError("Phone number is not valid.");
                     mConnu.requestFocus();
                     return;
                 }

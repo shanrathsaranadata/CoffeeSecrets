@@ -45,24 +45,103 @@ public class DB {
 
     //Product review
     public static void saveOrUpdateProductReview(Review review){
+
+        final DatabaseReference Reviewes;
+        Reviewes = FirebaseDatabase.getInstance().getReference();
+        HashMap<String,Object>reviewmap = new HashMap<>();
+        reviewmap.put("rating",String.valueOf(review.rating));
+        reviewmap.put("sid",User.ID);
+        reviewmap.put("name",String.valueOf((review.name)));
+        reviewmap.put("title",String.valueOf((review.title)));
+        reviewmap.put("image",String.valueOf((review.image)));
+        reviewmap.put("comment",String.valueOf((review.comment)));
+
         if (review==null){
             //Remove user review from DB
+
+            Reviewes.child("Review").child(String.valueOf(User.ID)).removeValue()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+                        }
+                    });
+
+
         }else {
+
+            Reviewes.child("Review").child(String.valueOf(User.ID)).updateChildren(reviewmap)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+                        }
+                    });
 
             //Add/Update to db
         }
 
-
-        //Save to db
     }
-
     static ArrayList<Review> getAllReviews(){
         //Get all reviews except this user
 
-        return new ArrayList<>();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Review");
+
+        ArrayList<Review> reviews = new ArrayList<Review>();
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                    String sid = Objects.requireNonNull(snapshot.child("sid").getValue()).toString();
+
+                    if(!sid.equals(User.ID)){
+
+                        String title = Objects.requireNonNull(snapshot.child("title").getValue()).toString();
+                        String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                        byte rating = Byte.parseByte(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+                        Bitmap image = null;
+                        String comment = Objects.requireNonNull(snapshot.child("comment").getValue()).toString();
+                        Review review = new Review(title,name,rating,image,comment);
+                        reviews.add(review);
+
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        };
+
+        usersRef.addValueEventListener(valueEventListener);
+
+        return reviews;
     }
     public static Review getUserReview(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Review").child(User.ID);
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String title = Objects.requireNonNull(snapshot.child("title").getValue()).toString();
+                String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                byte rating = Byte.parseByte(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+                Bitmap image = null;
+                String comment = Objects.requireNonNull(snapshot.child("comment").getValue()).toString();
+                Review review = new Review(title,name,rating,image,comment);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         return null;
     }
 
