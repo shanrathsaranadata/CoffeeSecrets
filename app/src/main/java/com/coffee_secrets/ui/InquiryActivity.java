@@ -244,7 +244,7 @@ public class InquiryActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
 
                     if(task.isSuccessful()){
-
+                        inquriysendet.setText("");
                         Toast.makeText(InquiryActivity.this, "Inquiry is Update successfully", Toast.LENGTH_SHORT).show();
                         inquirydetelis();
 
