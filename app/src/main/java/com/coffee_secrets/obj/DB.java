@@ -53,7 +53,7 @@ public class DB {
         reviewmap.put("sid",User.ID);
         reviewmap.put("name",String.valueOf((review.name)));
         reviewmap.put("title",String.valueOf((review.title)));
-        reviewmap.put("image",String.valueOf((review.image)));
+        reviewmap.put("image",String.valueOf((User.uri)));
         reviewmap.put("comment",String.valueOf((review.comment)));
 
         if (review==null){
@@ -103,7 +103,7 @@ public class DB {
                         String title = Objects.requireNonNull(snapshot.child("title").getValue()).toString();
                         String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
                         byte rating = Byte.parseByte(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
-                        Bitmap image = null;
+                        Bitmap image = URItoBitMap(Objects.requireNonNull(snapshot.child("image").getValue()).toString());
                         String comment = Objects.requireNonNull(snapshot.child("comment").getValue()).toString();
                         Review review = new Review(title,name,rating,image,comment);
                         reviews.add(review);
@@ -126,15 +126,24 @@ public class DB {
     public static Review getUserReview(){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("Review").child(User.ID);
-        usersRef.addValueEventListener(new ValueEventListener() {
+
+         usersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String title = Objects.requireNonNull(snapshot.child("title").getValue()).toString();
-                String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-                byte rating = Byte.parseByte(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
-                Bitmap image = null;
-                String comment = Objects.requireNonNull(snapshot.child("comment").getValue()).toString();
-                Review review = new Review(title,name,rating,image,comment);
+                if(snapshot.exists()){
+                    String title = Objects.requireNonNull(snapshot.child("title").getValue()).toString();
+                    String name = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
+                    byte rating = Byte.parseByte(Objects.requireNonNull(snapshot.child("rating").getValue()).toString());
+                    Bitmap image = URItoBitMap(Objects.requireNonNull(snapshot.child("image").getValue()).toString());
+                    String comment = Objects.requireNonNull(snapshot.child("comment").getValue()).toString();
+                    Review review = new Review(title,name,rating,image,comment);
+
+
+                }
+                else{
+
+                  Review  review= new Review(null,null,(byte) 0,URItoBitMap(User.uri.toString()),null);
+                }
             }
 
             @Override
@@ -164,6 +173,8 @@ public class DB {
                 getAllCoffees();
             }
         }
+
+
 
 
         void loadOrders() {
@@ -314,16 +325,6 @@ public class DB {
     }
 
     public abstract static class dummy{
-
-        public dummy(){
-            method();
-        }
-
-        public void method(){
-
-                done();
-
-        }
 
         public abstract void done();
 
@@ -499,6 +500,7 @@ public class DB {
                     User.ContactNum= Objects.requireNonNull(snapshot.child("ContactNum").getValue()).toString();
                     User.bitmap= URItoBitMap(Uri.parse(Objects.requireNonNull(snapshot.child("Image").getValue()).toString()).toString());
                     User.Password= Objects.requireNonNull(snapshot.child("password").getValue()).toString();
+                    User.uri=Uri.parse(Objects.requireNonNull(Objects.requireNonNull(snapshot.child("Image").getValue()).toString()));
 
                 }
 
